@@ -1,0 +1,237 @@
+[gd_scene load_steps=17 format=3 uid="uid://cr887vgoetw51"]
+
+[ext_resource type="Script" path="res://Scripts/window.gd" id="1_umobu"]
+[ext_resource type="Texture2D" uid="uid://ikvcgmihd3qy" path="res://Assets/Window/window0.png" id="2_bn54h"]
+[ext_resource type="Texture2D" uid="uid://6p8dgs6v5m0w" path="res://Assets/Window/window1.png" id="3_5w12m"]
+[ext_resource type="Texture2D" uid="uid://bc8g8ugkhxab1" path="res://Assets/Window/window2.png" id="4_imd4w"]
+[ext_resource type="Texture2D" uid="uid://jegaqwv23yks" path="res://Assets/Window/window3.png" id="5_gu67p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7r4s"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccw6f"]
+size = Vector2(64, 64)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_qhyfl"]
+frames = 4
+frame_0/texture = ExtResource("2_bn54h")
+frame_1/texture = ExtResource("3_5w12m")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_imd4w")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_gu67p")
+frame_3/duration = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavn"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_np8n2"]
+size = Vector2(48, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fu75"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yfg8"]
+size = Vector2(8, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w4ms"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8usl"]
+size = Vector2(48, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsoeu"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nv7b"]
+size = Vector2(8, 48)
+
+[node name="Window" type="Node2D"]
+script = ExtResource("1_umobu")
+SHAPE = SubResource("RectangleShape2D_x7r4s")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_ccw6f")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Area/Collision"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_qhyfl")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TL" type="Control" parent="Area/Collision/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+
+[node name="Area" type="Area2D" parent="Area/Collision/NinePatchRect/TL"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="Collision" type="CollisionShape2D" parent="Area/Collision/NinePatchRect/TL/Area"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_xwavn")
+
+[node name="T" type="Control" parent="Area/Collision/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_right = -8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Area" type="Area2D" parent="Area/Collision/NinePatchRect/T"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="Collision" type="CollisionShape2D" parent="Area/Collision/NinePatchRect/T/Area"]
+position = Vector2(24, 4)
+shape = SubResource("RectangleShape2D_np8n2")
+
+[node name="TR" type="Control" parent="Area/Collision/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Area" type="Area2D" parent="Area/Collision/NinePatchRect/TR"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="Collision" type="CollisionShape2D" parent="Area/Collision/NinePatchRect/TR/Area"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_0fu75")
+
+[node name="R" type="Control" parent="Area/Collision/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Area" type="Area2D" parent="Area/Collision/NinePatchRect/R"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="Collision" type="CollisionShape2D" parent="Area/Collision/NinePatchRect/R/Area"]
+position = Vector2(4, 24)
+shape = SubResource("RectangleShape2D_3yfg8")
+
+[node name="BR" type="Control" parent="Area/Collision/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Area" type="Area2D" parent="Area/Collision/NinePatchRect/BR"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="Collision" type="CollisionShape2D" parent="Area/Collision/NinePatchRect/BR/Area"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_6w4ms")
+
+[node name="B" type="Control" parent="Area/Collision/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Area" type="Area2D" parent="Area/Collision/NinePatchRect/B"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="Collision" type="CollisionShape2D" parent="Area/Collision/NinePatchRect/B/Area"]
+position = Vector2(24, 4)
+shape = SubResource("RectangleShape2D_d8usl")
+
+[node name="BL" type="Control" parent="Area/Collision/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Area" type="Area2D" parent="Area/Collision/NinePatchRect/BL"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="Collision" type="CollisionShape2D" parent="Area/Collision/NinePatchRect/BL/Area"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_bsoeu")
+
+[node name="L" type="Control" parent="Area/Collision/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = -8.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Area" type="Area2D" parent="Area/Collision/NinePatchRect/L"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="Collision" type="CollisionShape2D" parent="Area/Collision/NinePatchRect/L/Area"]
+position = Vector2(4, 24)
+shape = SubResource("RectangleShape2D_5nv7b")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[connection signal="resized" from="Area/Collision/NinePatchRect/TL" to="." method="update_region_collision_box" binds= [&"TL"]]
+[connection signal="input_event" from="Area/Collision/NinePatchRect/TL/Area" to="." method="potential_resize_starting" binds= [Vector2(-1, -1)]]
+[connection signal="resized" from="Area/Collision/NinePatchRect/T" to="." method="update_region_collision_box" binds= [&"T"]]
+[connection signal="resized" from="Area/Collision/NinePatchRect/TR" to="." method="update_region_collision_box" binds= [&"TR"]]
+[connection signal="resized" from="Area/Collision/NinePatchRect/R" to="." method="update_region_collision_box" binds= [&"R"]]
+[connection signal="resized" from="Area/Collision/NinePatchRect/BR" to="." method="update_region_collision_box" binds= [&"BR"]]
+[connection signal="resized" from="Area/Collision/NinePatchRect/B" to="." method="update_region_collision_box" binds= [&"B"]]
+[connection signal="resized" from="Area/Collision/NinePatchRect/BL" to="." method="update_region_collision_box" binds= [&"BL"]]
+[connection signal="resized" from="Area/Collision/NinePatchRect/L" to="." method="update_region_collision_box" binds= [&"L"]]
