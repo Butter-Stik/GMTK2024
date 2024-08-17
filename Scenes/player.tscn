@@ -179,7 +179,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6llg"]
-size = Vector2(12, 11)
+size = Vector2(8, 11)
 
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 17
