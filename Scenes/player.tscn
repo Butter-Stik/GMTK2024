@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://btc6eif8uvnj7"]
+[gd_scene load_steps=24 format=3 uid="uid://btc6eif8uvnj7"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_k76jh"]
 [ext_resource type="Texture2D" uid="uid://b8mv71b2oodb6" path="res://Assets/Character/player.png" id="1_kslfd"]
+[ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="3_s57tl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sipwp"]
 atlas = ExtResource("1_kslfd")
@@ -27,13 +28,13 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("1_kslfd")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nco2f"]
-atlas = ExtResource("1_kslfd")
-region = Rect2(32, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_otruj"]
 atlas = ExtResource("1_kslfd")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nco2f"]
+atlas = ExtResource("1_kslfd")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4a6ee"]
 atlas = ExtResource("1_kslfd")
@@ -112,10 +113,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_p5d7k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nco2f")
+"texture": SubResource("AtlasTexture_otruj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_otruj")
+"texture": SubResource("AtlasTexture_nco2f")
 }],
 "loop": true,
 "name": &"idle",
@@ -180,17 +181,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6llg"]
 size = Vector2(12, 11)
 
-[node name="character" type="CharacterBody2D"]
+[node name="Character" type="CharacterBody2D"]
+collision_layer = 17
 script = ExtResource("1_k76jh")
 
-[node name="sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kogha")
-animation = &"land"
+animation = &"idle"
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_a6llg")
 
-[node name="camera" type="Camera2D" parent="."]
-position = Vector2(1, -180)
-zoom = Vector2(2, 2)
+[node name="Powerable" parent="." instance=ExtResource("3_s57tl")]

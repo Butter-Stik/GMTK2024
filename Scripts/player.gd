@@ -2,12 +2,11 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = 300.0
-@export var power_state: Constants.Power = Constants.Power.ON;
 
 func _physics_process(delta: float) -> void:
 	# moved to function so it can be turned off more easily later
 	var old_velocity := Vector2.ZERO; # dummy value
-	if power_state == Constants.Power.ON:
+	if $Powerable.power_state == Constants.Power.ON:
 		old_velocity = run_physics(delta)
 	
 	proc_anims(old_velocity);
@@ -38,26 +37,26 @@ func run_physics(delta: float) -> Vector2:
 
 func proc_anims(old_velocity: Vector2) -> void:
 	# # debug messages
-	# var animstate: String = $sprite.animation;
-	if power_state == Constants.Power.OFF:
-		$sprite.play("off");
-	elif power_state == Constants.Power.BOOTING:
-		$sprite.play("awake");
+	# var animstate: String = $Sprite.animation;
+	if $Powerable.power_state == Constants.Power.OFF:
+		$Sprite.play("off");
+	elif $Powerable.power_state == Constants.Power.BOOTING:
+		$Sprite.play("awake");
 	elif old_velocity.y * velocity.y < 0.0:
-		$sprite.play("apex");
+		$Sprite.play("apex");
 	elif old_velocity.y != velocity.y and old_velocity.y == 0.0:
-		$sprite.play("launch");
+		$Sprite.play("launch");
 	elif old_velocity.y != velocity.y and velocity.y == 0.0:
-		$sprite.play("land");
+		$Sprite.play("land");
 	elif velocity.y > 0.0:
-		$sprite.play("fall");
+		$Sprite.play("fall");
 	elif velocity.y < 0.0:
-		$sprite.play("jump");
+		$Sprite.play("jump");
 	elif velocity.x != 0.0:
-		$sprite.flip_h = velocity.x < 0.0;
-		$sprite.play("walk");
+		$Sprite.flip_h = velocity.x < 0.0;
+		$Sprite.play("walk");
 	else:
-		$sprite.play("idle");
+		$Sprite.play("idle");
 	# # debug messages
-	# if animstate != $sprite.animation:
-	# 	print($sprite.animation);
+	# if animstate != $Sprite.animation:
+	# 	print($Sprite.animation);
