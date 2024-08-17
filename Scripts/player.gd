@@ -2,9 +2,9 @@ extends CharacterBody2D
 class_name Player
 @export var SPEED = 75
 @export var JUMP_VELOCITY = 200
-@export var PUSH_SPEED = 50
+@export var PUSH_SPEED = 30
 var direction = 0
-
+var speed = SPEED
 func _physics_process(delta: float) -> void:
 	# moved to function so it can be turned off more easily later
 	var old_velocity := Vector2.ZERO; # dummy value
@@ -29,17 +29,14 @@ func run_physics(delta: float) -> Vector2:
 	var direction := Input.get_axis("move_left", "move_right")
 	proc_anims(old_velocity, direction);
 	if direction != 0.0:
-		velocity.x = direction * SPEED
+		velocity.x = direction * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider().is_in_group("objects"):
-			collision.get_collider().apply_central_impulse(-collision.get_normal() * 30)
-			if abs(velocity.x) < SPEED+5:
-				velocity.x = direction * PUSH_SPEED
-	
+			collision.get_collider().apply_central_impulse(-collision.get_normal() * 17)
 	move_and_slide()
 	
 	
@@ -80,3 +77,15 @@ func _on_spikes_body_entered(body: Node2D) -> void:
 func die():
 	get_tree().reload_current_scene()
 	pass
+
+
+func _on_box_body_entered(body: Node) -> void:
+	if body is Player:
+		speed = PUSH_SPEED
+	pass # Replace with function body.
+
+
+func _on_box_body_exited(body: Node) -> void:
+	if body is Player:
+		speed = SPEED
+	pass # Replace with function body.

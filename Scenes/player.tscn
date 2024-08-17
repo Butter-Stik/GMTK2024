@@ -184,6 +184,7 @@ size = Vector2(8, 11)
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 17
 script = ExtResource("1_k76jh")
+PUSH_SPEED = 10
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kogha")
