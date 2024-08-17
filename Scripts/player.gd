@@ -70,3 +70,11 @@ func proc_anims(old_velocity: Vector2, direction: int) -> void:
 	# # debug messages
 	# if animstate != $Sprite.animation:
 	# 	print($Sprite.animation);
+
+
+func _on_spikes_body_entered(body: Node2D) -> void:
+	die()
+	pass # Replace with function body.
+	
+func die():
+	pass
