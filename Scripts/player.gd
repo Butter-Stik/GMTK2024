@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 @export var SPEED = 75
 @export var JUMP_VELOCITY = 200
 @export var PUSH_SPEED = 50
@@ -73,8 +73,10 @@ func proc_anims(old_velocity: Vector2, direction: int) -> void:
 
 
 func _on_spikes_body_entered(body: Node2D) -> void:
-	die()
+	if body is Player:
+		die()
 	pass # Replace with function body.
 	
 func die():
+	get_tree().reload_current_scene()
 	pass
