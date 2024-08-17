@@ -190,7 +190,3 @@ animation = &"land"
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_a6llg")
-
-[node name="camera" type="Camera2D" parent="."]
-position = Vector2(1, -180)
-zoom = Vector2(2, 2)
