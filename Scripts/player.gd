@@ -3,7 +3,7 @@ class_name Player
 @export var SPEED = 75
 @export var JUMP_VELOCITY = 200
 @export var PUSH_SPEED = 50
-@export var direction = 0
+var direction = 0
 
 func _physics_process(delta: float) -> void:
 	# moved to function so it can be turned off more easily later
@@ -28,7 +28,6 @@ func run_physics(delta: float) -> Vector2:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
 	proc_anims(old_velocity, direction);
-	print(direction)
 	if direction != 0.0:
 		velocity.x = direction * SPEED
 	else:
@@ -38,7 +37,8 @@ func run_physics(delta: float) -> Vector2:
 		var collision = get_slide_collision(i)
 		if collision.get_collider().is_in_group("objects"):
 			collision.get_collider().apply_central_impulse(-collision.get_normal() * 30)
-			velocity.x = direction * PUSH_SPEED
+			if abs(velocity.x) < SPEED+5:
+				velocity.x = direction * PUSH_SPEED
 	
 	move_and_slide()
 	
