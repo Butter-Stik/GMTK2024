@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var SPEED = 75
 @export var JUMP_VELOCITY = 200
+@export var PUSH_SPEED = 50
+@export var direction = 0
 
 func _physics_process(delta: float) -> void:
 	# moved to function so it can be turned off more easily later
@@ -9,7 +11,7 @@ func _physics_process(delta: float) -> void:
 	if $Powerable.power_state == Constants.Power.ON:
 		old_velocity = run_physics(delta)
 	
-	proc_anims(old_velocity);
+	
 
 func run_physics(delta: float) -> Vector2:
 	# Add the gravity.
@@ -25,17 +27,25 @@ func run_physics(delta: float) -> Vector2:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
-	
+	proc_anims(old_velocity, direction);
+	print(direction)
 	if direction != 0.0:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider().is_in_group("objects"):
+			collision.get_collider().apply_central_impulse(-collision.get_normal() * 30)
+			velocity.x = direction * PUSH_SPEED
+	
 	move_and_slide()
+	
 	
 	return old_velocity;
 
-func proc_anims(old_velocity: Vector2) -> void:
+func proc_anims(old_velocity: Vector2, direction: int) -> void:
 	# # debug messages
 	# var animstate: String = $Sprite.animation;
 	if $Powerable.power_state == Constants.Power.OFF:
@@ -52,8 +62,8 @@ func proc_anims(old_velocity: Vector2) -> void:
 		$Sprite.play("fall");
 	elif velocity.y < 0.0:
 		$Sprite.play("jump");
-	elif velocity.x != 0.0:
-		$Sprite.flip_h = velocity.x < 0.0;
+	elif direction != 0.0:
+		$Sprite.flip_h = direction < 0.0;
 		$Sprite.play("walk");
 	else:
 		$Sprite.play("idle");
