@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cggqrd1ndio6l"]
+
+[ext_resource type="Script" path="res://Scripts/Traits/powerable.gd" id="1_ygb7n"]
+
+[node name="Powerable" type="Node"]
+script = ExtResource("1_ygb7n")
