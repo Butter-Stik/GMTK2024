@@ -1,0 +1,133 @@
+[gd_scene load_steps=14 format=3 uid="uid://dhnn77wut86hj"]
+
+[ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_adbjy"]
+
+[sub_resource type="GDScript" id="GDScript_w32ne"]
+resource_name = "button"
+script/source = "extends Area2D
+
+var bodies = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if bodies > 0:
+		$AnimatedSprite2D.play(\"pushed_on\")
+	elif bodies <= 0:
+		$AnimatedSprite2D.play(\"unpushed_on\")
+	pass
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if !(body is StaticBody2D):
+		bodies += 1
+		print(bodies)
+	pass 
+
+
+func _on_body_exited(body: Node2D) -> void:
+	bodies -= 1
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_woisu"]
+size = Vector2(12, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0odd"]
+atlas = ExtResource("1_adbjy")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp01u"]
+atlas = ExtResource("1_adbjy")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr8xd"]
+atlas = ExtResource("1_adbjy")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va2fn"]
+atlas = ExtResource("1_adbjy")
+region = Rect2(64, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_610ty"]
+atlas = ExtResource("1_adbjy")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m8dp"]
+atlas = ExtResource("1_adbjy")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c6u2"]
+atlas = ExtResource("1_adbjy")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rql5h"]
+atlas = ExtResource("1_adbjy")
+region = Rect2(64, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xppay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0odd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp01u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr8xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va2fn")
+}],
+"loop": true,
+"name": &"pushed_on",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_610ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m8dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c6u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rql5h")
+}],
+"loop": true,
+"name": &"unpushed_on",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4y861"]
+size = Vector2(14, 3)
+
+[node name="Button" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = SubResource("GDScript_w32ne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(93, 32.5)
+shape = SubResource("RectangleShape2D_woisu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(93, 27)
+sprite_frames = SubResource("SpriteFrames_xppay")
+animation = &"pushed_on"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(93, 33.5)
+shape = SubResource("RectangleShape2D_4y861")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

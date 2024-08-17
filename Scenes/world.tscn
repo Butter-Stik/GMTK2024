@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://b0kiamei4nycj"]
+[gd_scene load_steps=14 format=4 uid="uid://b0kiamei4nycj"]
 
 [ext_resource type="PackedScene" uid="uid://btc6eif8uvnj7" path="res://Scenes/player.tscn" id="1_kf6cf"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="2_cl8vx"]
 [ext_resource type="Texture2D" uid="uid://c8unhg6jpc0nm" path="res://Assets/Tilesets/green.png" id="3_bcrgk"]
 [ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="4_hh8d4"]
 [ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="5_6iygm"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="5_mcvyl"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="7_d2akm"]
+[ext_resource type="PackedScene" uid="uid://cr887vgoetw51" path="res://Scenes/window.tscn" id="8_ttx3e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4sp6m"]
 texture = ExtResource("2_cl8vx")
@@ -167,7 +170,6 @@ z_index = 1
 position = Vector2(151, 31)
 collision_layer = 19
 safe_margin = 0.001
-PUSH_SPEED = 10
 
 [node name="off" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAEAAkAAAABAAIAAAAFAAkAAAABAAIAAAAGAAkAAAABAAIAAAAHAAkAAAABAAIAAAAIAAkAAAABAAIAAAAJAAkAAAABAAIAAAALAAkAAAACAAIAAAAMAAkAAAACAAIAAAANAAkAAAABAAIAAAAOAAkAAAABAAIAAAAPAAkAAAABAAIAAAAQAAkAAAABAAIAAAARAAkAAAABAAIAAAASAAkAAAABAAIAAAADAAkAAAABAAIAAAACAAkAAAABAAIAAAABAAkAAAABAAIAAAAAAAkAAAADAAMAAAATAAkAAAAEAAMAAAAAAAoAAAABAAMAAAABAAoAAAABAAMAAAACAAoAAAABAAMAAAADAAoAAAABAAMAAAAEAAoAAAABAAMAAAAFAAoAAAABAAMAAAAGAAoAAAABAAMAAAAHAAoAAAABAAMAAAAIAAoAAAABAAMAAAAJAAoAAAABAAMAAAAKAAoAAAABAAMAAAALAAoAAAABAAMAAAAMAAoAAAABAAMAAAANAAoAAAABAAMAAAAOAAoAAAABAAMAAAAPAAoAAAABAAMAAAAQAAoAAAABAAMAAAARAAoAAAABAAMAAAASAAoAAAABAAMAAAATAAoAAAABAAMAAAATAAsAAAABAAMAAAASAAsAAAABAAMAAAARAAsAAAABAAMAAAAQAAsAAAABAAMAAAAPAAsAAAABAAMAAAAOAAsAAAABAAMAAAANAAsAAAABAAMAAAAMAAsAAAABAAMAAAALAAsAAAABAAMAAAAKAAsAAAABAAMAAAAJAAsAAAABAAMAAAAIAAsAAAABAAMAAAAHAAsAAAABAAMAAAAGAAsAAAABAAMAAAAFAAsAAAABAAMAAAAEAAsAAAABAAMAAAADAAsAAAABAAMAAAACAAsAAAABAAMAAAABAAsAAAABAAMAAAAAAAsAAAABAAMAAAAAAAgAAAACAAMAAAAAAAcAAAACAAMAAAAAAAYAAAACAAMAAAAAAAUAAAACAAMAAAAAAAQAAAACAAMAAAATAAgAAAAAAAMAAAATAAcAAAAAAAMAAAATAAYAAAAAAAMAAAATAAUAAAAAAAMAAAATAAQAAAAAAAMAAAATAAMAAAAAAAMAAAAAAAMAAAACAAMAAAAAAAIAAAACAAMAAAAAAAEAAAACAAMAAAATAAIAAAAAAAMAAAATAAEAAAAAAAMAAAATAAAAAAAEAAIAAAAAAAAAAAADAAIAAAABAAAAAAABAAQAAAACAAAAAAABAAQAAAADAAAAAAABAAQAAAAEAAAAAAABAAQAAAAFAAAAAAABAAQAAAAGAAAAAAABAAQAAAAHAAAAAAABAAQAAAAIAAAAAAABAAQAAAAJAAAAAAABAAQAAAAKAAAAAAABAAQAAAALAAAAAAABAAQAAAAMAAAAAAABAAQAAAANAAAAAAABAAQAAAAOAAAAAAABAAQAAAAPAAAAAAABAAQAAAAQAAAAAAABAAQAAAARAAAAAAABAAQAAAASAAAAAAABAAQAAAAKAAkAAAACAAIAAAABAAgAAAALAAcAAAAQAAgAAAABAAcAAAARAAgAAAAGAAcAAAA=")
@@ -194,6 +196,17 @@ shape = SubResource("RectangleShape2D_fouvs")
 [node name="Spikes" parent="." instance=ExtResource("5_6iygm")]
 position = Vector2(104, 136)
 
+[node name="Button" parent="." instance=ExtResource("5_mcvyl")]
+position = Vector2(151, 109)
+
+[node name="gate" parent="." instance=ExtResource("7_d2akm")]
+position = Vector2(204, 88)
+
+[node name="Window" parent="." instance=ExtResource("8_ttx3e")]
+position = Vector2(91, 74)
+
 [connection signal="body_entered" from="box" to="Player" method="_on_box_body_entered"]
 [connection signal="body_exited" from="box" to="Player" method="_on_box_body_exited"]
 [connection signal="body_entered" from="Spikes" to="Player" method="_on_spikes_body_entered"]
+[connection signal="body_entered" from="Button" to="gate" method="_on_button_body_entered"]
+[connection signal="body_exited" from="Button" to="gate" method="_on_button_body_exited"]
