@@ -9,6 +9,8 @@ var speed = SPEED
 func _physics_process(delta: float) -> void:
 	# moved to function so it can be turned off more easily later
 	var physics_info := Vector3.ZERO; # dummy value
+	if Input.is_action_just_pressed("restart"):
+		die()
 	if $Powerable.power_state == Constants.Power.ON:
 		physics_info = run_physics(delta)
 	proc_anims(Vector2(physics_info.x, physics_info.y), physics_info.z)
@@ -19,8 +21,6 @@ func run_physics(delta: float) -> Vector3:
 	var old_velocity := velocity;
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if Input.is_action_just_pressed("restart"):
-		die()
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -JUMP_VELOCITY
