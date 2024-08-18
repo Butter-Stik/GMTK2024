@@ -2,12 +2,15 @@
 class_name PowerWindow
 extends Node2D
 
+const WINDOW_SIZE: Vector2 = Vector2(320, 180);
 @export var SHAPE: RectangleShape2D;
 @export var POSITION: Vector2:
 	set(new_pos):
 		POSITION = new_pos;
 		if Engine.is_editor_hint():
 			update_size();
+@onready var window_shape: RectangleShape2D = SHAPE.duplicate();
+@onready var window_position: Vector2 = POSITION;
 var dragging := Vector2.ZERO;
 var mouse_target_offset := Vector2.ZERO;
 
@@ -21,19 +24,22 @@ func _process(delta):
 	pass
 
 func update_size():
-	$Area.position = POSITION;
-	$Area/Collision.shape.size = SHAPE.size - Vector2.ONE * 16.0;
-	$Area/Collision/NinePatchRect.size = SHAPE.size;
-	$Area/Collision/NinePatchRect.position = -SHAPE.size / 2;
+	if Engine.is_editor_hint():
+		window_position = POSITION;
+		window_shape = SHAPE.duplicate();
+	$Area.position = window_position;
+	$Area/Collision.shape.size = window_shape.size - Vector2.ONE * 16.0;
+	$Area/Collision/NinePatchRect.size = window_shape.size;
+	$Area/Collision/NinePatchRect.position = -window_shape.size / 2;
 	for child in $Area/Collision/NinePatchRect.get_children():
 		child.emit_signal("resized");
 	
 
 func _input(event):
 	if dragging != Vector2.ZERO and event is InputEventMouseMotion:
-		var scale_offset = dragging * SHAPE.size / 2;
-		var anchor_point = -scale_offset + POSITION;
-		var scale_point = scale_offset + POSITION;
+		var scale_offset = dragging * window_shape.size / 2;
+		var anchor_point = -scale_offset + window_position;
+		var scale_point = scale_offset + window_position;
 		var mouse_position = get_local_mouse_position();
 		var target_point_position = \
 			(mouse_position + mouse_target_offset) \
@@ -43,8 +49,15 @@ func _input(event):
 		var target_point_delta = target_point_position - scale_point;
 		var boundary_delta = (anchor_point + (Vector2.ONE * 24.0) * -target_point_delta.sign()) - scale_point;
 		target_point_delta = target_point_delta.abs().min(boundary_delta.abs()) * target_point_delta.sign();
-		POSITION += target_point_delta / 2;
-		SHAPE.size += target_point_delta * dragging;
+		
+		if target_point_position.x < 0 \
+			|| target_point_position.x > WINDOW_SIZE.x \
+			|| target_point_position.y < 0 \
+			|| target_point_position.y > WINDOW_SIZE.y:
+			target_point_delta = Vector2.ZERO;
+		
+		window_position += target_point_delta / 2;
+		window_shape.size += target_point_delta * dragging;
 		update_size();
 		
 	elif event is InputEventMouseButton and \
@@ -55,5 +68,5 @@ func _input(event):
 func region_input(event: InputEvent, direction: Vector2):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
 		dragging = direction;
-		mouse_target_offset = dragging * SHAPE.size / 2 + POSITION \
+		mouse_target_offset = dragging * window_shape.size / 2 + window_position \
 			- get_local_mouse_position();

@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Window.SHAPE.connect("changed", update_viewport);
+	$Window.window_shape.connect("changed", update_viewport);
 	update_viewport();
 	if Engine.is_editor_hint():
 		return;
@@ -33,6 +33,6 @@ func _process(delta):
 	pass
 
 func update_viewport():
-	$Window/Sprite2D.position = $Window.POSITION;
-	$SubViewport.size = $Window.SHAPE.size;
-	$SubViewport/Camera2D.position = $Window.POSITION;
+	$Window/Sprite2D.position = $Window.window_position;
+	$SubViewport.size = $Window.window_shape.size - Vector2.ONE * 16;
+	$SubViewport/Camera2D.position = $Window.window_position;
