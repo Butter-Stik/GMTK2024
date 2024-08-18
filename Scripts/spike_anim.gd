@@ -8,10 +8,10 @@ func _ready() -> void:
 func _on_powerable_power_changed(power: Constants.Power):
 	if power == Constants.Power.ON:
 		visible = true;
-		$CollisionShape2D.set_deferred("disabled", false);
+		set_collision_mask_value(13, true);
 	else:
 		visible = false;
-		$CollisionShape2D.set_deferred("disabled", true);
+		set_collision_mask_value(13, false);
 		
 
 func _on_body_entered(body):
