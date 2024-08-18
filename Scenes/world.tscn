@@ -52,7 +52,7 @@ size = Vector2i(64, 48)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
-position = Vector2(120, 48)
+position = Vector2(120, 120)
 
 [node name="Window" parent="." instance=ExtResource("8_bhblx")]
 z_index = 100
@@ -61,7 +61,7 @@ POSITION = Vector2(120, 120)
 
 [node name="Sprite2D" type="Sprite2D" parent="Window"]
 z_index = -1
-position = Vector2(120, 48)
+position = Vector2(120, 120)
 texture = SubResource("ViewportTexture_a2b12")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -111,8 +111,7 @@ position = Vector2(312, 136)
 shape = SubResource("RectangleShape2D_l4rij")
 
 [node name="box" parent="." groups=["objects"] instance=ExtResource("4_hh8d4")]
-position = Vector2(141, 140)
-DESTROY = true
+position = Vector2(141, 136)
 
 [node name="Spikes" parent="." instance=ExtResource("5_6iygm")]
 position = Vector2(104, 136)
