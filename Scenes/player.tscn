@@ -195,3 +195,6 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_a6llg")
 
 [node name="Powerable" parent="." instance=ExtResource("3_s57tl")]
+BOOTING = true
+
+[connection signal="power_changed" from="Powerable" to="." method="_on_powerable_power_changed"]
