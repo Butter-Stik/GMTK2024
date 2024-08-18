@@ -70,7 +70,6 @@ position = Vector2(160, 90)
 [node name="Player" parent="." instance=ExtResource("1_kf6cf")]
 z_index = 1
 position = Vector2(151, 31)
-collision_layer = 19
 safe_margin = 0.001
 PUSH_SPEED = 20
 
@@ -127,7 +126,4 @@ position = Vector2(168, 152)
 [node name="gate" parent="." instance=ExtResource("10_82hht")]
 position = Vector2(274, 136)
 
-[connection signal="body_entered" from="box" to="Player" method="_on_box_body_entered"]
-[connection signal="body_exited" from="box" to="Player" method="_on_box_body_exited"]
-[connection signal="body_entered" from="Spikes" to="Player" method="_on_spikes_body_entered"]
 [connection signal="state_changed" from="Button" to="gate" method="on_trigger_state_changed"]

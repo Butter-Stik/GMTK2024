@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2rpmeuivlgsd"]
+[gd_scene load_steps=10 format=3 uid="uid://d2rpmeuivlgsd"]
 
-[ext_resource type="Script" path="res://spike_anim.gd" id="1_ulnaf"]
+[ext_resource type="Script" path="res://Scripts/spike_anim.gd" id="1_ulnaf"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="2_iygks"]
+[ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="3_bh277"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_koca4"]
 size = Vector2(16, 3)
@@ -43,6 +44,8 @@ animations = [{
 }]
 
 [node name="Spikes" type="Area2D"]
+collision_layer = 16
+collision_mask = 4096
 script = ExtResource("1_ulnaf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -52,3 +55,8 @@ shape = SubResource("RectangleShape2D_koca4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mar01")
 frame_progress = 0.896389
+
+[node name="Powerable" parent="." instance=ExtResource("3_bh277")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="power_changed" from="Powerable" to="." method="_on_powerable_power_changed"]

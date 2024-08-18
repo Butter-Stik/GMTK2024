@@ -38,8 +38,12 @@ func _ready():
 	if window == null:
 		push_warning("Could not find window");
 		return
-	window.get_child(0).call_deferred("connect", "body_entered", _on_window_entry);
-	window.get_child(0).call_deferred("connect", "body_exited", _on_window_exit);
+	if get_parent() is Area2D:
+		window.get_child(0).call_deferred("connect", "area_entered", _on_window_entry);
+		window.get_child(0).call_deferred("connect", "area_exited", _on_window_exit);
+	else:
+		window.get_child(0).call_deferred("connect", "body_entered", _on_window_entry);
+		window.get_child(0).call_deferred("connect", "body_exited", _on_window_exit);
 	
 	match TYPE:
 		Constants.PowerableType.NONE:

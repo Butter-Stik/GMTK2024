@@ -31,3 +31,9 @@ func _process(delta: float) -> void:
 func die():
 	$AnimatedSprite2D.play("breakable_fading")
 	$AnimatedSprite2D.connect("animation_finished", queue_free)
+
+func _on_area_2d_body_entered(body):
+	body.pushing = false;
+
+func _on_area_2d_body_exited(body):
+	body.pushing = false;

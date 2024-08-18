@@ -5,6 +5,13 @@ class_name Player
 @export var PUSH_SPEED = 30
 var direction = 0
 var speed = SPEED
+var pushing = false:
+	set(new_pushing):
+		pushing = new_pushing;
+		if new_pushing:
+			speed = PUSH_SPEED;
+		else:
+			speed = SPEED;
 
 func _physics_process(delta: float) -> void:
 	# moved to function so it can be turned off more easily later
@@ -76,16 +83,6 @@ func _on_spikes_body_entered(body: Node2D) -> void:
 
 func die():
 	get_tree().call_deferred("reload_current_scene");
-	
-
-func _on_box_body_entered(body: Node) -> void:
-	if body is Player:
-		speed = PUSH_SPEED
-	
-
-func _on_box_body_exited(body: Node) -> void:
-	if body is Player:
-		speed = SPEED
 	
 
 func _on_powerable_power_changed(power):
