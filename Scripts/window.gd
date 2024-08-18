@@ -28,7 +28,7 @@ func update_size():
 		window_position = POSITION;
 		window_shape = SHAPE.duplicate();
 	$Area.position = window_position;
-	$Area/Collision.shape.size = window_shape.size - Vector2.ONE * 16.0;
+	$Area/Collision.shape.size = window_shape.size - Vector2.ONE * 16.1;
 	$Area/Collision/NinePatchRect.size = window_shape.size;
 	$Area/Collision/NinePatchRect.position = -window_shape.size / 2;
 	for child in $Area/Collision/NinePatchRect.get_children():
@@ -50,6 +50,7 @@ func _input(event):
 		var target_point_delta = target_point_position - scale_point;
 		var boundary_delta = (anchor_point + (Vector2.ONE * 24.0) * -target_point_delta.sign()) - scale_point;
 		target_point_delta = target_point_delta.abs().min(boundary_delta.abs()) * target_point_delta.sign();
+		target_point_delta *= dragging.abs();
 		
 		window_position += target_point_delta / 2;
 		window_shape.size += target_point_delta * dragging;
