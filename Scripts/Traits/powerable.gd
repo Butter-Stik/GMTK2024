@@ -12,7 +12,7 @@ signal power_changed(power: Constants.Power);
 @export var TYPE: Constants.PowerableType = Constants.PowerableType.NONE;
 var _on_depower_callback: Callable = func(): pass;
 var _on_power_callback: Callable = func(): pass;
-var power_state: Constants.Power = Constants.Power.ON:
+var power_state: Constants.Power = Constants.Power.OFF:
 	set(new_state):
 		power_state = new_state
 		match new_state:
