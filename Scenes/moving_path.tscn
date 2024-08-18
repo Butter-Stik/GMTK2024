@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhfyjeuci6nfu"]
+[gd_scene load_steps=11 format=3 uid="uid://dhfyjeuci6nfu"]
 
-[ext_resource type="Script" path="res://Scripts/path_2d.gd" id="1_xoeae"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="2_hsode"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4i3mo"]
@@ -82,8 +81,6 @@ _data = {
 }
 
 [node name="Path2D" type="Path2D"]
-script = ExtResource("1_xoeae")
-loop = false
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 progress = 16.6377
@@ -99,7 +96,6 @@ sprite_frames = SubResource("SpriteFrames_p3354")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 position = Vector2(4.76837e-07, 2.98023e-08)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_deb5f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
