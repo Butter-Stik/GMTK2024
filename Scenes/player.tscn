@@ -234,6 +234,7 @@ sprite_frames = SubResource("SpriteFrames_kogha")
 animation = &"idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_a6llg")
 

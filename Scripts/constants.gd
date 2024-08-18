@@ -11,3 +11,11 @@ enum PowerableType {
 	FREEZE,
 	DESTROY
 }
+
+enum SwitchColor {
+	GREY,
+	RED,
+	YELLOW,
+	BLUE,
+	PURPLE
+}

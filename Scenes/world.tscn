@@ -121,8 +121,11 @@ position = Vector2(24, 136)
 
 [node name="Button" parent="." instance=ExtResource("9_2opyp")]
 position = Vector2(168, 152)
+COLOR = 2
 
 [node name="gate" parent="." instance=ExtResource("10_82hht")]
 position = Vector2(274, 136)
+COLOR = 2
+INVERTED = true
 
 [connection signal="state_changed" from="Button" to="gate" method="on_trigger_state_changed"]
