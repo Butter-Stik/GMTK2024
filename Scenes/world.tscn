@@ -187,7 +187,7 @@ tile_map_data = PackedByteArray("AAAFAAkAAAABAAAAAAAGAAkAAAABAAAAAAAHAAkAAAABAAA
 tile_set = SubResource("TileSet_xsfpi")
 
 [node name="box" parent="." groups=["objects"] instance=ExtResource("4_hh8d4")]
-position = Vector2(187, 140)
+position = Vector2(231, 51)
 collision_layer = 3
 collision_mask = 3
 
@@ -204,7 +204,7 @@ shape = SubResource("RectangleShape2D_fouvs")
 position = Vector2(104, 136)
 
 [node name="Button" parent="." instance=ExtResource("5_mcvyl")]
-position = Vector2(151, 109)
+position = Vector2(228, 136)
 
 [node name="Path2D" parent="." instance=ExtResource("7_uwn57")]
 position = Vector2(150, 58)
@@ -218,7 +218,12 @@ speed_scale = 0.05
 position = Vector2(204, 88)
 
 [node name="Window" parent="." instance=ExtResource("8_ttx3e")]
+<<<<<<< Updated upstream
 position = Vector2(144, 63)
+=======
+z_index = 2
+position = Vector2(91, 74)
+>>>>>>> Stashed changes
 
 [connection signal="body_entered" from="box" to="Player" method="_on_box_body_entered"]
 [connection signal="body_exited" from="box" to="Player" method="_on_box_body_exited"]

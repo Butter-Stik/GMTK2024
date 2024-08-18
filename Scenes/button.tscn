@@ -115,19 +115,23 @@ collision_mask = 2
 script = SubResource("GDScript_w32ne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(93, 32.5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_woisu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(93, 27)
 sprite_frames = SubResource("SpriteFrames_xppay")
 animation = &"pushed_on"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+<<<<<<< Updated upstream
 position = Vector2(93, 33.5)
 shape = SubResource("RectangleShape2D_xi65v")
+=======
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_4y861")
+>>>>>>> Stashed changes
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
