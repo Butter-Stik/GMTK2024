@@ -9,5 +9,6 @@ enum Power {
 enum PowerableType {
 	NONE,
 	FREEZE,
+	HIDE,
 	DESTROY
 }
