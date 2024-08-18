@@ -13,6 +13,28 @@ var pushing = false:
 		else:
 			speed = SPEED;
 
+var audio_state: AudioState = AudioState.IDLE:
+	set(new_state):
+		if new_state == audio_state:
+			return;
+		audio_state = new_state;
+		match new_state:
+			AudioState.IDLE:
+				play_sfx("idle");
+			AudioState.JUMP:
+				play_sfx("jump");
+			AudioState.WALK:
+				play_sfx("walk");
+			AudioState.LAND:
+				play_sfx("land");
+
+enum AudioState {
+	WALK,
+	JUMP,
+	LAND,
+	IDLE
+}
+
 func _physics_process(delta: float) -> void:
 	# moved to function so it can be turned off more easily later
 	var physics_info := Vector3.ZERO; # dummy value
@@ -55,26 +77,40 @@ func proc_anims(old_velocity: Vector2, direction: float) -> void:
 	# var animstate: String = $Sprite.animation;
 	if $Powerable.power_state == Constants.Power.OFF:
 		$Sprite.play("off");
+		audio_state = AudioState.IDLE;
 	elif $Powerable.power_state == Constants.Power.BOOTING:
 		$Sprite.play("awake");
+		audio_state = AudioState.IDLE;
 	elif old_velocity.y * velocity.y < 0.0:
 		$Sprite.play("apex");
+		audio_state = AudioState.IDLE;
 	elif old_velocity.y != velocity.y and old_velocity.y == 0.0:
 		$Sprite.play("launch");
+		audio_state = AudioState.JUMP;
 	elif old_velocity.y != velocity.y and velocity.y == 0.0:
 		$Sprite.play("land");
+		audio_state = AudioState.LAND;
 	elif velocity.y > 0.0:
 		$Sprite.play("fall");
+		audio_state = AudioState.IDLE;
 	elif velocity.y < 0.0:
 		$Sprite.play("jump");
+		audio_state = AudioState.IDLE;
 	elif direction != 0.0:
 		$Sprite.flip_h = direction < 0.0;
 		$Sprite.play("walk");
+		audio_state = AudioState.WALK;
 	else:
 		$Sprite.play("idle");
+		audio_state = AudioState.IDLE;
 	# # debug messages
 	# if animstate != $Sprite.animation:
 	# 	print($Sprite.animation);
+
+func play_sfx(name: String):
+	if !$Feet.playing:
+		$Feet.play();
+	($Feet.get_stream_playback() as AudioStreamPlaybackInteractive).switch_to_clip_by_name(name);
 
 func _on_spikes_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -88,3 +124,14 @@ func die():
 func _on_powerable_power_changed(power):
 	if power == Constants.Power.OFF:
 		call_deferred("proc_anims", Vector2.ZERO, 0.0);
+
+func _on_feet_finished():
+	return
+	match audio_state:
+		AudioState.IDLE:
+			pass
+		AudioState.WALK:
+			print("here");
+			$Feet.play();
+		AudioState.LAND:
+			audio_state = AudioState.IDLE;
