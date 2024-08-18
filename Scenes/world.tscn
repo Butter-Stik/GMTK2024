@@ -1,10 +1,16 @@
-[gd_scene load_steps=11 format=4 uid="uid://b0kiamei4nycj"]
+[gd_scene load_steps=19 format=4 uid="uid://b0kiamei4nycj"]
 
 [ext_resource type="PackedScene" uid="uid://btc6eif8uvnj7" path="res://Scenes/player.tscn" id="1_kf6cf"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="2_cl8vx"]
 [ext_resource type="Texture2D" uid="uid://c8unhg6jpc0nm" path="res://Assets/Tilesets/green.png" id="3_bcrgk"]
 [ext_resource type="PackedScene" path="res://Scenes/box.tscn" id="4_hh8d4"]
 [ext_resource type="PackedScene" path="res://Scenes/spikes.tscn" id="5_6iygm"]
+[ext_resource type="Script" path="res://Scripts/TilemapCollisionBaker.gd" id="5_ksj4r"]
+[ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="6_btdmr"]
+[ext_resource type="PackedScene" uid="uid://cr887vgoetw51" path="res://Scenes/window.tscn" id="8_bhblx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tgud"]
+size = Vector2(64, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4sp6m"]
 texture = ExtResource("2_cl8vx")
@@ -154,10 +160,27 @@ texture = ExtResource("3_bcrgk")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1ya6w")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fouvs"]
-size = Vector2(288, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3fb"]
+size = Vector2(16, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2ukt"]
+size = Vector2(320, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fvv0"]
+size = Vector2(320, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ax2n"]
+size = Vector2(48, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7q6x"]
+size = Vector2(16, 16)
 
 [node name="World" type="Node2D"]
+
+[node name="Window" parent="." instance=ExtResource("8_bhblx")]
+z_index = 100
+position = Vector2(49, 48)
+SHAPE = SubResource("RectangleShape2D_8tgud")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 90)
@@ -176,19 +199,39 @@ tile_set = SubResource("TileSet_5pwcy")
 tile_map_data = PackedByteArray("AAAFAAkAAAABAAAAAAAGAAkAAAABAAAAAAAHAAkAAAABAAAAAAAIAAkAAAABAAAAAAAJAAkAAAABAAAAAAAKAAkAAAABAAAAAAALAAkAAAABAAAAAAAMAAkAAAABAAAAAAANAAkAAAABAAAAAAAFAAoAAAABAAEAAAAGAAoAAAABAAEAAAAHAAoAAAABAAEAAAAIAAoAAAABAAEAAAAJAAoAAAABAAEAAAAKAAoAAAABAAEAAAALAAoAAAABAAEAAAAMAAoAAAABAAEAAAANAAoAAAABAAEAAAANAAsAAAABAAEAAAAMAAsAAAABAAEAAAALAAsAAAABAAEAAAAKAAsAAAABAAEAAAAJAAsAAAABAAEAAAAIAAsAAAABAAEAAAAHAAsAAAABAAEAAAAGAAsAAAABAAEAAAAFAAsAAAABAAEAAAAOAAkAAAABAAAAAAAPAAkAAAABAAAAAAAQAAkAAAABAAAAAAARAAkAAAABAAAAAAASAAkAAAABAAAAAAAEAAkAAAABAAAAAAADAAkAAAABAAAAAAACAAkAAAABAAAAAAABAAkAAAABAAAAAAAEAAoAAAABAAEAAAAEAAsAAAABAAEAAAADAAsAAAABAAEAAAACAAsAAAABAAEAAAACAAoAAAABAAEAAAABAAoAAAABAAEAAAABAAsAAAABAAEAAAADAAoAAAABAAEAAAAOAAsAAAABAAEAAAAOAAoAAAABAAEAAAAPAAoAAAABAAEAAAAQAAoAAAABAAEAAAARAAoAAAABAAEAAAASAAoAAAABAAEAAAASAAsAAAABAAEAAAARAAsAAAABAAEAAAAQAAsAAAABAAEAAAAPAAsAAAABAAEAAAATAAgAAAAAAAEAAAATAAcAAAAEAAAAAAATAAYAAAABAAEAAAATAAUAAAABAAEAAAATAAQAAAABAAEAAAATAAMAAAABAAEAAAATAAIAAAABAAEAAAATAAEAAAABAAEAAAASAAAAAAABAAEAAAARAAAAAAAEAAAAAAAQAAAAAAABAAIAAAAPAAAAAAABAAIAAAAOAAAAAAABAAIAAAANAAAAAAABAAIAAAAMAAAAAAABAAIAAAALAAAAAAABAAIAAAAKAAAAAAABAAIAAAAJAAAAAAABAAIAAAAIAAAAAAABAAIAAAAHAAAAAAABAAIAAAAGAAAAAAABAAIAAAAFAAAAAAABAAIAAAAEAAAAAAABAAIAAAADAAAAAAABAAIAAAACAAAAAAABAAIAAAABAAAAAAABAAIAAAAAAAEAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAQAAAACAAEAAAAAAAUAAAACAAEAAAAAAAYAAAACAAEAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAAAAAADAAAAAAAAAAkAAAADAAEAAAATAAkAAAAEAAEAAAATAAAAAAABAAEAAAAAAAoAAAABAAEAAAAAAAsAAAABAAEAAAATAAoAAAABAAEAAAATAAsAAAABAAEAAAASAAEAAAABAAEAAAASAAIAAAABAAEAAAASAAMAAAABAAEAAAASAAQAAAABAAEAAAASAAUAAAABAAEAAAASAAYAAAABAAEAAAARAAYAAAAAAAEAAAARAAUAAAAAAAEAAAARAAQAAAAAAAEAAAARAAMAAAAAAAEAAAARAAIAAAAAAAEAAAARAAEAAAAAAAEAAAARAAcAAAAAAAIAAAASAAcAAAABAAIAAAA=")
 tile_set = SubResource("TileSet_xsfpi")
 
+[node name="OnCollider" type="StaticBody2D" parent="on"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("5_ksj4r")
+tilemap_nodepath = NodePath("..")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="on/OnCollider"]
+position = Vector2(8, 80)
+shape = SubResource("RectangleShape2D_nq3fb")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="on/OnCollider"]
+position = Vector2(160, 8)
+shape = SubResource("RectangleShape2D_r2ukt")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="on/OnCollider"]
+position = Vector2(160, 168)
+shape = SubResource("RectangleShape2D_1fvv0")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="on/OnCollider"]
+position = Vector2(296, 72)
+shape = SubResource("RectangleShape2D_7ax2n")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="on/OnCollider"]
+position = Vector2(312, 136)
+shape = SubResource("RectangleShape2D_f7q6x")
+
 [node name="box" parent="." groups=["objects"] instance=ExtResource("4_hh8d4")]
 position = Vector2(187, 140)
 collision_layer = 3
 collision_mask = 3
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(160.5, 154)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_fouvs")
+[node name="Powerable" parent="box" instance=ExtResource("6_btdmr")]
+TYPE = 2
 
 [node name="Spikes" parent="." instance=ExtResource("5_6iygm")]
 position = Vector2(104, 136)

@@ -39,7 +39,6 @@ func run_physics(delta: float) -> Vector2:
 			collision.get_collider().apply_central_impulse(-collision.get_normal() * 17)
 	move_and_slide()
 	
-	
 	return old_velocity;
 
 func proc_anims(old_velocity: Vector2, direction: int) -> void:
@@ -72,20 +71,18 @@ func proc_anims(old_velocity: Vector2, direction: int) -> void:
 func _on_spikes_body_entered(body: Node2D) -> void:
 	if body is Player:
 		die()
-	pass # Replace with function body.
 	
-func die():
-	get_tree().reload_current_scene()
-	pass
 
+func die():
+	get_tree().call_deferred("reload_current_scene");
+	
 
 func _on_box_body_entered(body: Node) -> void:
 	if body is Player:
 		speed = PUSH_SPEED
-	pass # Replace with function body.
-
+	
 
 func _on_box_body_exited(body: Node) -> void:
 	if body is Player:
 		speed = SPEED
-	pass # Replace with function body.
+	

@@ -1,7 +1,9 @@
+class_name PowerWindow
 extends Node2D
 
 @export var SHAPE: RectangleShape2D;
 var dragging := Vector2.ZERO;
+var initial_mouse := Vector2.ZERO;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +15,7 @@ func _process(delta):
 	pass
 
 func update_size():
-	$Area/Collision.shape = SHAPE;
+	$Area/Collision.shape.size = SHAPE.size - Vector2.ONE * 16.0;
 	$Area/Collision/NinePatchRect.size = SHAPE.size;
 	$Area/Collision/NinePatchRect.position = -SHAPE.size / 2;
 	for child in $Area/Collision/NinePatchRect.get_children():
@@ -29,10 +31,8 @@ func _input(event):
 		SHAPE.size += mouse_delta * dragging;
 		SHAPE.size = SHAPE.size.abs().max(Vector2.ONE * 24.0) * SHAPE.size.sign();
 		var delta = $Area/Collision/NinePatchRect.size - SHAPE.size;
-		print(delta);
 		$Area.position -= delta * dragging / 2;
 		update_size();
-		
 	elif event is InputEventMouseButton and \
 		!(event as InputEventMouseButton).pressed:
 		dragging = Vector2.ZERO;
@@ -41,4 +41,5 @@ func _input(event):
 func region_input(event: InputEvent, direction: Vector2):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
 		dragging = direction;
+		initial_mouse = (event as InputEventMouse).position;
 	

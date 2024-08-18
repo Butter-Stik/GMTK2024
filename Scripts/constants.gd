@@ -5,3 +5,9 @@ enum Power {
 	BOOTING,
 	OFF
 }
+
+enum PowerableType {
+	NONE,
+	FREEZE,
+	DESTROY
+}
