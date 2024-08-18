@@ -106,7 +106,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4y861"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi65v"]
 size = Vector2(14, 3)
 
 [node name="Button" type="Area2D"]
@@ -127,7 +127,7 @@ animation = &"pushed_on"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(93, 33.5)
-shape = SubResource("RectangleShape2D_4y861")
+shape = SubResource("RectangleShape2D_xi65v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

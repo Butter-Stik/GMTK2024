@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b0kiamei4nycj"]
+[gd_scene load_steps=16 format=4 uid="uid://b0kiamei4nycj"]
 
 [ext_resource type="PackedScene" uid="uid://btc6eif8uvnj7" path="res://Scenes/player.tscn" id="1_kf6cf"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="2_cl8vx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="5_6iygm"]
 [ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="5_mcvyl"]
 [ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="7_d2akm"]
+[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="7_uwn57"]
 [ext_resource type="PackedScene" uid="uid://cr887vgoetw51" path="res://Scenes/window.tscn" id="8_ttx3e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4sp6m"]
@@ -160,6 +161,12 @@ sources/0 = SubResource("TileSetAtlasSource_1ya6w")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fouvs"]
 size = Vector2(288, 20)
 
+[sub_resource type="Curve2D" id="Curve2D_tec5u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -43.2636, 77.7011, 0, 0, 0, 0, 0.617645, 52.0054, 0, 0, 0, 0, -43.2636, 77.7011)
+}
+point_count = 3
+
 [node name="World" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -199,11 +206,19 @@ position = Vector2(104, 136)
 [node name="Button" parent="." instance=ExtResource("5_mcvyl")]
 position = Vector2(151, 109)
 
+[node name="Path2D" parent="." instance=ExtResource("7_uwn57")]
+position = Vector2(150, 58)
+scale = Vector2(1.07488, 1)
+curve = SubResource("Curve2D_tec5u")
+loop = true
+speed = 0.25
+speed_scale = 0.05
+
 [node name="gate" parent="." instance=ExtResource("7_d2akm")]
 position = Vector2(204, 88)
 
 [node name="Window" parent="." instance=ExtResource("8_ttx3e")]
-position = Vector2(91, 74)
+position = Vector2(144, 63)
 
 [connection signal="body_entered" from="box" to="Player" method="_on_box_body_entered"]
 [connection signal="body_exited" from="box" to="Player" method="_on_box_body_exited"]
