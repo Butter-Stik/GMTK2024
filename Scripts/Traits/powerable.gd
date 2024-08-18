@@ -32,7 +32,7 @@ func _ready():
 		booting_timer = Timer.new();
 		booting_timer.wait_time = 0.25;
 		booting_timer.connect("timeout", _awaken);
-		add_child(booting_timer);
+		add_child(booting_timer);128
 	
 	var window = get_node(^"/root/World/Window");
 	if window == null:
@@ -53,7 +53,7 @@ func _ready():
 					parent.set_deferred("freeze", false);
 		Constants.PowerableType.DESTROY:
 			_on_depower_callback = func():
-				get_parent().call_deferred("queue_free");
+				get_parent().call_deferred("die");
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

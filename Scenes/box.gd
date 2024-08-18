@@ -10,3 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$AnimatedSprite2D.play("default")
 	pass
+
+func die():
+	queue_free();
