@@ -14,7 +14,6 @@ size = Vector2(64, 64)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_qhyfl"]
 frames = 4
-speed_scale = 10.0
 frame_0/texture = ExtResource("2_bn54h")
 frame_1/texture = ExtResource("3_5w12m")
 frame_1/duration = 1.0
