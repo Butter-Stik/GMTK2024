@@ -11,18 +11,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if bodies > 0:
 		$AnimatedSprite2D.play("open_on")
+		get_node("CollisionShape2D").disabled = true
 	elif bodies <= 0:
 		$AnimatedSprite2D.play("closed_on")
+		get_node("CollisionShape2D").disabled = false
 
 
 
 func _on_button_body_entered(body: Node2D) -> void:
 	if !(body is StaticBody2D):
 		bodies += 1
-		get_node("CollisionShape2D").disabled = true
 
 
 
 func _on_button_body_exited(body: Node2D) -> void:
 	bodies -= 1
-	get_node("CollisionShape2D").disabled = false
