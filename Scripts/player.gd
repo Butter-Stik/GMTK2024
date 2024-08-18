@@ -67,7 +67,6 @@ func proc_anims(old_velocity: Vector2, direction: float) -> void:
 	# if animstate != $Sprite.animation:
 	# 	print($Sprite.animation);
 
-
 func _on_spikes_body_entered(body: Node2D) -> void:
 	if body is Player:
 		die()
