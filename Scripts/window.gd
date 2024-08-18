@@ -46,15 +46,10 @@ func _input(event):
 			* dragging.abs() \
 			+ scale_point * (-dragging.abs() + Vector2.ONE);
 		target_point_position = target_point_position.snapped(Vector2.ONE * 8);
+		target_point_position = target_point_position.clamp(Vector2.ZERO, WINDOW_SIZE);
 		var target_point_delta = target_point_position - scale_point;
 		var boundary_delta = (anchor_point + (Vector2.ONE * 24.0) * -target_point_delta.sign()) - scale_point;
 		target_point_delta = target_point_delta.abs().min(boundary_delta.abs()) * target_point_delta.sign();
-		
-		if target_point_position.x < 0 \
-			|| target_point_position.x > WINDOW_SIZE.x \
-			|| target_point_position.y < 0 \
-			|| target_point_position.y > WINDOW_SIZE.y:
-			target_point_delta = Vector2.ZERO;
 		
 		window_position += target_point_delta / 2;
 		window_shape.size += target_point_delta * dragging;
@@ -63,7 +58,6 @@ func _input(event):
 	elif event is InputEventMouseButton and \
 		!(event as InputEventMouseButton).pressed:
 		dragging = Vector2.ZERO;
-	
 
 func region_input(event: InputEvent, direction: Vector2):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
