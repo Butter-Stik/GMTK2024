@@ -45,7 +45,7 @@ func _input(event):
 			(mouse_position + mouse_target_offset) \
 			* dragging.abs() \
 			+ scale_point * (-dragging.abs() + Vector2.ONE);
-		target_point_position = target_point_position.snapped(Vector2.ONE * 2);
+		target_point_position = target_point_position.snapped(Vector2.ONE * 8);
 		var target_point_delta = target_point_position - scale_point;
 		var boundary_delta = (anchor_point + (Vector2.ONE * 24.0) * -target_point_delta.sign()) - scale_point;
 		target_point_delta = target_point_delta.abs().min(boundary_delta.abs()) * target_point_delta.sign();
