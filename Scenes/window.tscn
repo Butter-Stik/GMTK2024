@@ -23,7 +23,7 @@ frame_2/duration = 1.0
 frame_3/texture = ExtResource("5_gu67p")
 frame_3/duration = 1.0
 
-[node name="Window" type="Node2D"]
+[node name="Window" type="Node2D" groups=["window"]]
 script = ExtResource("1_umobu")
 SHAPE = SubResource("RectangleShape2D_x7r4s")
 

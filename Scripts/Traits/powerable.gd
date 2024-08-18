@@ -34,7 +34,7 @@ func _ready():
 		booting_timer.connect("timeout", _awaken);
 		add_child(booting_timer);128
 	
-	var window = get_node(^"/root/World/Window");
+	var window = get_tree().get_first_node_in_group("window");
 	if window == null:
 		push_warning("Could not find window");
 		return
