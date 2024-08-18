@@ -14,6 +14,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if $StaticBody2D/Powerable.power_state == Constants.Power.ON:
 		run_physics(delta);
+	if $StaticBody2D/Powerable.power_state == Constants.Power.ON:
+		if bodies > 0:
+			$AnimatedSprite2D.play("pushed_on")
+		elif bodies <= 0:
+			$AnimatedSprite2D.play("unpushed_on")
+	else:
+		if bodies > 0:
+			$AnimatedSprite2D.play("pushed_off")
+		elif bodies <= 0:
+			$AnimatedSprite2D.play("unpushed_off")
 
 func run_physics(_delta: float) -> void:
 	if queued_bodies != 0:
@@ -24,10 +34,6 @@ func run_physics(_delta: float) -> void:
 			state_changed.emit(false);
 	bodies += queued_bodies;
 	queued_bodies = 0;
-	if bodies > 0:
-		$AnimatedSprite2D.play("pushed_on")
-	elif bodies <= 0:
-		$AnimatedSprite2D.play("unpushed_on")
 
 
 func _on_body_entered(body: Node2D) -> void:

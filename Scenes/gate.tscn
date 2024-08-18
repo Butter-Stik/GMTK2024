@@ -1,7 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyjmy1x3foqml"]
+[gd_scene load_steps=16 format=3 uid="uid://dyjmy1x3foqml"]
 
 [ext_resource type="Script" path="res://Scripts/gate.gd" id="1_0h2sb"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_idnvw"]
+[ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="3_v2rh7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkx0p"]
+atlas = ExtResource("1_idnvw")
+region = Rect2(80, 112, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkext"]
 atlas = ExtResource("1_idnvw")
@@ -18,6 +23,10 @@ region = Rect2(128, 112, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vh1lg"]
 atlas = ExtResource("1_idnvw")
 region = Rect2(144, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_571qt"]
+atlas = ExtResource("1_idnvw")
+region = Rect2(80, 96, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbiet"]
 atlas = ExtResource("1_idnvw")
@@ -39,6 +48,14 @@ region = Rect2(144, 96, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xkx0p")
+}],
+"loop": true,
+"name": &"closed_off",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_dkext")
 }, {
 "duration": 1.0,
@@ -52,6 +69,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"closed_on",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_571qt")
+}],
+"loop": true,
+"name": &"open_off",
 "speed": 10.0
 }, {
 "frames": [{
@@ -80,7 +105,11 @@ script = ExtResource("1_0h2sb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s6bjr")
-animation = &"closed_on"
+animation = &"open_off"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s4s76")
+
+[node name="Powerable" parent="." instance=ExtResource("3_v2rh7")]
+
+[connection signal="power_changed" from="Powerable" to="." method="_on_powerable_power_changed"]
