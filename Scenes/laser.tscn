@@ -39,6 +39,7 @@ size = Vector2(16, 16)
 script = ExtResource("1_qj0wj")
 
 [node name="Head" type="StaticBody2D" parent="."]
+collision_layer = 17
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Head"]
 sprite_frames = SubResource("SpriteFrames_kb1sc")

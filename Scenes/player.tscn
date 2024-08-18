@@ -182,7 +182,7 @@ animations = [{
 size = Vector2(8, 11)
 
 [node name="Character" type="CharacterBody2D"]
-collision_layer = 17
+collision_layer = 19
 script = ExtResource("1_k76jh")
 PUSH_SPEED = 10
 

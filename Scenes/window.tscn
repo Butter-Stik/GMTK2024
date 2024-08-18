@@ -10,7 +10,7 @@
 size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccw6f"]
-size = Vector2(64, 48)
+size = Vector2(63.9, 47.9)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_qhyfl"]
 frames = 4
@@ -28,6 +28,8 @@ script = ExtResource("1_umobu")
 SHAPE = SubResource("RectangleShape2D_x7r4s")
 
 [node name="Area" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
 
 [node name="Collision" type="CollisionShape2D" parent="Area"]
 shape = SubResource("RectangleShape2D_ccw6f")

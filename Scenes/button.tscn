@@ -1,38 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhnn77wut86hj"]
+[gd_scene load_steps=15 format=3 uid="uid://dhnn77wut86hj"]
 
+[ext_resource type="Script" path="res://Scripts/button.gd" id="1_835p4"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_adbjy"]
-
-[sub_resource type="GDScript" id="GDScript_w32ne"]
-resource_name = "button"
-script/source = "extends Area2D
-
-var bodies = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if bodies > 0:
-		$AnimatedSprite2D.play(\"pushed_on\")
-	elif bodies <= 0:
-		$AnimatedSprite2D.play(\"unpushed_on\")
-	pass
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if !(body is StaticBody2D):
-		bodies += 1
-		print(bodies)
-	pass 
-
-
-func _on_body_exited(body: Node2D) -> void:
-	bodies -= 1
-	pass
-"
+[ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="2_k56dt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_woisu"]
 size = Vector2(12, 5)
@@ -112,7 +82,7 @@ size = Vector2(14, 2)
 [node name="Button" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
-script = SubResource("GDScript_w32ne")
+script = ExtResource("1_835p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.5)
@@ -123,10 +93,13 @@ sprite_frames = SubResource("SpriteFrames_xppay")
 animation = &"pushed_on"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_xi65v")
+
+[node name="Powerable" parent="StaticBody2D" instance=ExtResource("2_k56dt")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
