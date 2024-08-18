@@ -18,7 +18,8 @@ func run_physics(delta: float) -> Vector2:
 	var old_velocity := velocity;
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
+	if Input.is_action_just_pressed("restart"):
+		die()
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -JUMP_VELOCITY
