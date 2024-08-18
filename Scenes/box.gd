@@ -12,15 +12,22 @@ class_name Pushbox
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if DESTROY == false:
+		$Powerable.connect("power_changed", power);
 		$AnimatedSprite2D.play("non_breakable")
 	elif DESTROY == true:
 		$AnimatedSprite2D.play("breakable")
-	
+
+func power(new_power: Constants.Power):
+	if new_power == Constants.Power.ON:
+		$AnimatedSprite2D.play("non_breakable")
+	elif new_power == Constants.Power.OFF:
+		$AnimatedSprite2D.play("non_breakable_off")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
+
 
 func die():
-	queue_free();
+	$AnimatedSprite2D.play("breakable_fading")
+	$AnimatedSprite2D.connect("animation_finished", queue_free)
