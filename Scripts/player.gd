@@ -5,15 +5,16 @@ class_name Player
 @export var PUSH_SPEED = 30
 var direction = 0
 var speed = SPEED
+
 func _physics_process(delta: float) -> void:
 	# moved to function so it can be turned off more easily later
-	var old_velocity := Vector2.ZERO; # dummy value
+	var physics_info := Vector3.ZERO; # dummy value
 	if $Powerable.power_state == Constants.Power.ON:
-		old_velocity = run_physics(delta)
-	
+		physics_info = run_physics(delta)
+	proc_anims(Vector2(physics_info.x, physics_info.y), physics_info.z)
 	
 
-func run_physics(delta: float) -> Vector2:
+func run_physics(delta: float) -> Vector3:
 	# Add the gravity.
 	var old_velocity := velocity;
 	if not is_on_floor():
@@ -27,7 +28,6 @@ func run_physics(delta: float) -> Vector2:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
-	proc_anims(old_velocity, direction);
 	if direction != 0.0:
 		velocity.x = direction * speed
 	else:
@@ -39,9 +39,9 @@ func run_physics(delta: float) -> Vector2:
 			collision.get_collider().apply_central_impulse(-collision.get_normal() * 17)
 	move_and_slide()
 	
-	return old_velocity;
+	return Vector3(old_velocity.x, old_velocity.y, direction);
 
-func proc_anims(old_velocity: Vector2, direction: int) -> void:
+func proc_anims(old_velocity: Vector2, direction: float) -> void:
 	# # debug messages
 	# var animstate: String = $Sprite.animation;
 	if $Powerable.power_state == Constants.Power.OFF:
@@ -86,3 +86,7 @@ func _on_box_body_exited(body: Node) -> void:
 	if body is Player:
 		speed = SPEED
 	
+
+func _on_powerable_power_changed(power):
+	if power == Constants.Power.OFF:
+		call_deferred("proc_anims", Vector2.ZERO, 0.0);

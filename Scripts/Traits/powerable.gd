@@ -14,7 +14,6 @@ var _on_depower_callback: Callable = func(): pass;
 var _on_power_callback: Callable = func(): pass;
 var power_state: Constants.Power = Constants.Power.ON:
 	set(new_state):
-		print(new_state);
 		power_state = new_state
 		match new_state:
 			Constants.Power.ON:
@@ -48,7 +47,6 @@ func _ready():
 		Constants.PowerableType.FREEZE:
 			var parent = get_parent();
 			if parent is RigidBody2D:
-				print("here");
 				_on_depower_callback = func():
 					parent.set_deferred("freeze", true);
 				_on_power_callback = func():
@@ -79,5 +77,4 @@ func _on_window_entry(body: Node2D):
 
 func _on_window_exit(body: Node2D):
 	if body == get_parent():
-		print("here");
 		set_power(false);
