@@ -101,6 +101,7 @@ animations = [{
 size = Vector2(4, 16)
 
 [node name="gate" type="StaticBody2D"]
+collision_layer = 17
 script = ExtResource("1_0h2sb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

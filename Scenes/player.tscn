@@ -195,6 +195,7 @@ packet_sequence = SubResource("OggPacketSequence_fjdjg")
 loop = true
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_rtp0a"]
+initial_clip = 2
 clip_count = 4
 clip_0/name = &"idle"
 clip_0/stream = SubResource("AudioStreamWAV_ix3gm")
