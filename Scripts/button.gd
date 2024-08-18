@@ -1,17 +1,35 @@
+@tool
 extends Area2D
 
 signal state_changed(pressed: bool);
 
+@export var COLOR: Constants.SwitchColor = Constants.SwitchColor.GREY:
+	set(new_color):
+		COLOR = new_color;
+		if Engine.is_editor_hint(): update_color();
 var queued_bodies = 0;
 var bodies = 0;
 
+func update_color():
+	match COLOR:
+			Constants.SwitchColor.GREY:
+				$AnimatedSprite2D.sprite_frames = preload("res://Assets/Buttons/grey_button.tres");
+			Constants.SwitchColor.RED:
+				$AnimatedSprite2D.sprite_frames = preload("res://Assets/Buttons/red_button.tres");
+			Constants.SwitchColor.YELLOW:
+				$AnimatedSprite2D.sprite_frames = preload("res://Assets/Buttons/yellow_button.tres");
+			Constants.SwitchColor.BLUE:
+				$AnimatedSprite2D.sprite_frames = preload("res://Assets/Buttons/blue_button.tres");
+			Constants.SwitchColor.PURPLE:
+				$AnimatedSprite2D.sprite_frames = preload("res://Assets/Buttons/purple_button.tres");
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	update_color();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	if $StaticBody2D/Powerable.power_state == Constants.Power.ON:
 		run_physics(delta);
 	if $StaticBody2D/Powerable.power_state == Constants.Power.ON:

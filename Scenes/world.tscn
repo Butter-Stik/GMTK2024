@@ -52,7 +52,7 @@ size = Vector2i(64, 48)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
-position = Vector2(120, 48)
+position = Vector2(120, 120)
 
 [node name="Window" parent="." instance=ExtResource("8_bhblx")]
 z_index = 100
@@ -61,7 +61,7 @@ POSITION = Vector2(120, 120)
 
 [node name="Sprite2D" type="Sprite2D" parent="Window"]
 z_index = -1
-position = Vector2(120, 48)
+position = Vector2(120, 120)
 texture = SubResource("ViewportTexture_a2b12")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -122,8 +122,11 @@ position = Vector2(24, 136)
 
 [node name="Button" parent="." instance=ExtResource("9_2opyp")]
 position = Vector2(168, 152)
+COLOR = 2
 
 [node name="gate" parent="." instance=ExtResource("10_82hht")]
 position = Vector2(274, 136)
+COLOR = 2
+INVERTED = true
 
 [connection signal="state_changed" from="Button" to="gate" method="on_trigger_state_changed"]
