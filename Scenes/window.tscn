@@ -10,7 +10,7 @@
 size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccw6f"]
-size = Vector2(63.9, 47.9)
+size = Vector2(47.9, 47.9)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_qhyfl"]
 frames = 4
