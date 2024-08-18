@@ -3,7 +3,7 @@ extends Node2D
 
 @export var SHAPE: RectangleShape2D;
 var dragging := Vector2.ZERO;
-var initial_mouse := Vector2.ZERO;
+var mouse_target_offset := Vector2.ZERO;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,15 +24,23 @@ func update_size():
 
 func _input(event):
 	if dragging != Vector2.ZERO and event is InputEventMouseMotion:
-		var mouse_delta := ((event as InputEventMouseMotion).relative * \
-			dragging.abs() / \
-			get_viewport().get_camera_2d().zoom) \
-			.snapped(Vector2.ONE); # ignore 0.0 directions
-		SHAPE.size += mouse_delta * dragging;
-		SHAPE.size = SHAPE.size.abs().max(Vector2.ONE * 24.0) * SHAPE.size.sign();
-		var delta = $Area/Collision/NinePatchRect.size - SHAPE.size;
-		$Area.position -= delta * dragging / 2;
+		var scale_offset = dragging * SHAPE.size / 2;
+		var anchor_point = -scale_offset + $Area.position;
+		var scale_point = scale_offset + $Area.position;
+		var mouse_position = get_local_mouse_position();
+		var target_point_position = \
+			(mouse_position + mouse_target_offset) \
+			* dragging.abs() \
+			+ scale_point * (-dragging.abs() + Vector2.ONE);
+		target_point_position = target_point_position.snapped(Vector2.ONE * 2);
+		var target_point_delta = target_point_position - scale_point;
+		var boundary_delta = (anchor_point + (Vector2.ONE * 24.0) * -target_point_delta.sign()) - scale_point;
+		target_point_delta = target_point_delta.abs().min(boundary_delta.abs()) * target_point_delta.sign();
+		print(target_point_delta);
+		$Area.position += target_point_delta / 2;
+		SHAPE.size += target_point_delta * dragging;
 		update_size();
+		
 	elif event is InputEventMouseButton and \
 		!(event as InputEventMouseButton).pressed:
 		dragging = Vector2.ZERO;
@@ -41,5 +49,5 @@ func _input(event):
 func region_input(event: InputEvent, direction: Vector2):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
 		dragging = direction;
-		initial_mouse = (event as InputEventMouse).position;
-	
+		mouse_target_offset = dragging * SHAPE.size / 2 + $Area.position \
+			- get_local_mouse_position();

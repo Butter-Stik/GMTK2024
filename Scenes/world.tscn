@@ -179,7 +179,7 @@ size = Vector2(16, 16)
 
 [node name="Window" parent="." instance=ExtResource("8_bhblx")]
 z_index = 100
-position = Vector2(49, 48)
+position = Vector2(48, 48)
 SHAPE = SubResource("RectangleShape2D_8tgud")
 
 [node name="Camera2D" type="Camera2D" parent="."]
