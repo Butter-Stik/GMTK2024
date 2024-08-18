@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b0kiamei4nycj"]
+[gd_scene load_steps=17 format=4 uid="uid://b0kiamei4nycj"]
 
 [ext_resource type="PackedScene" uid="uid://btc6eif8uvnj7" path="res://Scenes/player.tscn" id="1_kf6cf"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_veug0"]
@@ -8,9 +8,10 @@
 [ext_resource type="Script" path="res://Scripts/TilemapCollisionBaker.gd" id="5_ksj4r"]
 [ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="6_btdmr"]
 [ext_resource type="PackedScene" uid="uid://cr887vgoetw51" path="res://Scenes/window.tscn" id="8_bhblx"]
+[ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="9_wt61b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tgud"]
-size = Vector2(64, 64)
+size = Vector2(80, 64)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_a2b12"]
 viewport_path = NodePath("SubViewport")
@@ -40,20 +41,20 @@ handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 gui_disable_input = true
-size = Vector2i(48, 48)
+size = Vector2i(64, 48)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]
-position = Vector2(48, 48)
+position = Vector2(120, 120)
 
 [node name="Window" parent="." instance=ExtResource("8_bhblx")]
 z_index = 100
 SHAPE = SubResource("RectangleShape2D_8tgud")
-POSITION = Vector2(48, 48)
+POSITION = Vector2(120, 120)
 
 [node name="Sprite2D" type="Sprite2D" parent="Window"]
 z_index = -1
-position = Vector2(48, 48)
+position = Vector2(120, 120)
 texture = SubResource("ViewportTexture_a2b12")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -105,6 +106,9 @@ TYPE = 2
 
 [node name="Spikes" parent="." instance=ExtResource("5_6iygm")]
 position = Vector2(104, 136)
+
+[node name="Laser" parent="." instance=ExtResource("9_wt61b")]
+position = Vector2(24, 136)
 
 [connection signal="body_entered" from="box" to="Player" method="_on_box_body_entered"]
 [connection signal="body_exited" from="box" to="Player" method="_on_box_body_exited"]
