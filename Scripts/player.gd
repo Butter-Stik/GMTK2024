@@ -14,6 +14,8 @@ func _physics_process(delta: float) -> void:
 	
 
 func run_physics(delta: float) -> Vector2:
+	if Input.is_action_just_pressed("restart"):
+		die()
 	# Add the gravity.
 	var old_velocity := velocity;
 	if not is_on_floor():
@@ -35,7 +37,7 @@ func run_physics(delta: float) -> Vector2:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider().is_in_group("objects"):
-			collision.get_collider().apply_central_impulse(-collision.get_normal() * 17)
+			collision.get_collider().apply_central_impulse(-collision.get_normal() * 18)
 	move_and_slide()
 	
 	

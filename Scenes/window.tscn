@@ -14,6 +14,7 @@ size = Vector2(64, 64)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_qhyfl"]
 frames = 4
+speed_scale = 10.0
 frame_0/texture = ExtResource("2_bn54h")
 frame_1/texture = ExtResource("3_5w12m")
 frame_1/duration = 1.0
@@ -126,9 +127,6 @@ offset_top = 8.0
 offset_right = 8.0
 offset_bottom = -8.0
 grow_vertical = 2
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
 
 [connection signal="gui_input" from="Area/Collision/NinePatchRect/TL" to="." method="region_input" binds= [Vector2(-1, -1)]]
 [connection signal="gui_input" from="Area/Collision/NinePatchRect/T" to="." method="region_input" binds= [Vector2(0, -1)]]

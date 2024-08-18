@@ -36,7 +36,7 @@ func _input(event):
 	elif event is InputEventMouseButton and \
 		!(event as InputEventMouseButton).pressed:
 		dragging = Vector2.ZERO;
-	
+
 
 func region_input(event: InputEvent, direction: Vector2):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
