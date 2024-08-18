@@ -44,7 +44,6 @@ func _ready():
 	else:
 		window.get_child(0).call_deferred("connect", "body_entered", _on_window_entry);
 		window.get_child(0).call_deferred("connect", "body_exited", _on_window_exit);
-	call_deferred("_init_power", window);
 	
 	match TYPE:
 		Constants.PowerableType.NONE:
@@ -60,12 +59,6 @@ func _ready():
 			_on_depower_callback = func():
 				get_parent().call_deferred("die");
 	
-
-func _init_power(window: PowerWindow):
-	if get_parent() is Area2D:
-		set_power((window.get_child(0) as Area2D).overlaps_area(get_parent()));
-	else:
-		set_power((window.get_child(0) as Area2D).overlaps_body(get_parent()));
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -125,7 +125,7 @@ collision_mask = 8192
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_71xka")
 
-[node name="Powerable" parent="." instance=ExtResource("3_lfm76")]
+[node name="Powerable" parent="." groups=["powerable"] instance=ExtResource("3_lfm76")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

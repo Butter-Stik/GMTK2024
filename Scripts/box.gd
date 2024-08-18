@@ -8,25 +8,24 @@ class_name Pushbox
 			$Powerable.TYPE = Constants.PowerableType.DESTROY;
 		else:
 			$Powerable.TYPE = Constants.PowerableType.NONE;
+@export var STARTS_POWERED: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if STARTS_POWERED:
+		$Powerable.set_power(STARTS_POWERED);
 	if DESTROY == false:
 		$Powerable.connect("power_changed", power);
 		$AnimatedSprite2D.play("non_breakable")
 	elif DESTROY == true:
 		$AnimatedSprite2D.play("breakable")
+	
 
 func power(new_power: Constants.Power):
 	if new_power == Constants.Power.ON:
 		$AnimatedSprite2D.play("non_breakable")
 	elif new_power == Constants.Power.OFF:
 		$AnimatedSprite2D.play("non_breakable_off")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func die():
 	$AnimatedSprite2D.play("breakable_fading")

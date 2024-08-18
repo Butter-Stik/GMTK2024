@@ -18,10 +18,12 @@ var mouse_target_offset := Vector2.ZERO;
 func _ready():
 	# STARTING_SHAPE = STARTING_SHAPE;
 	update_size();
+	print($Area.get_overlapping_bodies());
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Engine.is_editor_hint(): return
+	print($Area.get_overlapping_bodies());
 
 func update_size():
 	if Engine.is_editor_hint():
