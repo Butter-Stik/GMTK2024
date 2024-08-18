@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b0kiamei4nycj"]
+[gd_scene load_steps=17 format=4 uid="uid://b0kiamei4nycj"]
 
 [ext_resource type="PackedScene" uid="uid://btc6eif8uvnj7" path="res://Scenes/player.tscn" id="1_kf6cf"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_veug0"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="4_hh8d4"]
 [ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="5_6iygm"]
 [ext_resource type="Script" path="res://Scripts/TilemapCollisionBaker.gd" id="5_ksj4r"]
-[ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="6_btdmr"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="8_b4yv1"]
 [ext_resource type="PackedScene" uid="uid://cr887vgoetw51" path="res://Scenes/window.tscn" id="8_bhblx"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="9_vykx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tgud"]
 size = Vector2(64, 64)
@@ -99,13 +100,19 @@ shape = SubResource("RectangleShape2D_hew7c")
 position = Vector2(141, 140)
 collision_layer = 3
 collision_mask = 3
-
-[node name="Powerable" parent="box" instance=ExtResource("6_btdmr")]
-TYPE = 2
+DESTROY = true
 
 [node name="Spikes" parent="." instance=ExtResource("5_6iygm")]
 position = Vector2(104, 136)
 
+[node name="Button" parent="." instance=ExtResource("8_b4yv1")]
+position = Vector2(249, 136)
+
+[node name="gate" parent="." instance=ExtResource("9_vykx5")]
+position = Vector2(275, 136)
+
 [connection signal="body_entered" from="box" to="Player" method="_on_box_body_entered"]
 [connection signal="body_exited" from="box" to="Player" method="_on_box_body_exited"]
 [connection signal="body_entered" from="Spikes" to="Player" method="_on_spikes_body_entered"]
+[connection signal="body_entered" from="Button" to="gate" method="_on_button_body_entered"]
+[connection signal="body_exited" from="Button" to="gate" method="_on_button_body_exited"]
