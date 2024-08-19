@@ -8,7 +8,7 @@
 size = Vector2(12, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xi65v"]
-size = Vector2(14, 2)
+size = Vector2(14, 3)
 
 [node name="Button" type="Area2D"]
 collision_layer = 2
@@ -27,7 +27,7 @@ animation = &"unpushed_on"
 collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 7)
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_xi65v")
 
 [node name="Powerable" parent="StaticBody2D" instance=ExtResource("2_k56dt")]

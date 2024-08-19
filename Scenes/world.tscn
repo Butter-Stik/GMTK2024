@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b0kiamei4nycj"]
+[gd_scene load_steps=23 format=4 uid="uid://b0kiamei4nycj"]
 
 [ext_resource type="PackedScene" uid="uid://btc6eif8uvnj7" path="res://Scenes/player.tscn" id="1_kf6cf"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_veug0"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="9_2opyp"]
 [ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="9_wt61b"]
 [ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="10_82hht"]
+[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="11_kq8v8"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="12_crq13"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tgud"]
 size = Vector2(80, 64)
@@ -37,6 +39,12 @@ size = Vector2(48, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4rij"]
 size = Vector2(16, 16)
+
+[sub_resource type="Curve2D" id="Curve2D_csqm8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -38, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, -22, 0, 0, 0, 0, 0, -38)
+}
+point_count = 4
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_veug0")
@@ -112,7 +120,6 @@ shape = SubResource("RectangleShape2D_l4rij")
 
 [node name="box" parent="." groups=["objects"] instance=ExtResource("4_hh8d4")]
 position = Vector2(141, 140)
-DESTROY = true
 
 [node name="Spikes" parent="." instance=ExtResource("5_6iygm")]
 position = Vector2(104, 136)
@@ -126,7 +133,14 @@ COLOR = 2
 
 [node name="gate" parent="." instance=ExtResource("10_82hht")]
 position = Vector2(274, 136)
-COLOR = 2
-INVERTED = true
+COLOR = 4
+
+[node name="Path2D" parent="." instance=ExtResource("11_kq8v8")]
+position = Vector2(115, 119)
+curve = SubResource("Curve2D_csqm8")
+speed = 0.5
+
+[node name="circuit breaker" parent="." instance=ExtResource("12_crq13")]
+position = Vector2(296, 136)
 
 [connection signal="state_changed" from="Button" to="gate" method="on_trigger_state_changed"]
