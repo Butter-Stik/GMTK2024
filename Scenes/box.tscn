@@ -129,9 +129,20 @@ volume_db = -3.795
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 12)
+collision_mask = 8
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_p3ogb")
+
+[node name="WallRight" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(0, 14)
+collision_mask = 8
+
+[node name="WallLeft" type="RayCast2D" parent="."]
+rotation = 1.5708
+target_position = Vector2(0, 14)
+collision_mask = 8

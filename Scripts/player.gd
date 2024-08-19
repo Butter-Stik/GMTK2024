@@ -173,7 +173,6 @@ func _on_feet_finished():
 		AudioState.IDLE:
 			pass
 		AudioState.WALK:
-			print("here");
 			$Feet.play();
 		AudioState.LAND:
 			audio_state = AudioState.IDLE;
