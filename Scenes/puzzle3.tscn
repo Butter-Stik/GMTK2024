@@ -33,7 +33,7 @@ size = Vector2(112, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rs8of"]
 size = Vector2(32, 32)
 
-[node name="SampleLevel" type="Node2D"]
+[node name="SampleLevel2" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_1lx0k")]
 
@@ -98,6 +98,7 @@ COLOR = 1
 
 [node name="gate" parent="." instance=ExtResource("5_tfkyn")]
 position = Vector2(216, 104)
+collision_layer = 24
 COLOR = 1
 INVERTED = true
 

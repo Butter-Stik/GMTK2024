@@ -39,7 +39,7 @@ size = Vector2(96, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ym1lx"]
 size = Vector2(32, 32)
 
-[node name="SampleLevel" type="Node2D"]
+[node name="SampleLevel2" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_3gqdh")]
 

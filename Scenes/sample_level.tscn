@@ -25,7 +25,7 @@ size = Vector2(96, 112)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qt5n"]
 size = Vector2(32, 16)
 
-[node name="SampleLevel3" type="Node2D"]
+[node name="SampleLevel2" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_h4rkk")]
 
@@ -73,9 +73,6 @@ position = Vector2(80, 136)
 [node name="Box1" parent="World" instance=ExtResource("3_ajnae")]
 position = Vector2(122, 136)
 slide_on_ceiling = false
-
-[node name="Box2" parent="World" instance=ExtResource("3_ajnae")]
-position = Vector2(204, 136)
 
 [node name="Button" parent="World" instance=ExtResource("4_10aig")]
 position = Vector2(181, 136)
