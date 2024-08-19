@@ -2,6 +2,8 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	visible = false;
+	set_collision_mask_value(13, false);
 	$AnimatedSprite2D.play("default")
 	
 

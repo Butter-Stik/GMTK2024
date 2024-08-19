@@ -6,7 +6,7 @@
 size = Vector2(80, 64)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rkcmk"]
-viewport_path = NodePath("World/SubViewport")
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0i2p"]
 size = Vector2(32, 128)
