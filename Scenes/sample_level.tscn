@@ -1,11 +1,20 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=13 format=4 uid="uid://cw3i6r87j86sv"]
+=======
+[gd_scene load_steps=15 format=4 uid="uid://cw3i6r87j86sv"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_h4rkk"]
 [ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="2_w628u"]
 [ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_ajnae"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="4_10aig"]
 [ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_hacno"]
 [ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="5_kde64"]
+=======
+[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="4_bg8x7"]
+[ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="5_h5a64"]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(80, 64)
@@ -86,5 +95,8 @@ position = Vector2(230, 136)
 COLOR = 1
 
 [connection signal="state_changed" from="World/Button" to="World/gate" method="on_trigger_state_changed"]
+
+[node name="Laser" parent="World" instance=ExtResource("5_h5a64")]
+position = Vector2(40, 137)
 
 [editable path="World"]

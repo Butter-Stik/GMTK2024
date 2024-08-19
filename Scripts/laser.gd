@@ -20,6 +20,7 @@ func run_physics(_delta: float):
 		if beam_tip != point:
 			beam_tip = point;
 			$Beam.points[1] = beam_tip;
+			$GPUParticles2D.position = beam_tip;
 
 func _on_powerable_power_changed(power: Constants.Power):
 	if power == Constants.Power.ON:
