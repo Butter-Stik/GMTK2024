@@ -300,6 +300,8 @@ scale_min = 0.5
 scale_max = 1.25
 
 [sub_resource type="Gradient" id="Gradient_l4nvx"]
+offsets = PackedFloat32Array(0, 0.714286, 0.993506, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.938095, 0.938095, 0.938095, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8k6xo"]
 gradient = SubResource("Gradient_l4nvx")
@@ -309,16 +311,18 @@ height = 1
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6kdsg"]
 particle_flag_align_y = true
 particle_flag_disable_z = true
-angle_min = -30.0
-angle_max = 30.0
+angle_min = -6.79999
+angle_max = 6.80001
 direction = Vector3(0, -1, 0)
-initial_velocity_min = 24.2
-initial_velocity_max = 45.71
+spread = 72.802
+initial_velocity_min = 50.0
+initial_velocity_max = 56.46
 gravity = Vector3(0, 98, 0)
 scale_min = 0.5
 scale_max = 1.25
 
 [sub_resource type="Gradient" id="Gradient_pkc52"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rfxlt"]
 gradient = SubResource("Gradient_pkc52")
@@ -331,6 +335,7 @@ script = ExtResource("1_k76jh")
 PUSH_SPEED = 10
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_kogha")
 animation = &"idle"
 
@@ -345,6 +350,7 @@ BOOTING = true
 [node name="Feet" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 8)
 stream = SubResource("AudioStreamInteractive_rtp0a")
+volume_db = -10.0
 
 [node name="Particles" type="GPUParticles2D" parent="."]
 position = Vector2(0, 8)
@@ -355,6 +361,7 @@ texture = SubResource("GradientTexture2D_8k6xo")
 lifetime = 0.2
 
 [node name="FallParticles" type="GPUParticles2D" parent="."]
+z_index = 2
 position = Vector2(0, 8)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_6kdsg")
