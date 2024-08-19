@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://btc6eif8uvnj7"]
+[gd_scene load_steps=37 format=4 uid="uid://btc6eif8uvnj7"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_k76jh"]
 [ext_resource type="Texture2D" uid="uid://b8mv71b2oodb6" path="res://Assets/Character/player.png" id="1_kslfd"]
@@ -13,6 +13,34 @@ region = Rect2(192, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_u7vmd"]
 atlas = ExtResource("1_kslfd")
 region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56a6q"]
+atlas = ExtResource("1_kslfd")
+region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ef8e"]
+atlas = ExtResource("1_kslfd")
+region = Rect2(288, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bui1s"]
+atlas = ExtResource("1_kslfd")
+region = Rect2(304, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv42s"]
+atlas = ExtResource("1_kslfd")
+region = Rect2(320, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlynm"]
+atlas = ExtResource("1_kslfd")
+region = Rect2(336, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prg2h"]
+atlas = ExtResource("1_kslfd")
+region = Rect2(352, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qsw3"]
+atlas = ExtResource("1_kslfd")
+region = Rect2(368, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mnts"]
 atlas = ExtResource("1_kslfd")
@@ -95,6 +123,32 @@ animations = [{
 "loop": true,
 "name": &"awake",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56a6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ef8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bui1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv42s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlynm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prg2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qsw3")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -230,10 +284,11 @@ PUSH_SPEED = 10
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kogha")
-animation = &"idle"
+animation = &"death"
+frame = 5
+frame_progress = 0.897368
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_a6llg")
 

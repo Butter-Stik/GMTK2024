@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/sample_level.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Death="*res://Scenes/death.tscn"
+
 [display]
 
 window/size/viewport_width=320

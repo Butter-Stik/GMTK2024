@@ -12,6 +12,7 @@ var pushing = false:
 			speed = PUSH_SPEED;
 		else:
 			speed = SPEED;
+var dying = false;
 
 var audio_state: AudioState = AudioState.IDLE:
 	set(new_state):
@@ -36,12 +37,15 @@ enum AudioState {
 }
 
 func _physics_process(delta: float) -> void:
-	# moved to function so it can be turned off more easily later
+	if dying:
+		return
+	
 	var physics_info := Vector3.ZERO; # dummy value
 	if Input.is_action_just_pressed("restart"):
 		die()
 	if $Powerable.power_state == Constants.Power.ON:
 		physics_info = run_physics(delta)
+		$"/root/Death".set_circle_position(global_position);
 	proc_anims(Vector2(physics_info.x, physics_info.y), physics_info.z)
 	
 
@@ -118,7 +122,11 @@ func _on_spikes_body_entered(body: Node2D) -> void:
 	
 
 func die():
-	get_tree().call_deferred("reload_current_scene");
+	$"/root/Death".play();
+	dying = true;
+	$Sprite.set_deferred("speed_scale", 0.5);
+	$Sprite.call_deferred("play", "death");
+	#get_tree().call_deferred("reload_current_scene");
 	
 
 func _on_powerable_power_changed(power):

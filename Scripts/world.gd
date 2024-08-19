@@ -24,7 +24,7 @@ func _ready():
 	add_child(off);
 	$EditorOnlyOn/TileCollider.reparent(self);
 	off.name = "Off";
-	$SubViewport.add_child(on);
+	get_node("Window/SubViewport").add_child(on);
 	on.name = "On";
 	$EditorOnlyOn.call_deferred("queue_free");
 
@@ -34,5 +34,5 @@ func _process(delta):
 
 func update_viewport():
 	$Window/Sprite2D.position = $Window.window_position;
-	$SubViewport.size = $Window.window_shape.size - Vector2.ONE * 16;
-	$SubViewport/Camera2D.position = $Window.window_position;
+	$Window/SubViewport.size = $Window.window_shape.size - Vector2.ONE * 16;
+	$Window/SubViewport/Camera2D.position = $Window.window_position;
