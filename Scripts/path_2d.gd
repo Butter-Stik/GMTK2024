@@ -18,5 +18,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$AnimatableBody2D/AnimatedSprite2D.play("default")
-	path.progress += speed
+	if $AnimatableBody2D/Powerable.power_state == Constants.Power.ON:
+		path.progress += speed
+
+
+func _on_powerable_power_changed(power: Constants.Power) -> void:
+	if $AnimatableBody2D/Powerable.power_state == Constants.Power.ON:
+		$AnimatableBody2D/AnimatedSprite2D.play("on")
+	else:
+		$AnimatableBody2D/AnimatedSprite2D.play("off")

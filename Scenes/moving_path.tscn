@@ -1,6 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhfyjeuci6nfu"]
+[gd_scene load_steps=14 format=3 uid="uid://dhfyjeuci6nfu"]
 
+[ext_resource type="Script" path="res://Scripts/path_2d.gd" id="1_r1sv1"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="2_hsode"]
+[ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="3_1x3t5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iujd6"]
+atlas = ExtResource("2_hsode")
+region = Rect2(0, 0, 24, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4i3mo"]
 atlas = ExtResource("2_hsode")
@@ -22,6 +28,14 @@ region = Rect2(0, 20, 24, 5)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_iujd6")
+}],
+"loop": true,
+"name": &"off",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4i3mo")
 }, {
 "duration": 1.0,
@@ -34,7 +48,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_lii16")
 }],
 "loop": true,
-"name": &"default",
+"name": &"on",
 "speed": 10.0
 }]
 
@@ -81,6 +95,7 @@ _data = {
 }
 
 [node name="Path2D" type="Path2D"]
+script = ExtResource("1_r1sv1")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 progress = 16.6377
@@ -90,15 +105,21 @@ rotates = false
 remote_path = NodePath("../../AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 17
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
 sprite_frames = SubResource("SpriteFrames_p3354")
+animation = &"off"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 position = Vector2(4.76837e-07, 2.98023e-08)
 shape = SubResource("RectangleShape2D_deb5f")
 
+[node name="Powerable" parent="AnimatableBody2D" instance=ExtResource("3_1x3t5")]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_cli6d")
 }
+
+[connection signal="power_changed" from="AnimatableBody2D/Powerable" to="." method="_on_powerable_power_changed"]
