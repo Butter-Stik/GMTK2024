@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 @export var SPEED = 60
-@export var JUMP_VELOCITY = 215
+@export var JUMP_VELOCITY = 200
 @export var PUSH_SPEED = 30
 var direction = 0
 var speed = SPEED
@@ -26,6 +26,8 @@ var audio_state: AudioState = AudioState.IDLE:
 				play_sfx("jump");
 			AudioState.WALK:
 				play_sfx("walk");
+			AudioState.DEATH:
+				play_sfx("death");
 			AudioState.LAND:
 				play_sfx("land");
 
@@ -33,8 +35,12 @@ enum AudioState {
 	WALK,
 	JUMP,
 	LAND,
+	DEATH,
 	IDLE
 }
+
+func _ready():
+	$"/root/Death".set_circle_position(global_position);
 
 func _physics_process(delta: float) -> void:
 	if dying:
@@ -66,12 +72,6 @@ func run_physics(delta: float) -> Vector3:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_collider() == null:
-			continue
-		if collision.get_collider().is_in_group("objects"):
-			collision.get_collider().apply_central_impulse(-collision.get_normal() * 5)
 	move_and_slide()
 	
 	return Vector3(old_velocity.x, old_velocity.y, direction);
@@ -126,6 +126,7 @@ func die():
 	dying = true;
 	$Sprite.set_deferred("speed_scale", 0.5);
 	$Sprite.call_deferred("play", "death");
+	audio_state = AudioState.DEATH;
 	#get_tree().call_deferred("reload_current_scene");
 	
 

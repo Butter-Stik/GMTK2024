@@ -1,11 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvcoc8e6sof2u"]
+[gd_scene load_steps=17 format=3 uid="uid://dvcoc8e6sof2u"]
 
 [ext_resource type="Script" path="res://Scripts/box.gd" id="1_5y78m"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_2635r"]
 [ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="3_lfm76"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4ngkp"]
-friction = 0.2
+[ext_resource type="AudioStream" uid="uid://cx2ss0uk7tkn" path="res://Assets/sfx/wav/boxhitground.wav" id="4_tlcph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rudhl"]
 atlas = ExtResource("1_2635r")
@@ -100,16 +98,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_66pqq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uoal"]
 size = Vector2(12, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_71xka"]
-size = Vector2(14, 10)
-
-[node name="Box" type="RigidBody2D"]
+[node name="Box" type="CharacterBody2D"]
 collision_layer = 19
-physics_material_override = SubResource("PhysicsMaterial_4ngkp")
-lock_rotation = true
 script = ExtResource("1_5y78m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -118,19 +111,12 @@ animation = &"non_breakable_off"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_66pqq")
+shape = SubResource("RectangleShape2D_3uoal")
 one_way_collision_margin = 0.0
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8192
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_71xka")
 
 [node name="Powerable" parent="." groups=["powerable"] instance=ExtResource("3_lfm76")]
 TYPE = 1
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 8)
+stream = ExtResource("4_tlcph")
