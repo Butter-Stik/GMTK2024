@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=4 uid="uid://cd5thxmqrk4h"]
 
-[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_7w1wo"]
-[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_gvjmm"]
-[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_fpsow"]
-[ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="4_3aiyr"]
-[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_kvoa3"]
-[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="6_elnu8"]
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_a18gq"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_8bg5q"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_pcqh2"]
+[ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="4_6umn8"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_bm54y"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="6_vyslx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(80, 64)
@@ -36,13 +36,11 @@ size = Vector2(48, 128)
 
 [node name="SampleLevel" type="Node2D"]
 
-[node name="World" parent="." instance=ExtResource("1_7w1wo")]
+[node name="World" parent="." instance=ExtResource("1_a18gq")]
 
 [node name="Window" parent="World" index="0"]
 SHAPE = SubResource("RectangleShape2D_q4jnx")
 POSITION = Vector2(64, 56)
-animating = false
-animation_uv = 0.0
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" parent="World" index="1"]
@@ -93,21 +91,21 @@ tile_map_data = PackedByteArray("AAACAAIAAQAPAAQAAAADAAIAAQAPAAQAAAAEAAIAAQAPAAQ
 [node name="Player" parent="World" index="4"]
 position = Vector2(58, 55)
 
-[node name="circuit breaker" parent="World" instance=ExtResource("2_gvjmm")]
+[node name="circuit breaker" parent="World" instance=ExtResource("2_8bg5q")]
 position = Vector2(56, 136)
 
-[node name="Box1" parent="World" instance=ExtResource("3_fpsow")]
+[node name="Box1" parent="World" instance=ExtResource("3_pcqh2")]
 position = Vector2(133, 136)
 slide_on_ceiling = false
 
-[node name="Laser" parent="World" instance=ExtResource("4_3aiyr")]
+[node name="Laser" parent="World" instance=ExtResource("4_6umn8")]
 position = Vector2(152, 152)
 
-[node name="gate" parent="World" instance=ExtResource("5_kvoa3")]
+[node name="gate" parent="World" instance=ExtResource("5_bm54y")]
 position = Vector2(84, 136)
 COLOR = 1
 
-[node name="Button" parent="World" instance=ExtResource("6_elnu8")]
+[node name="Button" parent="World" instance=ExtResource("6_vyslx")]
 position = Vector2(264, 152)
 rotation = -1.5708
 COLOR = 1

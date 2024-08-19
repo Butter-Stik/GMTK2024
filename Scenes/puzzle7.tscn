@@ -1,0 +1,130 @@
+[gd_scene load_steps=18 format=4 uid="uid://bhs05ve2vspwd"]
+
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_et0n8"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_pye4g"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_xurik"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="4_t4h64"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_i2g6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n14q4"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28ra3"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fat7"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xafox"]
+size = Vector2(128, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prplk"]
+size = Vector2(320, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5r1ah"]
+size = Vector2(320, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paw8a"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gko06"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6xr8"]
+size = Vector2(176, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nn2x"]
+size = Vector2(176, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phpjc"]
+size = Vector2(32, 48)
+
+[node name="SampleLevel2" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_et0n8")]
+
+[node name="Window" parent="World" index="0"]
+SHAPE = SubResource("RectangleShape2D_q4jnx")
+POSITION = Vector2(88, 40)
+
+[node name="EditorOnlyOn" parent="World" index="2"]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAADAAAAAAAEAAAAAAABAAIAAAAFAAAAAAABAAIAAAAGAAAAAAABAAIAAAAHAAAAAAABAAIAAAAIAAAAAAABAAIAAAAJAAAAAAAEAAAAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAEAAAANAAAAAAABAAEAAAAOAAAAAAABAAEAAAAPAAAAAAABAAEAAAAQAAAAAAABAAEAAAARAAAAAAABAAEAAAASAAAAAAABAAEAAAATAAAAAAABAAEAAAATAAIAAAABAAEAAAATAAMAAAABAAEAAAATAAQAAAABAAEAAAATAAUAAAABAAEAAAATAAYAAAABAAEAAAATAAcAAAABAAEAAAATAAgAAAABAAEAAAATAAkAAAABAAEAAAATAAoAAAABAAEAAAASAAsAAAABAAEAAAARAAsAAAABAAEAAAATAAsAAAABAAEAAAAQAAsAAAABAAEAAAAPAAsAAAABAAEAAAAOAAsAAAABAAEAAAANAAsAAAABAAEAAAAMAAsAAAABAAEAAAALAAsAAAABAAEAAAAKAAsAAAABAAEAAAAGAAsAAAABAAEAAAAFAAsAAAABAAEAAAAEAAsAAAABAAEAAAACAAsAAAABAAEAAAABAAsAAAABAAEAAAAAAAsAAAABAAEAAAAAAAoAAAABAAEAAAAAAAkAAAABAAEAAAAAAAgAAAABAAEAAAAAAAcAAAABAAEAAAAAAAQAAAABAAEAAAAAAAMAAAABAAEAAAAAAAIAAAABAAEAAAAAAAEAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAADAAsAAAABAAEAAAATAAEAAAABAAEAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAACAAEAAAASAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAABAAQAAAABAAEAAAABAAUAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAABAAgAAAABAAEAAAABAAkAAAABAAEAAAABAAoAAAABAAEAAAACAAoAAAABAAEAAAADAAoAAAABAAEAAAAEAAoAAAABAAEAAAAFAAoAAAABAAEAAAAGAAoAAAABAAEAAAARAAoAAAABAAEAAAASAAoAAAABAAEAAAAQAAoAAAABAAEAAAAPAAoAAAABAAEAAAAOAAoAAAABAAEAAAANAAoAAAABAAEAAAAMAAoAAAABAAEAAAALAAoAAAABAAEAAAAKAAoAAAABAAEAAAASAAkAAAABAAEAAAASAAgAAAAEAAEAAAASAAIAAAABAAEAAAASAAMAAAABAAEAAAASAAQAAAAEAAAAAAASAAUAAAAAAAEAAAASAAYAAAAAAAEAAAASAAcAAAAAAAEAAAACAAUAAAABAAEAAAADAAIAAAACAAEAAAADAAYAAAADAAEAAAADAAcAAAABAAEAAAADAAgAAAABAAEAAAADAAkAAAABAAEAAAACAAkAAAABAAEAAAACAAgAAAABAAEAAAACAAcAAAABAAEAAAACAAYAAAABAAEAAAACAAQAAAABAAEAAAACAAMAAAABAAEAAAACAAIAAAABAAEAAAAEAAkAAAABAAEAAAAFAAkAAAABAAEAAAAGAAkAAAABAAEAAAAHAAoAAAADAAEAAAAHAAkAAAACAAEAAAAKAAkAAAABAAEAAAALAAkAAAABAAEAAAALAAgAAAABAAAAAAAMAAgAAAABAAAAAAAMAAkAAAABAAEAAAANAAkAAAABAAEAAAANAAgAAAAEAAEAAAAOAAgAAAADAAEAAAAOAAkAAAABAAEAAAAPAAkAAAABAAEAAAAQAAgAAAABAAAAAAARAAgAAAABAAAAAAARAAkAAAABAAEAAAAQAAkAAAABAAEAAAAJAAQAAAAAAAIAAAAJAAMAAAAAAAEAAAAJAAIAAAAAAAEAAAAJAAEAAAAAAAEAAAAKAAEAAAABAAEAAAALAAEAAAABAAEAAAAMAAEAAAABAAEAAAANAAEAAAABAAEAAAAOAAEAAAABAAEAAAAPAAEAAAABAAEAAAAQAAEAAAABAAEAAAARAAEAAAABAAEAAAARAAIAAAABAAEAAAAQAAIAAAABAAEAAAAPAAIAAAABAAEAAAAOAAIAAAABAAEAAAANAAIAAAABAAEAAAAMAAIAAAABAAEAAAALAAIAAAABAAEAAAAKAAIAAAABAAEAAAAKAAMAAAABAAEAAAALAAMAAAABAAEAAAAMAAMAAAABAAEAAAANAAMAAAABAAEAAAAOAAMAAAABAAEAAAAPAAMAAAABAAEAAAAQAAMAAAABAAEAAAARAAMAAAABAAEAAAARAAQAAAABAAIAAAAQAAQAAAABAAIAAAAPAAQAAAABAAIAAAAOAAQAAAADAAAAAAANAAQAAAAEAAAAAAAMAAQAAAABAAIAAAALAAQAAAABAAIAAAAKAAQAAAABAAIAAAAOAAcAAAACAAAAAAAOAAUAAAACAAIAAAAPAAgAAAABAAAAAAANAAcAAAAAAAAAAAANAAUAAAAAAAIAAAAHAAgAAAACAAEAAAAHAAcAAAACAAEAAAAGAAcAAAABAAEAAAAFAAcAAAABAAEAAAAEAAcAAAABAAEAAAAEAAgAAAABAAEAAAAFAAgAAAABAAEAAAAGAAgAAAABAAEAAAAEAAMAAAABAAAAAAAFAAMAAAABAAAAAAAGAAMAAAABAAAAAAAHAAMAAAACAAAAAAAHAAQAAAACAAIAAAAGAAQAAAABAAIAAAAFAAQAAAABAAIAAAAEAAQAAAABAAIAAAADAAQAAAADAAAAAAADAAMAAAADAAEAAAADAAUAAAACAAEAAAAEAAYAAAABAAAAAAAFAAYAAAABAAAAAAAGAAYAAAABAAAAAAAHAAYAAAACAAAAAAAHAAsAAAABAAEAAAAIAAsAAAABAAEAAAAJAAsAAAABAAEAAAAIAAoAAAABAAAAAAAJAAoAAAAEAAEAAAAJAAkAAAAAAAEAAAAJAAgAAAAAAAAAAAAKAAgAAAABAAAAAAA=")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="0"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_n14q4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="1"]
+position = Vector2(32, 88)
+shape = SubResource("RectangleShape2D_28ra3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="2"]
+position = Vector2(64, 64)
+shape = SubResource("RectangleShape2D_1fat7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="3"]
+position = Vector2(64, 128)
+shape = SubResource("RectangleShape2D_xafox")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="4"]
+position = Vector2(160, 8)
+shape = SubResource("RectangleShape2D_prplk")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="5"]
+position = Vector2(160, 176)
+shape = SubResource("RectangleShape2D_5r1ah")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="6"]
+position = Vector2(224, 88)
+shape = SubResource("RectangleShape2D_paw8a")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="7"]
+position = Vector2(224, 120)
+shape = SubResource("RectangleShape2D_gko06")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="8"]
+position = Vector2(232, 48)
+shape = SubResource("RectangleShape2D_s6xr8")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="9"]
+position = Vector2(232, 144)
+shape = SubResource("RectangleShape2D_5nn2x")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="10"]
+position = Vector2(304, 104)
+shape = SubResource("RectangleShape2D_phpjc")
+
+[node name="Player" parent="World" index="4"]
+position = Vector2(72, 40)
+
+[node name="Button" parent="World" instance=ExtResource("4_t4h64")]
+position = Vector2(72, 87)
+rotation = 1.5708
+COLOR = 1
+
+[node name="gate" parent="World" instance=ExtResource("5_i2g6m")]
+position = Vector2(136, 136)
+rotation = 1.5708
+COLOR = 1
+
+[node name="Button2" parent="World" instance=ExtResource("4_t4h64")]
+position = Vector2(136, 152)
+COLOR = 2
+
+[node name="gate2" parent="World" instance=ExtResource("5_i2g6m")]
+position = Vector2(224, 104)
+COLOR = 2
+
+[node name="Box" parent="World" instance=ExtResource("3_xurik")]
+position = Vector2(111, 40)
+
+[node name="circuit breaker" parent="World" instance=ExtResource("2_pye4g")]
+position = Vector2(264, 104)
+
+[connection signal="state_changed" from="World/Button" to="World/gate" method="on_trigger_state_changed"]
+[connection signal="state_changed" from="World/Button2" to="World/gate2" method="on_trigger_state_changed"]
+
+[editable path="World"]
