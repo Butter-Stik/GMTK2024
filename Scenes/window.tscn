@@ -10,7 +10,7 @@
 size = Vector2(24, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccw6f"]
-size = Vector2(63.9, 47.9)
+size = Vector2(7.9, 7.9)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_qhyfl"]
 frames = 4
@@ -38,10 +38,10 @@ shape = SubResource("RectangleShape2D_ccw6f")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AnimatedTexture_qhyfl")

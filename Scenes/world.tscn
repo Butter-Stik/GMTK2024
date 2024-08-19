@@ -15,8 +15,6 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apq4j"]
 shader = ExtResource("13_5ric2")
-shader_parameter/circle_centre = null
-shader_parameter/circle_radius = null
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_veug0")
