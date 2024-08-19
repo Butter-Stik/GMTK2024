@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2daajj41fy6s"]
+[gd_scene load_steps=10 format=3 uid="uid://c2daajj41fy6s"]
 
 [ext_resource type="Script" path="res://Scripts/laser.gd" id="1_qj0wj"]
 [ext_resource type="Texture2D" uid="uid://r61aneb4qxgg" path="res://Assets/Tilesets/main.png" id="1_utfgm"]
 [ext_resource type="Texture2D" uid="uid://bf0meeh2ox7ir" path="res://Assets/Tilesets/laser_beam.png" id="2_vv4st"]
 [ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="4_ui8g3"]
+[ext_resource type="AudioStream" uid="uid://buim1csogurc" path="res://Assets/sfx/wav/laseron.wav" id="5_85mvh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s62wm"]
 atlas = ExtResource("1_utfgm")
@@ -61,5 +62,8 @@ texture_mode = 2
 position = Vector2(8.1, 0)
 target_position = Vector2(320, 0)
 hit_from_inside = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_85mvh")
 
 [connection signal="power_changed" from="Head/Powerable" to="." method="_on_powerable_power_changed"]

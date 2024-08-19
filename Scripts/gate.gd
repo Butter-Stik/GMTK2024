@@ -54,8 +54,10 @@ func _ready():
 			else "closed_off");
 
 func on_trigger_state_changed(new_state: bool):
-	print(new_state);
 	state = new_state;
+	$Audio.play();
+	($Audio.get_stream_playback() as AudioStreamPlaybackInteractive).switch_to_clip_by_name(\
+		"open" if new_state else "close");
 
 func _on_power_changed(power):
 	if power == Constants.Power.ON:

@@ -9,7 +9,7 @@ var pushing = false:
 	set(new_pushing):
 		pushing = new_pushing;
 		if new_pushing:
-			speed = PUSH_SPEED;
+			speed = Constants.PUSH_SPEED;
 		else:
 			speed = SPEED;
 var dying = false;

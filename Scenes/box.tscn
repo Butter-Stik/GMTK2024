@@ -103,6 +103,8 @@ size = Vector2(12, 12)
 
 [node name="Box" type="CharacterBody2D"]
 collision_layer = 19
+floor_max_angle = 0.0174533
+safe_margin = 0.1
 script = ExtResource("1_5y78m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

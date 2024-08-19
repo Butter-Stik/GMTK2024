@@ -21,11 +21,11 @@ func run_physics(_delta: float):
 			beam_tip = point;
 			$Beam.points[1] = beam_tip;
 
-
 func _on_powerable_power_changed(power: Constants.Power):
 	if power == Constants.Power.ON:
 		$Beam.visible = true;
 		$Head/AnimatedSprite2D.play("on");
+		$Audio.play();
 	else:
 		$Beam.visible = false;
 		$Head/AnimatedSprite2D.play("off");
