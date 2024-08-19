@@ -1,27 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr887vgoetw51"]
+[gd_scene load_steps=6 format=3 uid="uid://cr887vgoetw51"]
 
 [ext_resource type="Script" path="res://Scripts/window.gd" id="1_umobu"]
-[ext_resource type="Texture2D" uid="uid://ikvcgmihd3qy" path="res://Assets/Window/window0.png" id="2_bn54h"]
-[ext_resource type="Texture2D" uid="uid://6p8dgs6v5m0w" path="res://Assets/Window/window1.png" id="3_5w12m"]
-[ext_resource type="Texture2D" uid="uid://bc8g8ugkhxab1" path="res://Assets/Window/window2.png" id="4_imd4w"]
-[ext_resource type="Texture2D" uid="uid://jegaqwv23yks" path="res://Assets/Window/window3.png" id="5_gu67p"]
+[ext_resource type="Texture2D" uid="uid://d1iamfuo3tk8t" path="res://Assets/Window/unconstrained.tres" id="2_xee0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7r4s"]
 size = Vector2(24, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccw6f"]
 size = Vector2(63.9, 47.9)
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_qhyfl"]
-frames = 4
-speed_scale = 10.0
-frame_0/texture = ExtResource("2_bn54h")
-frame_1/texture = ExtResource("3_5w12m")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("4_imd4w")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("5_gu67p")
-frame_3/duration = 1.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p5klr"]
 viewport_path = NodePath("SubViewport")
@@ -47,7 +33,7 @@ offset_right = 12.0
 offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AnimatedTexture_qhyfl")
+texture = ExtResource("2_xee0e")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8

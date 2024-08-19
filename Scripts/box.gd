@@ -47,19 +47,13 @@ func run_physics(delta: float):
 		for collision_idx in get_slide_collision_count():
 			var collision := get_slide_collision(collision_idx);
 			var collider = collision.get_collider();
-			print(collider);
 			if collider is not Player && collider is not Pushbox: continue
 			if collision.get_collider_velocity().x == 0.0: continue
-			velocity = Constants.PUSH_SPEED * collision.get_normal() * Vector2(1, 0);
-			print(velocity);
+			velocity = (Constants.PUSH_SPEED-2) * collision.get_normal() * Vector2(1, 0);
 			if collider is Player: collision.get_collider().pushing = true;
 			active_pushing = true;
-		print("---");
 		if !active_pushing:
 			velocity.x = 0;
-	
-	print(velocity);
-	print("<><><>")
 	
 	was_on_floor = is_on_floor();
 	if clip_to_button != 0:

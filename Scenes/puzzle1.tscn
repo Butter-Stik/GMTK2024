@@ -35,6 +35,7 @@ size = Vector2(32, 32)
 [node name="Window" parent="World" index="0"]
 SHAPE = SubResource("RectangleShape2D_q4jnx")
 POSITION = Vector2(60, 136)
+CONSTRAINT = 1
 
 [node name="Player" parent="World" index="2"]
 position = Vector2(48, 136)

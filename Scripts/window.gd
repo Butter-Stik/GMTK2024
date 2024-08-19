@@ -9,14 +9,35 @@ const WINDOW_SIZE: Vector2 = Vector2(320, 180);
 		POSITION = new_pos;
 		if Engine.is_editor_hint():
 			update_size();
+@export var CONSTRAINT: Constraint = Constraint.NONE:
+	set(new_constraint):
+		CONSTRAINT = new_constraint;
+		if Engine.is_editor_hint():
+			update_constraints();
 @onready var window_shape: RectangleShape2D = SHAPE.duplicate();
 @onready var window_position: Vector2 = POSITION;
 var dragging := Vector2.ZERO;
 var mouse_target_offset := Vector2.ZERO;
 
+func update_constraints():
+	match CONSTRAINT:
+		Constraint.NONE:
+			$Area/Collision/NinePatchRect.texture = preload("res://Assets/Window/unconstrained.tres");
+		Constraint.VERTICAL:
+			$Area/Collision/NinePatchRect.texture = preload("res://Assets/Window/vertical.tres");
+		Constraint.HORIZONTAL:
+			$Area/Collision/NinePatchRect.texture = preload("res://Assets/Window/horizontal.tres");
+
+enum Constraint {
+	NONE,
+	VERTICAL,
+	HORIZONTAL,
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# STARTING_SHAPE = STARTING_SHAPE;
+	update_constraints();
 	update_size();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,6 +86,11 @@ func _input(event):
 
 func region_input(event: InputEvent, direction: Vector2):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
+		match CONSTRAINT:
+			Constraint.HORIZONTAL:
+				if direction.y != 0: return;
+			Constraint.VERTICAL:
+				if direction.x != 0: return;
 		dragging = direction;
 		mouse_target_offset = dragging * window_shape.size / 2 + window_position \
 			- get_local_mouse_position();
