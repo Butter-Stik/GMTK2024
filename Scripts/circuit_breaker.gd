@@ -1,6 +1,7 @@
 extends Area2D
 
 var pulled: bool = false;
+@export_file var f
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,4 +25,4 @@ func _on_body_entered(body: Node2D) -> void:
 	pulled = true;
 	if pulled == true:
 		$AnimatedSprite2D.play("pulled")
-		get_tree().change_scene_to_file("res://Scenes/sample_level.tscn")
+		get_tree().change_scene_to_file(f)
