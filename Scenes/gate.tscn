@@ -1,11 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyjmy1x3foqml"]
+[gd_scene load_steps=8 format=3 uid="uid://dyjmy1x3foqml"]
 
 [ext_resource type="Script" path="res://Scripts/gate.gd" id="1_0h2sb"]
 [ext_resource type="SpriteFrames" uid="uid://l1rkg1anw4ux" path="res://Assets/Gates/grey_gate.tres" id="2_rpxtk"]
 [ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="3_v2rh7"]
+[ext_resource type="AudioStream" uid="uid://cltkrxke55s4b" path="res://Assets/sfx/wav/gateopen.wav" id="4_04yhv"]
+[ext_resource type="AudioStream" uid="uid://csq1gsq1p1d4a" path="res://Assets/sfx/wav/gateclose.wav" id="5_l1qx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4s76"]
 size = Vector2(4, 16)
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ngswt"]
+clip_count = 2
+clip_0/name = &"open"
+clip_0/stream = ExtResource("4_04yhv")
+clip_0/auto_advance = 0
+clip_1/name = &"close"
+clip_1/stream = ExtResource("5_l1qx3")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 1
+}
+}
 
 [node name="gate" type="StaticBody2D"]
 collision_layer = 17
@@ -19,5 +38,8 @@ animation = &"closed_on"
 shape = SubResource("RectangleShape2D_s4s76")
 
 [node name="Powerable" parent="." instance=ExtResource("3_v2rh7")]
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamInteractive_ngswt")
 
 [connection signal="power_changed" from="Powerable" to="." method="_on_power_changed"]

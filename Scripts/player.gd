@@ -9,7 +9,7 @@ var pushing = false:
 	set(new_pushing):
 		pushing = new_pushing;
 		if new_pushing:
-			speed = PUSH_SPEED;
+			speed = Constants.PUSH_SPEED;
 		else:
 			speed = SPEED;
 var dying = false;
@@ -30,6 +30,22 @@ var audio_state: AudioState = AudioState.IDLE:
 				play_sfx("death");
 			AudioState.LAND:
 				play_sfx("land");
+var particle_state: ParticleState = ParticleState.IDLE:
+	set(new_state):
+		if new_state == particle_state:
+			return;
+		particle_state = new_state;
+		match new_state:
+			ParticleState.IDLE:
+				$Particles.emitting = false;
+			ParticleState.LEFT:
+				$Particles.emitting = true;
+				$Particles.process_material.direction.x = abs($Particles.process_material.direction.x);
+			ParticleState.RIGHT:
+				$Particles.emitting = true;
+				$Particles.process_material.direction.x = -abs($Particles.process_material.direction.x);
+			ParticleState.FALL:
+				$FallParticles.emitting = true;
 
 enum AudioState {
 	WALK,
@@ -37,6 +53,13 @@ enum AudioState {
 	LAND,
 	DEATH,
 	IDLE
+}
+
+enum ParticleState {
+	IDLE,
+	LEFT,
+	RIGHT,
+	FALL
 }
 
 func _ready():
@@ -82,31 +105,40 @@ func proc_anims(old_velocity: Vector2, direction: float) -> void:
 	if $Powerable.power_state == Constants.Power.OFF:
 		$Sprite.play("off");
 		audio_state = AudioState.IDLE;
+		particle_state = ParticleState.IDLE;
 	elif $Powerable.power_state == Constants.Power.BOOTING:
 		$Sprite.play("awake");
 		audio_state = AudioState.IDLE;
+		particle_state = ParticleState.IDLE;
 	elif old_velocity.y * velocity.y < 0.0:
 		$Sprite.play("apex");
 		audio_state = AudioState.IDLE;
+		particle_state = ParticleState.IDLE;
 	elif old_velocity.y != velocity.y and old_velocity.y == 0.0:
 		$Sprite.play("launch");
 		audio_state = AudioState.JUMP;
+		particle_state = ParticleState.IDLE;
 	elif old_velocity.y != velocity.y and velocity.y == 0.0:
 		$Sprite.play("land");
 		audio_state = AudioState.LAND;
+		particle_state = ParticleState.FALL;
 	elif velocity.y > 0.0:
 		$Sprite.play("fall");
 		audio_state = AudioState.IDLE;
+		particle_state = ParticleState.IDLE;
 	elif velocity.y < 0.0:
 		$Sprite.play("jump");
 		audio_state = AudioState.IDLE;
+		particle_state = ParticleState.IDLE;
 	elif direction != 0.0:
 		$Sprite.flip_h = direction < 0.0;
 		$Sprite.play("walk");
 		audio_state = AudioState.WALK;
+		particle_state = ParticleState.LEFT if direction < 0.0 else ParticleState.RIGHT;
 	else:
 		$Sprite.play("idle");
 		audio_state = AudioState.IDLE;
+		particle_state = ParticleState.IDLE;
 	# # debug messages
 	# if animstate != $Sprite.animation:
 	# 	print($Sprite.animation);
@@ -127,6 +159,7 @@ func die():
 	$Sprite.set_deferred("speed_scale", 0.5);
 	$Sprite.call_deferred("play", "death");
 	audio_state = AudioState.DEATH;
+	particle_state = ParticleState.IDLE;
 	#get_tree().call_deferred("reload_current_scene");
 	
 
