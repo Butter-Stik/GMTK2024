@@ -8,3 +8,4 @@ func _ready():
 
 func _on_button_pressed():
 	$"/root/Death".LEVELS_COMPLETED = 0;
+	get_tree().reload_current_scene();

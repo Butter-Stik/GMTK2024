@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 @export var level_number: int = 01;
-@export var scene: PackedScene;
+@export_file("*.tscn") var scene: String;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
