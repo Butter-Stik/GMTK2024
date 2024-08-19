@@ -24,6 +24,8 @@ tile_set = ExtResource("2_jod46")
 collision_enabled = false
 
 [node name="TileCollider" type="StaticBody2D" parent="EditorOnlyOn"]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("5_ksj4r")
 tilemap_nodepath = NodePath("..")
 

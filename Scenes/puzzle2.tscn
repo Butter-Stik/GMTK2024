@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://ciskci66hfonb"]
+[gd_scene load_steps=14 format=4 uid="uid://ciskci66hfonb"]
 
 [ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_4q163"]
 [ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_m7ohc"]
 [ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_3pvej"]
-[ext_resource type="PackedScene" uid="uid://644b8r2f3387" path="res://Scenes/puzzle3.tscn" id="3_n80b2"]
 [ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="4_xmb4q"]
 [ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_xudsq"]
 
@@ -82,7 +81,7 @@ position = Vector2(64, 120)
 
 [node name="circuit breaker" parent="." instance=ExtResource("2_m7ohc")]
 position = Vector2(264, 104)
-next_level = ExtResource("3_n80b2")
+next_level = "res://Scenes/puzzle3.tscn"
 
 [node name="Box" parent="." instance=ExtResource("3_3pvej")]
 position = Vector2(104, 120)

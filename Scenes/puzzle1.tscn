@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://dympp8i7p6rtp"]
+[gd_scene load_steps=12 format=4 uid="uid://dympp8i7p6rtp"]
 
 [ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_4m6rg"]
 [ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="2_yk14n"]
 [ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="3_y5xgd"]
-[ext_resource type="PackedScene" uid="uid://ciskci66hfonb" path="res://Scenes/puzzle2.tscn" id="4_t06tf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(80, 80)
@@ -80,6 +79,6 @@ scale = Vector2(-1, 1)
 
 [node name="circuit breaker" parent="." instance=ExtResource("3_y5xgd")]
 position = Vector2(272, 128)
-next_level = ExtResource("4_t06tf")
+next_level = "res://Scenes/puzzle2.tscn"
 
 [editable path="World"]

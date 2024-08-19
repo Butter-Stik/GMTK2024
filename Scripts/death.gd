@@ -1,6 +1,6 @@
 extends Node2D
 
-var NEXT_SCENE: PackedScene;
+var NEXT_SCENE: String;
 var BUTTON_POSITION: Vector2;
 
 var LEVELS_COMPLETED: int = 0:
@@ -35,7 +35,8 @@ func next():
 	LEVELS_COMPLETED = max(LEVELS_COMPLETED, ACTIVE_LEVEL - 1);
 
 func enter():
-	get_tree().change_scene_to_packed(NEXT_SCENE);
+	print(NEXT_SCENE);
+	get_tree().change_scene_to_file(NEXT_SCENE);
 	
 
 func set_circle_position(position: Vector2):

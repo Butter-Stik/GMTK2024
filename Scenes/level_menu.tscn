@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://socuodxypwod"]
+[gd_scene load_steps=7 format=3 uid="uid://socuodxypwod"]
 
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_0cswm"]
 [ext_resource type="Script" path="res://Scripts/level_menu.gd" id="1_3vcbn"]
 [ext_resource type="PackedScene" uid="uid://y4ixyf7enr01" path="res://Scenes/level_button.tscn" id="2_njqc4"]
-[ext_resource type="PackedScene" uid="uid://dympp8i7p6rtp" path="res://Scenes/puzzle1.tscn" id="4_5dbh8"]
-[ext_resource type="PackedScene" uid="uid://ciskci66hfonb" path="res://Scenes/puzzle2.tscn" id="4_mcfnk"]
-[ext_resource type="PackedScene" uid="uid://644b8r2f3387" path="res://Scenes/puzzle3.tscn" id="5_wtoey"]
-[ext_resource type="PackedScene" uid="uid://dympp8i7p6rtp" path="res://Scenes/puzzle4.tscn" id="6_d8onf"]
+[ext_resource type="PackedScene" uid="uid://jj6upy2t8l56" path="res://Scenes/ui_button.tscn" id="5_l41ro"]
+[ext_resource type="Theme" uid="uid://qb36eq141qup" path="res://theme.tres" id="8_xecpq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3nbp"]
 atlas = ExtResource("1_0cswm")
@@ -19,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_xecpq")
 script = ExtResource("1_3vcbn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -48,29 +47,35 @@ theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 5
 
-[node name="LevelButton1" parent="GridContainer" instance=ExtResource("2_njqc4")]
+[node name="LevelButton" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
-scene = ExtResource("4_5dbh8")
+scene = "res://Scenes/puzzle1.tscn"
 
 [node name="LevelButton2" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 2
-scene = ExtResource("4_mcfnk")
+scene = "res://Scenes/puzzle2.tscn"
 
 [node name="LevelButton3" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 3
-scene = ExtResource("5_wtoey")
+scene = "res://Scenes/puzzle3.tscn"
 
 [node name="LevelButton4" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 4
-scene = ExtResource("6_d8onf")
+scene = "res://Scenes/puzzle4.tscn"
 
-[node name="Button" type="Button" parent="."]
+[node name="LevelButton5" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 5
+scene = "res://Scenes/puzzle5.tscn"
+
+[node name="NinePatchButton" parent="." instance=ExtResource("5_l41ro")]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Reset"
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 40.0
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="NinePatchButton" to="." method="_on_button_pressed"]

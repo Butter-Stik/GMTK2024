@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://qb36eq141qup"]
+
+[ext_resource type="FontFile" uid="uid://bvkywvgawulee" path="res://Assets/Fonts/QuinqueFive.otf" id="1_j1mwx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b2et"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66gll"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bjtw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfvjd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwrc5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+default_font = ExtResource("1_j1mwx")
+default_font_size = 10
+Button/styles/disabled = SubResource("StyleBoxFlat_3b2et")
+Button/styles/focus = SubResource("StyleBoxFlat_66gll")
+Button/styles/hover = SubResource("StyleBoxFlat_6bjtw")
+Button/styles/normal = SubResource("StyleBoxFlat_gfvjd")
+Button/styles/pressed = SubResource("StyleBoxFlat_fwrc5")

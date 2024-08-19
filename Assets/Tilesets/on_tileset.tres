@@ -107,6 +107,14 @@ texture = ExtResource("1_drmrl")
 4:1/animation_frame_3/duration = 1.0
 4:1/0 = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/animation_separation = Vector2i(7, 0)
+3:2/animation_speed = 10.0
+3:2/animation_frame_0/duration = 1.0
+3:2/animation_frame_1/duration = 1.0
+3:2/animation_frame_2/duration = 1.0
+3:2/animation_frame_3/duration = 1.0
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wi54b"]
 texture = ExtResource("2_b2ccv")
