@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://socuodxypwod"]
+
+[ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_0cswm"]
+[ext_resource type="Script" path="res://Scripts/level_menu.gd" id="1_3vcbn"]
+[ext_resource type="PackedScene" uid="uid://y4ixyf7enr01" path="res://Scenes/level_button.tscn" id="2_njqc4"]
+[ext_resource type="PackedScene" uid="uid://dympp8i7p6rtp" path="res://Scenes/puzzle1.tscn" id="4_5dbh8"]
+[ext_resource type="PackedScene" uid="uid://ciskci66hfonb" path="res://Scenes/puzzle2.tscn" id="4_mcfnk"]
+[ext_resource type="PackedScene" uid="uid://644b8r2f3387" path="res://Scenes/puzzle3.tscn" id="5_wtoey"]
+[ext_resource type="PackedScene" uid="uid://dympp8i7p6rtp" path="res://Scenes/puzzle4.tscn" id="6_d8onf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3nbp"]
+atlas = ExtResource("1_0cswm")
+region = Rect2(240, 64, 16, 16)
+
+[node name="Level Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3vcbn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_v3nbp")
+stretch_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 5
+
+[node name="LevelButton1" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+scene = ExtResource("4_5dbh8")
+
+[node name="LevelButton2" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 2
+scene = ExtResource("4_mcfnk")
+
+[node name="LevelButton3" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 3
+scene = ExtResource("5_wtoey")
+
+[node name="LevelButton4" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 4
+scene = ExtResource("6_d8onf")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Reset"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

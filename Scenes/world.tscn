@@ -15,8 +15,6 @@ script = ExtResource("1_veug0")
 [node name="Window" parent="." instance=ExtResource("8_bhblx")]
 z_index = 100
 SHAPE = SubResource("RectangleShape2D_8tgud")
-animating = null
-animation_uv = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 90)
