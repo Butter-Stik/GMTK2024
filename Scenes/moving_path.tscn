@@ -100,7 +100,7 @@ script = ExtResource("1_r1sv1")
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotates = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+[node name="RemoteTransform2Dd" type="RemoteTransform2D" parent="PathFollow2D"]
 remote_path = NodePath("../../AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
