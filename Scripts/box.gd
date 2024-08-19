@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 class_name Pushbox
 
 @export var DESTROY: bool = false:
@@ -19,6 +19,25 @@ func _ready() -> void:
 		$AnimatedSprite2D.play("non_breakable")
 	elif DESTROY == true:
 		$AnimatedSprite2D.play("breakable")
+	
+
+func _physics_process(delta):
+	if $Powerable.power_state == Constants.Power.ON:
+		run_physics(delta);
+
+func run_physics(delta: float):
+	if not is_on_floor():
+		velocity += get_gravity() * delta;
+	else:
+		velocity.x = 0;
+		
+		for collision_idx in get_slide_collision_count():
+			var collision := get_slide_collision(collision_idx);
+			if collision.get_collider() is not Player: continue
+			velocity = Constants.PUSH_SPEED * collision.get_normal();
+			
+	
+	move_and_slide();
 	
 
 func power(new_power: Constants.Power):

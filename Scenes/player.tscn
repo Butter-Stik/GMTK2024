@@ -292,9 +292,7 @@ PUSH_SPEED = 10
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kogha")
-animation = &"death"
-frame = 5
-frame_progress = 0.897368
+animation = &"idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)

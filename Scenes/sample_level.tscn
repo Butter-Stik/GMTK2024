@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://cw3i6r87j86sv"]
+[gd_scene load_steps=14 format=4 uid="uid://cw3i6r87j86sv"]
 
 [ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_h4rkk"]
 [ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="2_w628u"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_ajnae"]
+[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="4_bg8x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(80, 64)
@@ -26,6 +28,12 @@ size = Vector2(64, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wy66q"]
 size = Vector2(32, 16)
+
+[sub_resource type="Curve2D" id="Curve2D_pg4vy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
 
 [node name="SampleLevel" type="Node2D"]
 
@@ -71,5 +79,14 @@ shape = SubResource("RectangleShape2D_wy66q")
 
 [node name="Spikes" parent="World" instance=ExtResource("2_w628u")]
 position = Vector2(80, 136)
+
+[node name="Box" parent="World" instance=ExtResource("3_ajnae")]
+position = Vector2(199, 136)
+slide_on_ceiling = false
+
+[node name="Path2D" parent="World" instance=ExtResource("4_bg8x7")]
+position = Vector2(231, 137)
+curve = SubResource("Curve2D_pg4vy")
+speed = 1.0
 
 [editable path="World"]
