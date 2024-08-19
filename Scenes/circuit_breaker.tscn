@@ -88,10 +88,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="circuit breaker" type="Area2D"]
+[node name="circuit breaker" type="Area2D" groups=["breaker", "player"]]
 collision_layer = 17
 script = ExtResource("1_l1ee2")
-f = "res://Scenes/sample_level.tscn"
+next_level = "res://Scenes/puzzle10.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2g0o8")

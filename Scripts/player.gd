@@ -62,20 +62,16 @@ enum ParticleState {
 	FALL
 }
 
-func _ready():
-	$"/root/Death".set_circle_position(global_position);
-
 func _physics_process(delta: float) -> void:
 	if dying:
 		return
 	
 	var physics_info := Vector3.ZERO; # dummy value
 	if Input.is_action_just_pressed("restart"):
-		die()
+		restart();
 	if $Powerable.power_state == Constants.Power.ON:
-		physics_info = run_physics(delta)
-		$"/root/Death".set_circle_position(global_position);
-	proc_anims(Vector2(physics_info.x, physics_info.y), physics_info.z)
+		physics_info = run_physics(delta);
+	proc_anims(Vector2(physics_info.x, physics_info.y), physics_info.z);
 	
 
 func run_physics(delta: float) -> Vector3:
@@ -154,7 +150,7 @@ func _on_spikes_body_entered(body: Node2D) -> void:
 	
 
 func die():
-	$"/root/Death".play();
+	$"/root/Death".play("death");
 	dying = true;
 	$Sprite.set_deferred("speed_scale", 0.5);
 	$Sprite.call_deferred("play", "death");
@@ -162,6 +158,12 @@ func die():
 	particle_state = ParticleState.IDLE;
 	#get_tree().call_deferred("reload_current_scene");
 	
+
+func restart():
+	$"/root/Death".play("restart");
+	dying = true;
+	audio_state = AudioState.IDLE;
+	particle_state = ParticleState.IDLE;
 
 func _on_powerable_power_changed(power):
 	if power == Constants.Power.OFF:

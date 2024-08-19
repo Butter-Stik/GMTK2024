@@ -18,6 +18,32 @@ const WINDOW_SIZE: Vector2 = Vector2(320, 180);
 @onready var window_position: Vector2 = POSITION;
 var dragging := Vector2.ZERO;
 var mouse_target_offset := Vector2.ZERO;
+@export var animating := false:
+	set(new_animating):
+		animating = new_animating
+		if new_animating:
+			animation_position = window_position;
+			animation_shape = window_shape;
+			animation_tl = animation_position - animation_shape.size * Vector2(1, 1) / 2;
+			animation_tr = animation_position + animation_shape.size * Vector2(1, -1) / 2;
+			animation_bl = animation_position + animation_shape.size * Vector2(-1, 1) / 2;
+@export var animation_uv: float = 0.0:
+	set(new_uv):
+		if !animating: return;
+		animation_uv = new_uv;
+		var tl_corner = lerp(animation_tl, Vector2(0, 0), new_uv);
+		var tr_corner = lerp(animation_tr, Vector2(320, 0), new_uv);
+		var bl_corner = lerp(animation_bl, Vector2(0, 180), new_uv);
+		var new_position = Vector2((tl_corner.x + tr_corner.x) / 2, (tl_corner.y + bl_corner.y) / 2);
+		var new_size = Vector2(tr_corner.x - tl_corner.x, bl_corner.y - tl_corner.y);
+		window_position = new_position;
+		window_shape.size = new_size;
+		update_size();
+var animation_position: Vector2;
+var animation_shape: RectangleShape2D;
+var animation_tl: Vector2;
+var animation_tr: Vector2;
+var animation_bl: Vector2;
 
 func update_constraints():
 	match CONSTRAINT:
@@ -88,6 +114,7 @@ func _input(event):
 		dragging = Vector2.ZERO;
 
 func region_input(event: InputEvent, direction: Vector2):
+	if animating: return;
 	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
 		match CONSTRAINT:
 			Constraint.HORIZONTAL:
@@ -97,3 +124,12 @@ func region_input(event: InputEvent, direction: Vector2):
 		dragging = direction;
 		mouse_target_offset = dragging * window_shape.size / 2 + window_position \
 			- get_local_mouse_position();
+
+func animate():
+	$AnimationPlayer.play("span");
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name != "RESET":
+		$AnimationPlayer.play("RESET");
+	if anim_name == "span":
+		$"/root/Death".play("next");
