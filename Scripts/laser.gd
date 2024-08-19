@@ -26,7 +26,9 @@ func _on_powerable_power_changed(power: Constants.Power):
 	if power == Constants.Power.ON:
 		$Beam.visible = true;
 		$Head/AnimatedSprite2D.play("on");
+		$GPUParticles2D.emitting = true;
 		$Audio.play();
 	else:
 		$Beam.visible = false;
 		$Head/AnimatedSprite2D.play("off");
+		$GPUParticles2D.emitting = false;
