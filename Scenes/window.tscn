@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr887vgoetw51"]
+[gd_scene load_steps=7 format=3 uid="uid://cr887vgoetw51"]
 
 [ext_resource type="Script" path="res://Scripts/window.gd" id="1_umobu"]
 [ext_resource type="Texture2D" uid="uid://d1iamfuo3tk8t" path="res://Assets/Window/unconstrained.tres" id="2_xee0e"]
@@ -7,10 +7,13 @@
 size = Vector2(24, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccw6f"]
-size = Vector2(63.9, 47.9)
+size = Vector2(7.9, 7.9)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p5klr"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("Foreground")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_74tty"]
+viewport_path = NodePath("Background")
 
 [node name="Window" type="Node2D" groups=["window"]]
 script = ExtResource("1_umobu")
@@ -119,7 +122,7 @@ offset_right = 8.0
 offset_bottom = -8.0
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="Foreground" type="SubViewport" parent="."]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
@@ -129,11 +132,27 @@ gui_disable_input = true
 size = Vector2i(8, 8)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+[node name="Camera2D" type="Camera2D" parent="Foreground"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
+[node name="Background" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+gui_disable_input = true
+size = Vector2i(8, 8)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="Background"]
+
+[node name="ForegroundSprite" type="Sprite2D" parent="."]
 texture = SubResource("ViewportTexture_p5klr")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+z_index = -10
+z_as_relative = false
+texture = SubResource("ViewportTexture_74tty")
 
 [connection signal="gui_input" from="Area/Collision/NinePatchRect/TL" to="." method="region_input" binds= [Vector2(-1, -1)]]
 [connection signal="gui_input" from="Area/Collision/NinePatchRect/T" to="." method="region_input" binds= [Vector2(0, -1)]]
