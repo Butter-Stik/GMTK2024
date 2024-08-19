@@ -27,7 +27,8 @@ Vector2i(-1, -1): {
 }
 
 [node name="gate" type="StaticBody2D"]
-collision_layer = 17
+collision_layer = 25
+collision_mask = 9
 script = ExtResource("1_0h2sb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

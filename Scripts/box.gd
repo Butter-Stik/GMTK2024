@@ -95,7 +95,6 @@ func hitting_button():
 	var hitting = 0;
 	for body in $Area2D.get_overlapping_bodies():
 		if body.get_parent() is SwitchButton:
-			print(body.global_rotation)
 			if body.global_rotation == 0:
 				hitting = sign(body.get_parent().global_position - global_position).x;
 	return hitting;
