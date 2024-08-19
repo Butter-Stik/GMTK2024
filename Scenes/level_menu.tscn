@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://socuodxypwod"]
+[gd_scene load_steps=11 format=3 uid="uid://socuodxypwod"]
 
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_0cswm"]
 [ext_resource type="Script" path="res://Scripts/level_menu.gd" id="1_3vcbn"]
@@ -7,10 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://ciskci66hfonb" path="res://Scenes/puzzle2.tscn" id="4_mcfnk"]
 [ext_resource type="PackedScene" uid="uid://644b8r2f3387" path="res://Scenes/puzzle3.tscn" id="5_wtoey"]
 [ext_resource type="PackedScene" uid="uid://dympp8i7p6rtp" path="res://Scenes/puzzle4.tscn" id="6_d8onf"]
+[ext_resource type="Theme" uid="uid://qb36eq141qup" path="res://theme.tres" id="8_xecpq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3nbp"]
 atlas = ExtResource("1_0cswm")
 region = Rect2(240, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ald2e"]
+atlas = ExtResource("1_0cswm")
+region = Rect2(128, 24, 24, 24)
 
 [node name="Level Menu" type="Control"]
 layout_mode = 3
@@ -19,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_xecpq")
 script = ExtResource("1_3vcbn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -67,10 +73,33 @@ layout_mode = 2
 level_number = 4
 scene = ExtResource("6_d8onf")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 60.0
+offset_bottom = 16.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(80, 24)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ald2e")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 9
+
+[node name="Button" type="Button" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
 text = "Reset"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/Button" to="." method="_on_button_pressed"]
