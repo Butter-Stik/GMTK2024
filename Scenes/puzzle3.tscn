@@ -98,6 +98,7 @@ COLOR = 1
 
 [node name="gate" parent="." instance=ExtResource("5_tfkyn")]
 position = Vector2(216, 104)
+collision_layer = 24
 COLOR = 1
 INVERTED = true
 

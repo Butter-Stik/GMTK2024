@@ -19,7 +19,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if $AnimatableBody2D/Powerable.power_state == Constants.Power.ON:
-		path.progress += speed
+		path.progress += speed * delta
 
 
 func _on_powerable_power_changed(power: Constants.Power) -> void:
