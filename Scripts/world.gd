@@ -45,3 +45,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func on_trigger_state_changed(pressed: bool) -> void:
+	pass # Replace with function body.
