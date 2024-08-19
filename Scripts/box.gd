@@ -39,9 +39,9 @@ func run_physics(delta: float):
 			pressing_button = true
 	if !pressing_button:
 		if $WallLeft.is_colliding() and !$WallRight.is_colliding():
-			velocity.x += 5
+			velocity.x = 20
 		if $WallRight.is_colliding() and !$WallLeft.is_colliding():
-			velocity.x -= 5
+			velocity.x = 20
 	if not is_on_floor():
 		if was_on_floor:
 			velocity = Vector2.ZERO;

@@ -15,7 +15,7 @@ void fragment() {
 	vec2 pixel_uv = UV * vec2(320.0, 180.0);
 	
 	if (!point_is_in_circle(floor(pixel_uv))) {
-		COLOR = vec4(0.0, 0.0, 0.0, 1.0);
+		COLOR = vec4(7.0/255.0, 8.0/255.0, 14.0/255.0, 1.0);
 	} else {
 		COLOR = texture(screen_texture, UV);
 	}

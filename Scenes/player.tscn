@@ -332,7 +332,7 @@ height = 1
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 12307
 script = ExtResource("1_k76jh")
-PUSH_SPEED = 10
+PUSH_SPEED = 15
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
