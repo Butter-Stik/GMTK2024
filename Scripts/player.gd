@@ -26,6 +26,8 @@ var audio_state: AudioState = AudioState.IDLE:
 				play_sfx("jump");
 			AudioState.WALK:
 				play_sfx("walk");
+			AudioState.DEATH:
+				play_sfx("death");
 			AudioState.LAND:
 				play_sfx("land");
 
@@ -33,8 +35,12 @@ enum AudioState {
 	WALK,
 	JUMP,
 	LAND,
+	DEATH,
 	IDLE
 }
+
+func _ready():
+	$"/root/Death".set_circle_position(global_position);
 
 func _physics_process(delta: float) -> void:
 	if dying:
@@ -126,6 +132,7 @@ func die():
 	dying = true;
 	$Sprite.set_deferred("speed_scale", 0.5);
 	$Sprite.call_deferred("play", "death");
+	audio_state = AudioState.DEATH;
 	#get_tree().call_deferred("reload_current_scene");
 	
 
