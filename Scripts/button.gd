@@ -46,7 +46,6 @@ func _physics_process(delta: float) -> void:
 
 func run_physics(_delta: float) -> void:
 	if queued_bodies != 0:
-		print("changing")
 		if bodies == 0:
 			state_changed.emit(true);
 		elif bodies + queued_bodies == 0:

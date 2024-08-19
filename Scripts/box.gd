@@ -10,7 +10,6 @@ class_name Pushbox
 			$Powerable.TYPE = Constants.PowerableType.NONE;
 @export var STARTS_POWERED: bool = false;
 var was_on_floor: bool = false;
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if STARTS_POWERED:
@@ -34,20 +33,28 @@ func _physics_process(delta):
 
 func run_physics(delta: float):
 	var clip_to_button := 0;
+	var pressing_button = false
+	for body in $Area2D.get_overlapping_bodies():
+		if body.get_parent() is SwitchButton:
+			pressing_button = true
+	if !pressing_button:
+		if $WallLeft.is_colliding() and !$WallRight.is_colliding():
+			velocity.x += 5
+		if $WallRight.is_colliding() and !$WallLeft.is_colliding():
+			velocity.x -= 5
 	if not is_on_floor():
 		if was_on_floor:
 			velocity = Vector2.ZERO;
 		velocity += get_gravity() * delta;
-		if is_on_wall():
-			if !$RayCast2D.is_colliding():
-				velocity.x += get_wall_normal().x * 20
-			else:
-				clip_to_button = hitting_button();
+		if is_on_wall() and $RayCast2D.is_colliding():
+			clip_to_button = hitting_button();
 	else:
 		if !was_on_floor:
 			$Audio.play();
-		
-		velocity.x = 0;
+	
+		var wall_colliding = $WallLeft.is_colliding() or $WallRight.is_colliding()
+		if !wall_colliding:
+			velocity.x = 0;
 		var active_pushing = false;
 		
 		for collision_idx in get_slide_collision_count():
@@ -59,7 +66,8 @@ func run_physics(delta: float):
 			if collider is Player: collision.get_collider().pushing = true;
 			active_pushing = true;
 		if !active_pushing:
-			velocity.x = 0;
+			if !wall_colliding:
+				velocity.x = 0;
 	
 	was_on_floor = is_on_floor();
 	if clip_to_button != 0:
@@ -88,6 +96,6 @@ func hitting_button():
 	var hitting = 0;
 	for body in $Area2D.get_overlapping_bodies():
 		if body.get_parent() is SwitchButton:
-			hitting = sign(body.get_parent().global_position - global_position).x;
-	print(hitting);
+			if body.global_rotation == 0:
+				hitting = sign(body.get_parent().global_position - global_position).x;
 	return hitting;
