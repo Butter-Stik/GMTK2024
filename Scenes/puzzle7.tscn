@@ -123,6 +123,7 @@ position = Vector2(111, 40)
 
 [node name="circuit breaker" parent="World" instance=ExtResource("2_pye4g")]
 position = Vector2(264, 104)
+next_level = "res://Scenes/puzzle8.tscn"
 
 [connection signal="state_changed" from="World/Button" to="World/gate" method="on_trigger_state_changed"]
 [connection signal="state_changed" from="World/Button2" to="World/gate2" method="on_trigger_state_changed"]

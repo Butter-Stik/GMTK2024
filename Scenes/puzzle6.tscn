@@ -107,7 +107,7 @@ COLOR = 2
 
 [node name="circuit breaker" parent="World" instance=ExtResource("3_w6feu")]
 position = Vector2(256, 96)
-next_level = "res://Scenes/puzzle2.tscn"
+next_level = "res://Scenes/puzzle7.tscn"
 
 [node name="gate" parent="World" instance=ExtResource("5_sxsos")]
 position = Vector2(216, 104)
