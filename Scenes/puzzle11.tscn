@@ -1,0 +1,183 @@
+[gd_scene load_steps=21 format=4 uid="uid://df6g71vomos4h"]
+
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_tay2k"]
+[ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="2_3hxgg"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="3_otj2n"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="4_pa1re"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_0whv8"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="6_5sb68"]
+[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="7_lhj3k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
+size = Vector2(96, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r1n8"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otcja"]
+size = Vector2(112, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fws50"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc1dx"]
+size = Vector2(144, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyfd3"]
+size = Vector2(320, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l76m"]
+size = Vector2(320, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hp0k"]
+size = Vector2(176, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc54c"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hk13o"]
+size = Vector2(112, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8evk1"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_820ql"]
+size = Vector2(16, 32)
+
+[sub_resource type="Curve2D" id="Curve2D_ke6xu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[node name="SampleLevel2" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_tay2k")]
+
+[node name="Window" parent="World" index="0"]
+SHAPE = SubResource("RectangleShape2D_q4jnx")
+POSITION = Vector2(56, 72)
+animating = false
+animation_uv = 0.0
+
+[node name="EditorOnlyOn" parent="World" index="2"]
+tile_map_data = PackedByteArray("AAAGAAYAAAACAAAAAAAIAAcAAAACAAAAAAAIAAgAAAACAAEAAAAHAAkAAAABAAEAAAAHAAgAAAABAAEAAAAHAAcAAAABAAAAAAAGAAcAAAADAAEAAAAGAAgAAAABAAEAAAAGAAkAAAABAAEAAAAFAAgAAAABAAEAAAAFAAcAAAABAAEAAAAFAAYAAAABAAAAAAAFAAkAAAABAAEAAAAEAAgAAAABAAEAAAAEAAcAAAABAAEAAAAEAAYAAAABAAAAAAAEAAkAAAABAAEAAAADAAgAAAABAAEAAAADAAcAAAABAAEAAAADAAYAAAABAAAAAAACAAkAAAABAAEAAAACAAgAAAABAAEAAAACAAcAAAABAAEAAAACAAYAAAABAAAAAAADAAkAAAABAAEAAAABAAkAAAABAAEAAAABAAgAAAABAAEAAAABAAcAAAABAAEAAAABAAYAAAADAAEAAAABAAUAAAACAAEAAAABAAQAAAACAAEAAAABAAMAAAACAAEAAAABAAIAAAADAAAAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAFAAEAAAABAAEAAAAGAAEAAAABAAEAAAAJAAoAAAABAAAAAAAIAAoAAAADAAEAAAAHAAoAAAABAAEAAAAGAAoAAAABAAEAAAAFAAoAAAABAAEAAAAEAAoAAAABAAEAAAADAAoAAAABAAEAAAACAAoAAAABAAEAAAABAAoAAAABAAEAAAAAAAoAAAABAAEAAAAAAAkAAAABAAEAAAAAAAgAAAABAAEAAAAAAAcAAAABAAEAAAAAAAYAAAABAAEAAAAAAAUAAAABAAEAAAAAAAQAAAABAAEAAAAAAAMAAAABAAEAAAAAAAIAAAABAAEAAAAAAAEAAAABAAEAAAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAADAAAAAAAIAAAAAAABAAIAAAAJAAAAAAAEAAAAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAEAAAANAAAAAAABAAEAAAAOAAAAAAABAAEAAAAPAAAAAAABAAEAAAAQAAAAAAABAAEAAAARAAAAAAABAAEAAAASAAAAAAABAAEAAAATAAAAAAABAAEAAAATAAEAAAABAAEAAAATAAIAAAAEAAAAAAATAAMAAAAAAAEAAAATAAQAAAAAAAEAAAATAAUAAAAEAAEAAAATAAYAAAABAAEAAAATAAcAAAABAAEAAAATAAgAAAABAAEAAAATAAkAAAABAAEAAAATAAoAAAABAAEAAAATAAsAAAABAAEAAAASAAsAAAABAAEAAAARAAsAAAABAAEAAAAQAAsAAAABAAEAAAAPAAsAAAABAAEAAAAOAAsAAAABAAEAAAANAAsAAAABAAEAAAAMAAsAAAABAAEAAAALAAsAAAABAAEAAAAKAAsAAAABAAEAAAAJAAsAAAABAAEAAAAIAAsAAAABAAEAAAAHAAsAAAABAAEAAAAGAAsAAAABAAEAAAAFAAsAAAABAAEAAAAEAAsAAAABAAEAAAADAAsAAAABAAEAAAACAAsAAAABAAEAAAABAAsAAAABAAEAAAAAAAsAAAABAAEAAAAKAAoAAAABAAAAAAALAAoAAAABAAAAAAAMAAoAAAABAAAAAAANAAoAAAABAAAAAAAOAAoAAAABAAAAAAAPAAoAAAABAAAAAAAQAAoAAAABAAAAAAARAAoAAAABAAAAAAASAAoAAAAEAAEAAAASAAkAAAAAAAEAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAABAAIAAAAFAAIAAAABAAIAAAAGAAIAAAABAAIAAAAHAAIAAAACAAIAAAAJAAIAAAAAAAIAAAAKAAIAAAABAAIAAAALAAIAAAABAAIAAAAMAAIAAAABAAIAAAANAAIAAAABAAIAAAAOAAIAAAAEAAAAAAAPAAIAAAADAAAAAAAQAAIAAAABAAIAAAARAAIAAAABAAIAAAASAAIAAAABAAIAAAAHAAEAAAACAAEAAAAJAAEAAAAAAAEAAAAKAAEAAAABAAEAAAALAAEAAAABAAEAAAAMAAEAAAABAAEAAAANAAEAAAABAAEAAAAOAAEAAAABAAEAAAAPAAEAAAABAAEAAAAQAAEAAAABAAEAAAARAAEAAAABAAEAAAASAAEAAAABAAEAAAAIAAkAAAACAAEAAAAOAAMAAAAAAAIAAAAPAAMAAAACAAIAAAASAAYAAAAEAAAAAAASAAcAAAAAAAEAAAASAAgAAAAAAAEAAAASAAUAAAABAAAAAAARAAUAAAABAAAAAAAQAAUAAAABAAAAAAAPAAUAAAABAAAAAAAOAAUAAAABAAAAAAANAAUAAAAAAAAAAAARAAYAAAABAAIAAAAQAAYAAAABAAIAAAAPAAYAAAABAAIAAAAOAAYAAAABAAIAAAANAAYAAAAAAAIAAAA=")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="0"]
+position = Vector2(16, 72)
+shape = SubResource("RectangleShape2D_7r1n8")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="1"]
+position = Vector2(56, 104)
+shape = SubResource("RectangleShape2D_otcja")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="2"]
+position = Vector2(64, 32)
+shape = SubResource("RectangleShape2D_fws50")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="3"]
+position = Vector2(72, 136)
+shape = SubResource("RectangleShape2D_fc1dx")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="4"]
+position = Vector2(160, 8)
+shape = SubResource("RectangleShape2D_lyfd3")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="5"]
+position = Vector2(160, 176)
+shape = SubResource("RectangleShape2D_6l76m")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="6"]
+position = Vector2(232, 32)
+shape = SubResource("RectangleShape2D_5hp0k")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="7"]
+position = Vector2(240, 56)
+shape = SubResource("RectangleShape2D_nc54c")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="8"]
+position = Vector2(264, 96)
+shape = SubResource("RectangleShape2D_hk13o")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="9"]
+position = Vector2(304, 136)
+shape = SubResource("RectangleShape2D_8evk1")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="10"]
+position = Vector2(312, 64)
+shape = SubResource("RectangleShape2D_820ql")
+
+[node name="Player" parent="World" index="4"]
+position = Vector2(48, 88)
+
+[node name="Spikes" parent="." instance=ExtResource("2_3hxgg")]
+position = Vector2(168, 152)
+
+[node name="circuit breaker" parent="." instance=ExtResource("3_otj2n")]
+position = Vector2(280, 64)
+
+[node name="Spikes2" parent="." instance=ExtResource("2_3hxgg")]
+position = Vector2(200, 152)
+
+[node name="Spikes3" parent="." instance=ExtResource("2_3hxgg")]
+position = Vector2(152, 152)
+
+[node name="Spikes4" parent="." instance=ExtResource("2_3hxgg")]
+position = Vector2(184, 152)
+
+[node name="Spikes5" parent="." instance=ExtResource("2_3hxgg")]
+position = Vector2(216, 152)
+
+[node name="Spikes6" parent="." instance=ExtResource("2_3hxgg")]
+position = Vector2(248, 152)
+
+[node name="Spikes7" parent="." instance=ExtResource("2_3hxgg")]
+position = Vector2(232, 152)
+
+[node name="Spikes8" parent="." instance=ExtResource("2_3hxgg")]
+position = Vector2(280, 152)
+
+[node name="Spikes9" parent="." instance=ExtResource("2_3hxgg")]
+position = Vector2(264, 152)
+
+[node name="Button" parent="." instance=ExtResource("4_pa1re")]
+position = Vector2(104, 88)
+COLOR = 1
+
+[node name="gate" parent="." instance=ExtResource("5_0whv8")]
+position = Vector2(136, 40)
+rotation = 1.5708
+COLOR = 1
+
+[node name="Button2" parent="." instance=ExtResource("4_pa1re")]
+z_index = -1
+position = Vector2(200, 152)
+COLOR = 4
+
+[node name="gate2" parent="." instance=ExtResource("5_0whv8")]
+position = Vector2(232, 72)
+COLOR = 4
+
+[node name="Button3" parent="." instance=ExtResource("4_pa1re")]
+position = Vector2(280, 120)
+rotation = -1.5708
+COLOR = 2
+
+[node name="gate3" parent="." instance=ExtResource("5_0whv8")]
+position = Vector2(248, 72)
+COLOR = 2
+
+[node name="Box" parent="." instance=ExtResource("6_5sb68")]
+position = Vector2(136, 30)
+
+[node name="Box2" parent="." instance=ExtResource("6_5sb68")]
+position = Vector2(72, 88)
+
+[node name="Path2D" parent="." instance=ExtResource("7_lhj3k")]
+position = Vector2(160, 131)
+curve = SubResource("Curve2D_ke6xu")
+speed = 20
+
+[connection signal="state_changed" from="Button" to="gate" method="on_trigger_state_changed"]
+
+[editable path="World"]
