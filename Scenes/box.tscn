@@ -1,8 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvcoc8e6sof2u"]
+[gd_scene load_steps=18 format=3 uid="uid://dvcoc8e6sof2u"]
 
 [ext_resource type="Script" path="res://Scripts/box.gd" id="1_5y78m"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_2635r"]
 [ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="3_lfm76"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4ngkp"]
+friction = 0.2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rudhl"]
 atlas = ExtResource("1_2635r")
@@ -97,14 +100,15 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uoal"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66pqq"]
 size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71xka"]
 size = Vector2(14, 10)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Box" type="RigidBody2D"]
 collision_layer = 19
+physics_material_override = SubResource("PhysicsMaterial_4ngkp")
 lock_rotation = true
 script = ExtResource("1_5y78m")
 
@@ -114,7 +118,7 @@ animation = &"non_breakable_off"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_3uoal")
+shape = SubResource("RectangleShape2D_66pqq")
 one_way_collision_margin = 0.0
 
 [node name="Area2D" type="Area2D" parent="."]

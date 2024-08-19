@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 @export var SPEED = 60
-@export var JUMP_VELOCITY = 200
+@export var JUMP_VELOCITY = 215
 @export var PUSH_SPEED = 30
 var direction = 0
 var speed = SPEED
@@ -71,7 +71,7 @@ func run_physics(delta: float) -> Vector3:
 		if collision.get_collider() == null:
 			continue
 		if collision.get_collider().is_in_group("objects"):
-			collision.get_collider().apply_central_impulse(-collision.get_normal() * 17)
+			collision.get_collider().apply_central_impulse(-collision.get_normal() * 5)
 	move_and_slide()
 	
 	return Vector3(old_velocity.x, old_velocity.y, direction);

@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=4 uid="uid://dympp8i7p6rtp"]
+
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_jyoh2"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="2_dnlt3"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="3_svug5"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="4_axve4"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="5_r3ebi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klyqc"]
+size = Vector2(80, 80)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rkcmk"]
+viewport_path = NodePath("World/SubViewport")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcsti"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c188a"]
+size = Vector2(112, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cm7gf"]
+size = Vector2(160, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_midkx"]
+size = Vector2(176, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfx05"]
+size = Vector2(320, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpa0p"]
+size = Vector2(320, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emfv0"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsrkf"]
+size = Vector2(128, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhqw3"]
+size = Vector2(96, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7rvc"]
+size = Vector2(32, 32)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gnn7i"]
+friction = 0.2
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ya5lm"]
+friction = 0.2
+
+[node name="SampleLevel" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_jyoh2")]
+
+[node name="SubViewport" parent="World" index="0"]
+size = Vector2i(64, 48)
+
+[node name="Camera2D" parent="World/SubViewport" index="0"]
+position = Vector2(60, 136)
+
+[node name="Window" parent="World" index="1"]
+SHAPE = SubResource("RectangleShape2D_klyqc")
+POSITION = Vector2(56, 56)
+
+[node name="Sprite2D" parent="World/Window" index="1"]
+position = Vector2(60, 136)
+texture = SubResource("ViewportTexture_rkcmk")
+
+[node name="Player" parent="World" index="3"]
+position = Vector2(48, 56)
+
+[node name="EditorOnlyOn" parent="World" index="4"]
+tile_map_data = PackedByteArray("AAACAAkAAAABAAEAAAASAAgAAAAEAAEAAAASAAkAAAABAAEAAAASAAcAAAAAAAEAAAASAAYAAAAAAAEAAAAQAAUAAAABAAIAAAAQAAQAAAABAAEAAAAQAAMAAAABAAEAAAAQAAIAAAABAAEAAAAQAAEAAAABAAEAAAAPAAEAAAABAAEAAAAOAAEAAAABAAEAAAANAAEAAAABAAEAAAAMAAEAAAAEAAAAAAALAAEAAAABAAIAAAAKAAEAAAABAAIAAAAJAAEAAAABAAIAAAAIAAEAAAABAAIAAAAHAAEAAAABAAIAAAAGAAEAAAABAAIAAAAFAAEAAAABAAIAAAAEAAEAAAABAAIAAAADAAEAAAABAAIAAAACAAEAAAABAAIAAAABAAEAAAADAAAAAAABAAIAAAACAAEAAAABAAMAAAACAAEAAAABAAUAAAADAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAABAAgAAAABAAEAAAABAAkAAAABAAEAAAATAAkAAAABAAEAAAATAAgAAAABAAEAAAATAAcAAAABAAEAAAATAAYAAAABAAEAAAATAAUAAAABAAEAAAASAAUAAAAEAAAAAAARAAUAAAABAAIAAAARAAQAAAABAAEAAAARAAMAAAABAAEAAAARAAIAAAABAAEAAAARAAEAAAABAAEAAAARAAAAAAABAAEAAAASAAAAAAABAAEAAAASAAEAAAABAAEAAAATAAEAAAABAAEAAAATAAIAAAABAAEAAAATAAMAAAABAAEAAAATAAQAAAABAAEAAAASAAIAAAABAAEAAAASAAMAAAABAAEAAAASAAQAAAABAAEAAAATAAAAAAABAAEAAAAQAAAAAAABAAEAAAAPAAAAAAABAAEAAAAOAAAAAAABAAEAAAANAAAAAAABAAEAAAAMAAAAAAABAAEAAAALAAAAAAABAAEAAAAKAAAAAAABAAEAAAAJAAAAAAABAAEAAAAIAAAAAAABAAEAAAAHAAAAAAABAAEAAAAGAAAAAAABAAEAAAAFAAAAAAABAAEAAAAEAAAAAAABAAEAAAADAAAAAAABAAEAAAACAAAAAAABAAEAAAABAAAAAAABAAEAAAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAAAAAoAAAABAAEAAAABAAoAAAABAAEAAAACAAoAAAABAAEAAAADAAoAAAABAAEAAAAEAAoAAAABAAEAAAAFAAoAAAABAAEAAAAGAAoAAAABAAEAAAAHAAoAAAABAAEAAAAIAAoAAAABAAEAAAAKAAoAAAABAAAAAAALAAoAAAABAAAAAAAMAAoAAAABAAAAAAANAAoAAAABAAAAAAAOAAoAAAAEAAEAAAAPAAoAAAABAAEAAAAQAAoAAAABAAEAAAARAAoAAAABAAEAAAASAAoAAAABAAEAAAATAAoAAAABAAEAAAATAAsAAAABAAEAAAASAAsAAAABAAEAAAARAAsAAAABAAEAAAAQAAsAAAABAAEAAAAPAAsAAAABAAEAAAAOAAsAAAABAAEAAAANAAsAAAABAAEAAAAMAAsAAAABAAEAAAALAAsAAAABAAEAAAAKAAsAAAABAAEAAAAJAAsAAAABAAEAAAAIAAsAAAABAAEAAAAHAAsAAAABAAEAAAAGAAsAAAABAAEAAAAFAAsAAAABAAEAAAAEAAsAAAABAAEAAAADAAsAAAABAAEAAAACAAsAAAABAAEAAAABAAsAAAABAAEAAAAAAAsAAAABAAEAAAAIAAgAAAABAAAAAAAHAAgAAAABAAAAAAAGAAgAAAADAAEAAAAGAAcAAAACAAEAAAAGAAYAAAADAAAAAAAFAAYAAAABAAEAAAAFAAcAAAABAAEAAAAFAAgAAAABAAEAAAAFAAkAAAABAAEAAAAGAAkAAAABAAEAAAAHAAkAAAABAAEAAAAIAAkAAAABAAEAAAAEAAkAAAABAAEAAAADAAkAAAABAAEAAAAEAAgAAAABAAEAAAACAAgAAAABAAEAAAADAAgAAAABAAEAAAACAAYAAAABAAEAAAACAAcAAAABAAEAAAADAAYAAAABAAEAAAAEAAYAAAABAAEAAAAEAAcAAAABAAEAAAADAAcAAAABAAEAAAAOAAkAAAAAAAEAAAARAAkAAAABAAEAAAAQAAkAAAABAAEAAAAPAAkAAAABAAEAAAAPAAgAAAABAAAAAAAQAAgAAAABAAAAAAARAAgAAAABAAAAAAAOAAgAAAAAAAAAAAAOAAYAAAABAAIAAAAPAAYAAAACAAIAAAAOAAQAAAABAAEAAAAOAAUAAAABAAEAAAAOAAIAAAABAAEAAAAOAAMAAAABAAEAAAAPAAIAAAABAAEAAAAPAAMAAAABAAEAAAAPAAQAAAABAAEAAAAPAAUAAAADAAAAAAAMAAUAAAAAAAEAAAAMAAQAAAAAAAEAAAAMAAMAAAAAAAEAAAAMAAIAAAAAAAEAAAANAAUAAAABAAEAAAANAAQAAAABAAEAAAANAAMAAAABAAEAAAANAAIAAAABAAEAAAANAAYAAAABAAIAAAAMAAYAAAAAAAIAAAAJAAgAAAACAAAAAAAJAAoAAAADAAEAAAAJAAkAAAACAAEAAAABAAQAAAACAAEAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAABAAAAAAAIAAUAAAABAAAAAAAKAAUAAAACAAAAAAAJAAUAAAABAAAAAAAKAAYAAAACAAIAAAAJAAYAAAABAAIAAAAIAAYAAAABAAIAAAAHAAYAAAABAAIAAAA=")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="0"]
+position = Vector2(16, 56)
+shape = SubResource("RectangleShape2D_wcsti")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="1"]
+position = Vector2(56, 120)
+shape = SubResource("RectangleShape2D_c188a")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="2"]
+position = Vector2(80, 144)
+shape = SubResource("RectangleShape2D_cm7gf")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="3"]
+position = Vector2(88, 96)
+shape = SubResource("RectangleShape2D_midkx")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="4"]
+position = Vector2(160, 16)
+shape = SubResource("RectangleShape2D_yfx05")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="5"]
+position = Vector2(160, 176)
+shape = SubResource("RectangleShape2D_kpa0p")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="6"]
+position = Vector2(224, 104)
+shape = SubResource("RectangleShape2D_emfv0")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="7"]
+position = Vector2(256, 64)
+shape = SubResource("RectangleShape2D_dsrkf")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="8"]
+position = Vector2(272, 144)
+shape = SubResource("RectangleShape2D_yhqw3")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="9"]
+position = Vector2(304, 112)
+shape = SubResource("RectangleShape2D_u7rvc")
+
+[node name="CanvasLayer" parent="World" index="5"]
+visible = false
+
+[node name="circuit breaker" parent="." instance=ExtResource("3_svug5")]
+position = Vector2(272, 112)
+
+[node name="RigidBody2D" parent="." groups=["objects"] instance=ExtResource("2_dnlt3")]
+position = Vector2(144, 120)
+physics_material_override = SubResource("PhysicsMaterial_gnn7i")
+lock_rotation = false
+
+[node name="gate" parent="." instance=ExtResource("4_axve4")]
+position = Vector2(232, 120)
+COLOR = 1
+
+[node name="gate2" parent="." instance=ExtResource("4_axve4")]
+position = Vector2(248, 120)
+COLOR = 2
+
+[node name="Button" parent="." instance=ExtResource("5_r3ebi")]
+position = Vector2(216, 152)
+rotation = 4.71239
+COLOR = 2
+
+[node name="Button2" parent="." instance=ExtResource("5_r3ebi")]
+position = Vector2(120, 120)
+rotation = 1.5708
+COLOR = 1
+
+[node name="RigidBody2D2" parent="." groups=["objects"] instance=ExtResource("2_dnlt3")]
+position = Vector2(144, 56)
+physics_material_override = SubResource("PhysicsMaterial_ya5lm")
+lock_rotation = false
+
+[connection signal="state_changed" from="Button" to="gate2" method="on_trigger_state_changed"]
+[connection signal="state_changed" from="Button2" to="gate" method="on_trigger_state_changed"]
+
+[editable path="World"]

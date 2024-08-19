@@ -16,9 +16,15 @@ func _ready() -> void:
 		$Powerable.set_power(STARTS_POWERED);
 	if DESTROY == false:
 		$Powerable.connect("power_changed", power);
-		$AnimatedSprite2D.play("non_breakable")
+		if STARTS_POWERED:
+			$AnimatedSprite2D.play("non_breakable")
+		else: 
+			$AnimatedSprite2D.play("non_breakable_off")
 	elif DESTROY == true:
-		$AnimatedSprite2D.play("breakable")
+		if STARTS_POWERED:
+			$AnimatedSprite2D.play("breakable")
+		else: 
+			$AnimatedSprite2D.play("breakable_off")
 	
 
 func power(new_power: Constants.Power):

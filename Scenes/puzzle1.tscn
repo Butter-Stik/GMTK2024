@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dympp8i7p6rtp"]
+[gd_scene load_steps=13 format=4 uid="uid://vj6k5v7wh7md"]
 
 [ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_4m6rg"]
 [ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="2_yk14n"]
@@ -8,7 +8,7 @@
 size = Vector2(80, 64)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rkcmk"]
-viewport_path = NodePath("World/SubViewport")
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lk2rn"]
 size = Vector2(32, 112)
