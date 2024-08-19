@@ -98,6 +98,7 @@ hit_from_inside = true
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_85mvh")
+volume_db = -5.695
 
 [node name="BeamParticles" type="GPUParticles2D" parent="."]
 position = Vector2(324, 0)
