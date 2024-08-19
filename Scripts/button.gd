@@ -57,8 +57,12 @@ func run_physics(_delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is not StaticBody2D:
 		queued_bodies += 1
-		print(queued_bodies)
 
 
 func _on_body_exited(body: Node2D) -> void:
-	queued_bodies -= 1
+	if body is Player and bodies == 1:
+		bodies = 0
+		run_physics(1)
+		state_changed.emit(false);
+	else:
+		queued_bodies -= 1
