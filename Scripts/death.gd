@@ -13,6 +13,8 @@ func _process(delta):
 	pass
 
 func play(name: StringName):
+	if $AnimationPlayer.current_animation == "death":
+		return
 	match name:
 		"death": set_circle_to_player();
 		"next": set_circle_to_breaker();
