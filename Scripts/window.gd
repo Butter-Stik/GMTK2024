@@ -52,9 +52,12 @@ func update_size():
 	$Area/Collision.shape.size = window_shape.size - Vector2.ONE * 16.1;
 	$Area/Collision/NinePatchRect.size = window_shape.size;
 	$Area/Collision/NinePatchRect.position = -window_shape.size / 2;
-	$SubViewport.size = window_shape.size - Vector2.ONE * 16;
-	$SubViewport/Camera2D.position = window_position;
-	$Sprite2D.position = window_position;
+	$Foreground.size = window_shape.size - Vector2.ONE * 16;
+	$Foreground/Camera2D.position = window_position;
+	$Background.size = window_shape.size - Vector2.ONE * 16;
+	$Background/Camera2D.position = window_position;
+	$ForegroundSprite.position = window_position;
+	$BackgroundSprite.position = window_position;
 	for child in $Area/Collision/NinePatchRect.get_children():
 		child.emit_signal("resized");
 	

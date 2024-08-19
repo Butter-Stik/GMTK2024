@@ -111,18 +111,31 @@ texture = ExtResource("1_drmrl")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wi54b"]
 texture = ExtResource("2_b2ccv")
 7:3/0 = 0
+7:3/0/z_index = -100
 8:3/0 = 0
+8:3/0/z_index = -100
 9:3/0 = 0
+9:3/0/z_index = -100
 10:3/0 = 0
+10:3/0/z_index = -100
 11:3/0 = 0
+11:3/0/z_index = -100
 12:3/0 = 0
+12:3/0/z_index = -100
 15:4/0 = 0
+15:4/0/z_index = -100
 15:3/0 = 0
+15:3/0/z_index = -100
 15:2/0 = 0
+15:2/0/z_index = -100
 15:1/0 = 0
+15:1/0/z_index = -100
 14:1/0 = 0
+14:1/0/z_index = -100
 14:0/0 = 0
+14:0/0/z_index = -100
 15:0/0 = 0
+15:0/0/z_index = -100
 
 [resource]
 physics_layer_0/collision_layer = 17
