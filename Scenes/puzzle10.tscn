@@ -46,7 +46,7 @@ _data = {
 }
 point_count = 3
 
-[node name="SampleLevel3" type="Node2D"]
+[node name="SampleLevel2" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_libqr")]
 

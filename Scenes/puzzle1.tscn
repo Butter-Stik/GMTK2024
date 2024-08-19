@@ -81,5 +81,6 @@ scale = Vector2(-1, 1)
 
 [node name="circuit breaker" parent="." instance=ExtResource("3_y5xgd")]
 position = Vector2(272, 128)
+next_level = "res://Scenes/puzzle2.tscn"
 
 [editable path="World"]
