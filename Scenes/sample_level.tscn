@@ -75,7 +75,7 @@ position = Vector2(122, 136)
 slide_on_ceiling = false
 
 [node name="Button" parent="World" instance=ExtResource("4_10aig")]
-position = Vector2(104, 136)
+position = Vector2(181, 136)
 COLOR = 1
 
 [node name="Laser" parent="World" instance=ExtResource("5_kde64")]

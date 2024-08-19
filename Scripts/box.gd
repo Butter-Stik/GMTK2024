@@ -27,13 +27,16 @@ func _physics_process(delta):
 		run_physics(delta);
 
 func run_physics(delta: float):
-	print(is_on_wall(),get_wall_normal());
+	var clip_to_button := 0;
 	if not is_on_floor():
 		if was_on_floor:
 			velocity = Vector2.ZERO;
 		velocity += get_gravity() * delta;
 		if is_on_wall():
-			velocity.x += get_wall_normal().x * 20
+			if !$RayCast2D.is_colliding():
+				velocity.x += get_wall_normal().x * 20
+			else:
+				clip_to_button = hitting_button();
 	else:
 		if !was_on_floor:
 			$Audio.play();
@@ -44,6 +47,7 @@ func run_physics(delta: float):
 		for collision_idx in get_slide_collision_count():
 			var collision := get_slide_collision(collision_idx);
 			var collider = collision.get_collider();
+			print(collider);
 			if collider is not Player && collider is not Pushbox: continue
 			if collision.get_collider_velocity().x == 0.0: continue
 			velocity = Constants.PUSH_SPEED * collision.get_normal() * Vector2(1, 0);
@@ -58,7 +62,10 @@ func run_physics(delta: float):
 	print("<><><>")
 	
 	was_on_floor = is_on_floor();
-	move_and_slide();
+	if clip_to_button != 0:
+		position += Vector2(clip_to_button, -3);
+	else:
+		move_and_slide();
 	
 
 func power(new_power: Constants.Power):
@@ -76,3 +83,11 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_body_exited(body):
 	body.pushing = false;
+
+func hitting_button():
+	var hitting = 0;
+	for body in $Area2D.get_overlapping_bodies():
+		if body.get_parent() is SwitchButton:
+			hitting = sign(body.get_parent().global_position - global_position).x;
+	print(hitting);
+	return hitting;

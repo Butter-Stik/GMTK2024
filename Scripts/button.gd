@@ -1,5 +1,6 @@
 @tool
 extends Area2D
+class_name SwitchButton
 
 signal state_changed(pressed: bool);
 
