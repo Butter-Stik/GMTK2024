@@ -136,7 +136,7 @@ position = Vector2(40, 104)
 [node name="Path2D" parent="World" instance=ExtResource("2_es0je")]
 position = Vector2(96, 115)
 curve = SubResource("Curve2D_d2jra")
-speed = 0.5
+speed = 10.0
 
 [node name="Button" parent="World" instance=ExtResource("6_sl6a7")]
 position = Vector2(96, 152)
@@ -145,7 +145,7 @@ COLOR = 1
 [node name="Path2D2" parent="World" instance=ExtResource("2_es0je")]
 position = Vector2(176, 122)
 curve = SubResource("Curve2D_t5xuq")
-speed = 0.5
+speed = 15.0
 
 [node name="Button2" parent="World" instance=ExtResource("6_sl6a7")]
 position = Vector2(232, 56)
