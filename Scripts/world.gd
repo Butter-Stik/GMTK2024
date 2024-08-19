@@ -3,8 +3,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Window.window_shape.connect("changed", update_viewport);
-	update_viewport();
 	if Engine.is_editor_hint():
 		return;
 	var on := TileMapLayer.new();
@@ -31,8 +29,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-func update_viewport():
-	$Window/Sprite2D.position = $Window.window_position;
-	$Window/SubViewport.size = $Window.window_shape.size - Vector2.ONE * 16;
-	$Window/SubViewport/Camera2D.position = $Window.window_position;

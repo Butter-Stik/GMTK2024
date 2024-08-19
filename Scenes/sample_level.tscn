@@ -6,25 +6,25 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(80, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_py450"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ned7v"]
 size = Vector2(32, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qypb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfe1w"]
 size = Vector2(176, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn0ja"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84c5o"]
 size = Vector2(320, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_evrv3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlkkn"]
 size = Vector2(320, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qrtx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1baa"]
 size = Vector2(128, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4hwv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aac5p"]
 size = Vector2(64, 112)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e711m"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy66q"]
 size = Vector2(32, 16)
 
 [node name="SampleLevel" type="Node2D"]
@@ -41,33 +41,33 @@ position = Vector2(136, 136)
 [node name="EditorOnlyOn" parent="World" index="3"]
 tile_map_data = PackedByteArray("AAACAAkAAAABAAAAAAADAAkAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAABAAAAAAAGAAkAAAABAAAAAAAHAAkAAAABAAAAAAAIAAkAAAABAAAAAAAJAAkAAAABAAAAAAAKAAkAAAACAAAAAAAMAAkAAAAAAAAAAAANAAkAAAABAAAAAAAOAAkAAAABAAAAAAAPAAkAAAABAAAAAAAQAAkAAAABAAAAAAARAAkAAAABAAAAAAASAAgAAAAAAAEAAAARAAcAAAABAAIAAAAQAAYAAAAAAAEAAAAQAAUAAAAAAAEAAAAQAAQAAAAAAAEAAAAQAAMAAAAAAAEAAAAQAAIAAAAAAAEAAAAQAAEAAAAAAAEAAAAPAAAAAAABAAIAAAAOAAAAAAABAAIAAAANAAAAAAABAAIAAAAMAAAAAAABAAIAAAALAAAAAAABAAIAAAAKAAAAAAABAAIAAAAJAAAAAAABAAIAAAAIAAAAAAABAAIAAAAHAAAAAAABAAIAAAAGAAAAAAABAAIAAAAFAAAAAAABAAIAAAAEAAAAAAABAAIAAAADAAAAAAABAAIAAAACAAAAAAABAAIAAAAKAAoAAAADAAEAAAAMAAoAAAAEAAEAAAALAAoAAAABAAAAAAAAAAoAAAABAAEAAAABAAoAAAABAAEAAAACAAoAAAABAAEAAAADAAoAAAABAAEAAAAEAAoAAAABAAEAAAAFAAoAAAABAAEAAAAGAAoAAAABAAEAAAAHAAoAAAABAAEAAAAIAAoAAAABAAEAAAAJAAoAAAABAAEAAAANAAoAAAABAAEAAAAOAAoAAAABAAEAAAAPAAoAAAABAAEAAAAQAAoAAAABAAEAAAARAAoAAAABAAEAAAASAAoAAAABAAEAAAATAAoAAAABAAEAAAATAAkAAAABAAEAAAATAAgAAAABAAEAAAATAAcAAAABAAEAAAARAAYAAAABAAEAAAASAAYAAAABAAEAAAATAAYAAAABAAEAAAARAAUAAAABAAEAAAARAAQAAAABAAEAAAARAAMAAAABAAEAAAARAAIAAAABAAEAAAARAAEAAAABAAEAAAASAAUAAAABAAEAAAASAAQAAAABAAEAAAASAAMAAAABAAEAAAASAAIAAAABAAEAAAASAAEAAAABAAEAAAASAAAAAAABAAEAAAATAAEAAAABAAEAAAATAAIAAAABAAEAAAATAAMAAAABAAEAAAATAAQAAAABAAEAAAATAAUAAAABAAEAAAARAAAAAAABAAEAAAATAAAAAAABAAEAAAAQAAAAAAAEAAAAAAASAAcAAAAEAAAAAAASAAkAAAAEAAEAAAAQAAcAAAAAAAIAAAABAAEAAAACAAEAAAABAAIAAAACAAEAAAABAAMAAAACAAEAAAABAAYAAAACAAEAAAABAAQAAAACAAEAAAABAAUAAAACAAEAAAABAAcAAAACAAEAAAABAAgAAAACAAEAAAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAABAAkAAAADAAEAAAABAAAAAAADAAAAAAAAAAsAAAABAAEAAAABAAsAAAABAAEAAAACAAsAAAABAAEAAAADAAsAAAABAAEAAAAEAAsAAAABAAEAAAAFAAsAAAABAAEAAAAGAAsAAAABAAEAAAAHAAsAAAABAAEAAAAIAAsAAAABAAEAAAAJAAsAAAABAAEAAAAKAAsAAAABAAEAAAALAAsAAAABAAEAAAAMAAsAAAABAAEAAAANAAsAAAABAAEAAAAOAAsAAAABAAEAAAAQAAsAAAABAAEAAAARAAsAAAABAAEAAAASAAsAAAABAAEAAAATAAsAAAABAAEAAAAPAAsAAAABAAEAAAA=")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="0"]
 position = Vector2(16, 80)
-shape = SubResource("RectangleShape2D_py450")
+shape = SubResource("RectangleShape2D_ned7v")
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="1"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="1"]
 position = Vector2(88, 152)
-shape = SubResource("RectangleShape2D_1qypb")
+shape = SubResource("RectangleShape2D_nfe1w")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="2"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="2"]
 position = Vector2(160, 8)
-shape = SubResource("RectangleShape2D_vn0ja")
+shape = SubResource("RectangleShape2D_84c5o")
 
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="3"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="3"]
 position = Vector2(160, 176)
-shape = SubResource("RectangleShape2D_evrv3")
+shape = SubResource("RectangleShape2D_vlkkn")
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="4"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="4"]
 position = Vector2(256, 152)
-shape = SubResource("RectangleShape2D_1qrtx")
+shape = SubResource("RectangleShape2D_b1baa")
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="5"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="5"]
 position = Vector2(288, 72)
-shape = SubResource("RectangleShape2D_m4hwv")
+shape = SubResource("RectangleShape2D_aac5p")
 
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="6"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="6"]
 position = Vector2(304, 136)
-shape = SubResource("RectangleShape2D_e711m")
+shape = SubResource("RectangleShape2D_wy66q")
 
 [node name="Spikes" parent="World" instance=ExtResource("2_w628u")]
 position = Vector2(80, 136)
