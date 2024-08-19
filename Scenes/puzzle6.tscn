@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://e2488p6g7aji" path="res://Scenes/puzzle7.tscn" id="7_ae3m4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
-size = Vector2(88, 88)
+size = Vector2(112, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb5ua"]
 size = Vector2(32, 64)
