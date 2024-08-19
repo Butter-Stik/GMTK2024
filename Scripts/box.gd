@@ -32,6 +32,7 @@ func _physics_process(delta):
 		run_physics(delta);
 
 func run_physics(delta: float):
+	var clip_to_button := 0;
 	var pressing_button = false
 	for body in $Area2D.get_overlapping_bodies():
 		if body.get_parent() is SwitchButton:
@@ -45,7 +46,8 @@ func run_physics(delta: float):
 		if was_on_floor:
 			velocity = Vector2.ZERO;
 		velocity += get_gravity() * delta;
-	
+		if is_on_wall() and $RayCast2D.is_colliding():
+			clip_to_button = hitting_button();
 	else:
 		if !was_on_floor:
 			$Audio.play();
@@ -68,7 +70,6 @@ func run_physics(delta: float):
 				velocity.x = 0;
 	
 	was_on_floor = is_on_floor();
-	var clip_to_button = hitting_button();
 	if clip_to_button != 0:
 		position += Vector2(clip_to_button, -3);
 	else:
@@ -97,8 +98,4 @@ func hitting_button():
 		if body.get_parent() is SwitchButton:
 			if body.global_rotation == 0:
 				hitting = sign(body.get_parent().global_position - global_position).x;
-			print(body.global_rotation)
-			var direction = sign(body.get_parent().global_position - global_position).x;
-			if body.global_rotation == 0 && velocity.sign().x == direction:
-				hitting = direction;
 	return hitting;
