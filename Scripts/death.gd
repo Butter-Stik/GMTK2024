@@ -12,10 +12,13 @@ var ACTIVE_LEVEL: int;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	load_game();
 	$AnimationPlayer.connect("animation_finished", func(name: StringName):
 		if name != "RESET":
 			$AnimationPlayer.play("RESET"));
+	set_circle_to_centre();
+	$AnimationPlayer.play("title");
 
 func play(name: StringName):
 	if $AnimationPlayer.current_animation == "death":
