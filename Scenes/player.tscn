@@ -349,7 +349,6 @@ BOOTING = true
 [node name="Feet" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 8)
 stream = SubResource("AudioStreamInteractive_rtp0a")
-volume_db = -10.0
 
 [node name="Particles" type="GPUParticles2D" parent="."]
 position = Vector2(0, 8)

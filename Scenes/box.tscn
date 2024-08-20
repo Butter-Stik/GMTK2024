@@ -125,7 +125,7 @@ TYPE = 1
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 8)
 stream = ExtResource("4_tlcph")
-volume_db = -3.795
+volume_db = -1.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 12)
