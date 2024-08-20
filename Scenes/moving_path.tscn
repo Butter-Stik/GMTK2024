@@ -104,7 +104,7 @@ rotates = false
 remote_path = NodePath("../../AnimatableBody2D")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-collision_layer = 17
+collision_layer = 65553
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
 sprite_frames = SubResource("SpriteFrames_p3354")

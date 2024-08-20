@@ -36,7 +36,7 @@ func run_physics(delta: float):
 	for body in $Area2D.get_overlapping_bodies():
 		if body.get_parent() is SwitchButton:
 			pressing_button = true
-	if !pressing_button:
+	if !pressing_button and $RayCast2D.is_colliding():
 		if $WallLeft.is_colliding() and !$WallRight.is_colliding():
 			velocity.x = 20
 		if $WallRight.is_colliding() and !$WallLeft.is_colliding():
