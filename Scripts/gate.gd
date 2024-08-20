@@ -64,3 +64,7 @@ func _on_power_changed(power):
 		$AnimatedSprite2D.play("open_on" if state != INVERTED else "closed_on");
 	else:
 		$AnimatedSprite2D.play("open_off" if state != INVERTED else "closed_off");
+
+
+func _on_button_state_changed(pressed: bool) -> void:
+	pass # Replace with function body.

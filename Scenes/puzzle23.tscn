@@ -1,0 +1,158 @@
+[gd_scene load_steps=21 format=4 uid="uid://b6ljl3prxi5wm"]
+
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_g5t7y"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_kvgjr"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="3_2owvr"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="4_rgxdf"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="5_jj8gp"]
+[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="6_3phdo"]
+[ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="7_w587q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
+size = Vector2(64, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wl0fp"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvunv"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ladvc"]
+size = Vector2(96, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06r5a"]
+size = Vector2(112, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rv3db"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x08pq"]
+size = Vector2(320, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esb36"]
+size = Vector2(320, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tu61k"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0atuw"]
+size = Vector2(112, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhlxd"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80veq"]
+size = Vector2(32, 32)
+
+[sub_resource type="Curve2D" id="Curve2D_04at5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 64, 32, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 64, 32, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[node name="SampleLevel2" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_g5t7y")]
+
+[node name="Window" parent="World" index="0"]
+SHAPE = SubResource("RectangleShape2D_q4jnx")
+POSITION = Vector2(56, 136)
+
+[node name="EditorOnlyOn" parent="World" index="2"]
+tile_map_data = PackedByteArray("AAAFAAYAAAACAAEAAAAFAAcAAAACAAEAAAAFAAgAAAACAAEAAAAFAAkAAAACAAEAAAAFAAoAAAADAAEAAAAGAAoAAAABAAAAAAAHAAoAAAABAAAAAAAIAAoAAAABAAAAAAAJAAoAAAABAAAAAAAKAAoAAAABAAAAAAALAAoAAAABAAAAAAAMAAoAAAABAAAAAAANAAoAAAABAAAAAAAOAAoAAAABAAAAAAAPAAoAAAABAAAAAAAQAAYAAAABAAAAAAARAAYAAAABAAAAAAASAAYAAAAEAAEAAAASAAUAAAAAAAEAAAASAAQAAAAAAAEAAAASAAMAAAAAAAEAAAASAAIAAAAAAAEAAAACAAYAAAADAAAAAAADAAYAAAABAAIAAAAEAAYAAAAEAAAAAAABAAUAAAADAAEAAAABAAQAAAACAAEAAAABAAMAAAACAAEAAAACAAEAAAABAAIAAAADAAEAAAABAAIAAAAEAAEAAAABAAIAAAAFAAEAAAABAAIAAAAGAAEAAAABAAIAAAAHAAEAAAABAAIAAAAIAAEAAAABAAIAAAAJAAEAAAABAAIAAAAKAAEAAAABAAIAAAALAAEAAAABAAIAAAAMAAEAAAABAAIAAAANAAEAAAABAAIAAAAOAAEAAAABAAIAAAAPAAEAAAABAAIAAAAQAAEAAAABAAIAAAARAAEAAAABAAIAAAASAAEAAAAEAAAAAAABAAEAAAADAAAAAAABAAYAAAABAAEAAAABAAIAAAACAAEAAAAOAAYAAAABAAAAAAAPAAYAAAABAAAAAAAOAAcAAAABAAEAAAAOAAgAAAABAAIAAAAPAAgAAAACAAIAAAAPAAcAAAADAAAAAAAQAAcAAAABAAIAAAARAAcAAAABAAIAAAASAAcAAAAEAAAAAAASAAgAAAAAAAEAAAASAAkAAAAAAAEAAAASAAoAAAAEAAEAAAARAAoAAAABAAAAAAAQAAoAAAABAAAAAAAEAAcAAAAAAAEAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAACAAAAAAACAAcAAAACAAEAAAAEAAgAAAAAAAEAAAAEAAkAAAAAAAEAAAAEAAoAAAAEAAEAAAADAAoAAAABAAAAAAACAAoAAAADAAEAAAACAAkAAAACAAEAAAACAAgAAAACAAEAAAABAAcAAAABAAEAAAABAAgAAAABAAEAAAABAAkAAAABAAEAAAABAAoAAAABAAEAAAAAAAoAAAABAAEAAAAAAAsAAAABAAEAAAABAAsAAAABAAEAAAACAAsAAAABAAEAAAADAAsAAAABAAEAAAAEAAsAAAABAAEAAAAFAAsAAAABAAEAAAAGAAsAAAABAAEAAAAHAAsAAAABAAEAAAAIAAsAAAABAAEAAAAJAAsAAAABAAEAAAAKAAsAAAABAAEAAAALAAsAAAABAAEAAAAMAAsAAAABAAEAAAANAAsAAAABAAEAAAAOAAsAAAABAAEAAAAPAAsAAAABAAEAAAAQAAsAAAABAAEAAAARAAsAAAABAAEAAAASAAsAAAABAAEAAAATAAsAAAABAAEAAAATAAoAAAABAAEAAAATAAkAAAABAAEAAAATAAgAAAABAAEAAAATAAcAAAABAAEAAAATAAYAAAABAAEAAAATAAUAAAABAAEAAAATAAQAAAABAAEAAAATAAMAAAABAAEAAAATAAIAAAABAAEAAAATAAEAAAABAAEAAAATAAAAAAABAAEAAAASAAAAAAABAAEAAAARAAAAAAABAAEAAAAQAAAAAAABAAEAAAAPAAAAAAABAAEAAAAOAAAAAAABAAEAAAANAAAAAAABAAEAAAAMAAAAAAABAAEAAAALAAAAAAABAAEAAAAKAAAAAAABAAEAAAAJAAAAAAABAAEAAAAIAAAAAAABAAEAAAAHAAAAAAABAAEAAAAGAAAAAAABAAEAAAAFAAAAAAABAAEAAAAEAAAAAAABAAEAAAADAAAAAAABAAEAAAACAAAAAAABAAEAAAABAAAAAAABAAEAAAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAAGAAUAAAADAAIAAAANAAgAAAAAAAIAAAANAAcAAAAAAAEAAAANAAYAAAAAAAAAAAA=")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="0"]
+position = Vector2(16, 56)
+shape = SubResource("RectangleShape2D_wl0fp")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="1"]
+position = Vector2(24, 136)
+shape = SubResource("RectangleShape2D_wvunv")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="2"]
+position = Vector2(48, 104)
+shape = SubResource("RectangleShape2D_ladvc")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="3"]
+position = Vector2(56, 88)
+shape = SubResource("RectangleShape2D_06r5a")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="4"]
+position = Vector2(80, 136)
+shape = SubResource("RectangleShape2D_rv3db")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="5"]
+position = Vector2(160, 16)
+shape = SubResource("RectangleShape2D_x08pq")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="6"]
+position = Vector2(160, 176)
+shape = SubResource("RectangleShape2D_esb36")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="7"]
+position = Vector2(232, 136)
+shape = SubResource("RectangleShape2D_tu61k")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="8"]
+position = Vector2(264, 112)
+shape = SubResource("RectangleShape2D_0atuw")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="9"]
+position = Vector2(304, 64)
+shape = SubResource("RectangleShape2D_bhlxd")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="World/EditorOnlyOn/TileCollider" index="10"]
+position = Vector2(304, 144)
+shape = SubResource("RectangleShape2D_80veq")
+
+[node name="EditorOnlyBG" parent="World" index="3"]
+tile_map_data = PackedByteArray("AAADAAkAAQAHAAMAAAADAAgAAQAJAAMAAAADAAcAAQAPAAQAAAAGAAkAAQAPAAQAAAAHAAkAAQAPAAQAAAAIAAkAAQAIAAMAAAAJAAkAAQAKAAMAAAAKAAkAAQAKAAMAAAALAAkAAQAPAAMAAAAMAAkAAQAPAAQAAAANAAkAAQAPAAQAAAAOAAkAAQAPAAQAAAAPAAkAAQAPAAQAAAAQAAkAAQAPAAQAAAARAAkAAQAPAAMAAAARAAgAAQAOAAEAAAAQAAgAAQAKAAMAAAAHAAgAAQAPAAQAAAAGAAgAAQAPAAQAAAAGAAcAAQAPAAQAAAAGAAYAAQAPAAQAAAAHAAcAAQAHAAMAAAAHAAYAAQAPAAEAAAAIAAgAAQAPAAQAAAAIAAcAAQAKAAMAAAAIAAYAAQAPAAQAAAAIAAUAAQAPAAQAAAAJAAYAAQAPAAEAAAAJAAcAAQAMAAMAAAAJAAgAAQAPAAQAAAAKAAcAAQAKAAMAAAAKAAYAAQAPAAQAAAAKAAUAAQAPAAQAAAAKAAgAAQAPAAQAAAALAAgAAQAIAAMAAAALAAcAAQAPAAMAAAALAAYAAQAPAAEAAAALAAUAAQAPAAEAAAAMAAcAAQAPAAQAAAAMAAYAAQAPAAQAAAAMAAUAAQAPAAQAAAAMAAgAAQAKAAMAAAAJAAUAAQAPAAEAAAAJAAQAAQAPAAQAAAAHAAUAAQAPAAEAAAAHAAQAAQAPAAQAAAAIAAQAAQAPAAQAAAAIAAMAAQAPAAMAAAAGAAQAAQAPAAQAAAAFAAQAAQAPAAEAAAAEAAQAAQAPAAQAAAADAAQAAQAPAAQAAAACAAQAAQAPAAQAAAACAAMAAQAPAAQAAAACAAIAAQAHAAMAAAADAAIAAQAJAAMAAAAEAAIAAQALAAMAAAAFAAIAAQAKAAMAAAAGAAIAAQAPAAMAAAAHAAIAAQAPAAQAAAAIAAIAAQAIAAMAAAAJAAIAAQAMAAMAAAAJAAEAAQAPAAQAAAAKAAEAAQAPAAQAAAALAAEAAQAPAAQAAAALAAIAAQAKAAMAAAAMAAIAAQAOAAAAAAANAAIAAQAPAAMAAAAOAAIAAQAPAAQAAAAPAAIAAQAPAAQAAAAQAAIAAQAPAAQAAAARAAIAAQAPAAQAAAARAAMAAQAPAAQAAAARAAQAAQAPAAQAAAARAAUAAQAPAAQAAAAQAAUAAQAPAAAAAAAPAAUAAQAIAAMAAAAOAAUAAQAPAAQAAAANAAUAAQAPAAQAAAANAAQAAQAPAAQAAAAOAAQAAQAPAAQAAAAPAAQAAQAPAAQAAAAQAAQAAQAPAAEAAAAMAAQAAQAPAAQAAAALAAQAAQAPAAQAAAAKAAQAAQAPAAQAAAAKAAMAAQAPAAQAAAALAAMAAQAPAAQAAAAMAAMAAQAHAAMAAAANAAMAAQAKAAMAAAAOAAMAAQAKAAMAAAAPAAMAAQAKAAMAAAAQAAMAAQAJAAMAAAAKAAIAAQAKAAMAAAAJAAMAAQAPAAQAAAAHAAMAAQAKAAMAAAAGAAMAAQAKAAMAAAAFAAMAAQAOAAEAAAAEAAMAAQAMAAMAAAADAAMAAQAHAAMAAAA=")
+
+[node name="Player" parent="World" index="4"]
+position = Vector2(53, 72)
+
+[node name="circuit breaker" parent="." instance=ExtResource("2_kvgjr")]
+position = Vector2(272, 144)
+next_level = "res://Scenes/puzzle2.tscn"
+
+[node name="Button" parent="." instance=ExtResource("3_2owvr")]
+z_index = -1
+position = Vector2(56, 152)
+COLOR = 1
+
+[node name="gate" parent="." instance=ExtResource("4_rgxdf")]
+position = Vector2(232, 152)
+COLOR = 1
+
+[node name="Box" parent="." instance=ExtResource("5_jj8gp")]
+position = Vector2(56, 120)
+DESTROY = true
+STARTS_POWERED = true
+
+[node name="Path2D" parent="." instance=ExtResource("6_3phdo")]
+position = Vector2(124, 83)
+curve = SubResource("Curve2D_04at5")
+speed = 25
+
+[node name="Laser" parent="." instance=ExtResource("7_w587q")]
+position = Vector2(104, 104)
+
+[node name="Laser2" parent="." instance=ExtResource("7_w587q")]
+position = Vector2(104, 120)
+
+[node name="Laser3" parent="." instance=ExtResource("7_w587q")]
+position = Vector2(104, 136)
+
+[node name="Button2" parent="." instance=ExtResource("3_2owvr")]
+position = Vector2(256, 88)
+COLOR = 2
+
+[node name="gate2" parent="." instance=ExtResource("4_rgxdf")]
+position = Vector2(56, 136)
+rotation = 1.5708
+COLOR = 2
+
+[connection signal="state_changed" from="Button" to="gate" method="on_trigger_state_changed"]
+[connection signal="state_changed" from="Button2" to="gate2" method="on_trigger_state_changed"]
+
+[editable path="World"]
