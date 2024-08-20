@@ -132,7 +132,8 @@ tile_map_data = PackedByteArray("AAACAAIAAQAPAAQAAAADAAIAAQALAAMAAAAEAAIAAQAKAAM
 position = Vector2(40, 104)
 
 [node name="Path2D" parent="World" instance=ExtResource("2_gasik")]
-position = Vector2(96, 115)
+position = Vector2(96, 132)
+rotation = 3.14159
 curve = SubResource("Curve2D_d2jra")
 speed = 10.0
 
