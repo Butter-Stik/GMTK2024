@@ -67,7 +67,10 @@ enum ParticleState {
 func _physics_process(delta: float) -> void:
 	if dying:
 		return
-	
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = true;
+		
+		return;
 	var physics_info := Vector3.ZERO; # dummy value
 	if Input.is_action_just_pressed("restart"):
 		restart();

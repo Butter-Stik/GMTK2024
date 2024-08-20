@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://ueyfqc8hpxah"]
+
+[ext_resource type="PackedScene" uid="uid://jj6upy2t8l56" path="res://Scenes/ui_button.tscn" id="1_envdj"]
+[ext_resource type="Script" path="res://Scripts/pause.gd" id="1_esjlq"]
+[ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="2_8fc3m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8db3"]
+atlas = ExtResource("2_8fc3m")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g65m"]
+atlas = ExtResource("2_8fc3m")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oxhm"]
+atlas = ExtResource("2_8fc3m")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmp7g"]
+atlas = ExtResource("2_8fc3m")
+region = Rect2(0, 80, 16, 16)
+
+[node name="Pause" type="Control"]
+process_mode = 2
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_esjlq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.027451, 0.0313726, 0.054902, 0.74902)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Resume" parent="VBoxContainer" instance=ExtResource("1_envdj")]
+layout_mode = 2
+text = "RESUME"
+
+[node name="Menu" parent="VBoxContainer" instance=ExtResource("1_envdj")]
+layout_mode = 2
+text = "MENU"
+
+[node name="Keyboard" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_top = -20.0
+offset_right = 84.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Letters" type="HBoxContainer" parent="Keyboard"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="A" type="TextureRect" parent="Keyboard/Letters"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_q8db3")
+stretch_mode = 2
+
+[node name="D" type="TextureRect" parent="Keyboard/Letters"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_0g65m")
+stretch_mode = 2
+
+[node name="SPACE" type="TextureRect" parent="Keyboard"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_7oxhm")
+
+[node name="Mouse" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -8.0
+offset_right = -56.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="POINTER" type="TextureRect" parent="Mouse"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_tmp7g")
+stretch_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]
