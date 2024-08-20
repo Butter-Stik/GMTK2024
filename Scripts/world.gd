@@ -1,6 +1,9 @@
 @tool
 extends Node2D
 
+@export var screen_shake: ScreenShake;
+var do_shake_decay: bool = true;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if Engine.is_editor_hint():
@@ -44,8 +47,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Engine.is_editor_hint(): return;
+	var offset_and_rot := screen_shake.feed(delta, do_shake_decay);
+	$Camera2D.offset = Vector2(offset_and_rot.x, offset_and_rot.y);
+	$Camera2D.rotation = offset_and_rot.z;
 
+func shake(amount: float):
+	screen_shake.set_trauma(amount);
 
 func on_trigger_state_changed(pressed: bool) -> void:
 	pass # Replace with function body.

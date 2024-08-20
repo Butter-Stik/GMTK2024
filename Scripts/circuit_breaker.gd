@@ -26,6 +26,9 @@ func _on_body_entered(body: Node2D) -> void:
 	$Audio.play();
 	$AnimatedSprite2D.play("pulled");
 	print(next_level);
+	var world = get_tree().get_first_node_in_group("world");
+	world.shake(0.5);
+	world.do_shake_decay = false;
 	$"/root/Death".THE_END = final_breaker;
 	$"/root/Death".NEXT_SCENE = next_level;
 	(get_tree().get_first_node_in_group("window") as PowerWindow).animate();

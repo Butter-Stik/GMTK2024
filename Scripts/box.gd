@@ -9,7 +9,7 @@ class_name Pushbox
 		else:
 			$Powerable.TYPE = Constants.PowerableType.NONE;
 @export var STARTS_POWERED: bool = false;
-var was_on_floor: bool = false;
+var was_on_floor: bool = true;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if STARTS_POWERED:
@@ -48,10 +48,10 @@ func run_physics(delta: float):
 		if was_on_floor:
 			velocity = Vector2.ZERO;
 		velocity += get_gravity() * delta;
-	
 	else:
 		if !was_on_floor:
 			$Audio.play();
+			get_tree().get_first_node_in_group("world").shake(0.5);
 	
 		var wall_colliding = $WallLeft.is_colliding() or $WallRight.is_colliding()
 		if !wall_colliding:

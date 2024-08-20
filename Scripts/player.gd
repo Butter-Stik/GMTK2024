@@ -48,6 +48,7 @@ var particle_state: ParticleState = ParticleState.IDLE:
 				$FallParticles.emitting = true;
 
 var was_on_floor: bool;
+var old_velocity: Vector2 = Vector2.ZERO;
 
 enum AudioState {
 	WALK,
@@ -65,6 +66,7 @@ enum ParticleState {
 }
 
 func _physics_process(delta: float) -> void:
+	old_velocity = velocity;
 	if dying:
 		return
 	if Input.is_action_just_pressed("pause"):
@@ -123,10 +125,12 @@ func proc_anims(old_velocity: Vector2, direction: float) -> void:
 		$Sprite.play("launch");
 		audio_state = AudioState.JUMP;
 		particle_state = ParticleState.IDLE;
-	elif old_velocity.y != velocity.y && velocity.y == 0.0:
+	elif old_velocity.y != velocity.y && velocity.y == 0.0 && is_on_floor():
 		$Sprite.play("land");
 		audio_state = AudioState.LAND;
 		particle_state = ParticleState.IDLE;
+		print(sqrt(old_velocity.y));
+		get_tree().get_first_node_in_group("world").shake(max((sqrt(old_velocity.y) - 10) / 10, 0));
 	elif velocity.y > 0.0:
 		$Sprite.play("fall");
 		audio_state = AudioState.IDLE;

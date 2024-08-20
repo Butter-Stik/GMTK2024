@@ -34,6 +34,7 @@ powerable=""
 breaker=""
 player=""
 pause=""
+world=""
 
 [input]
 
