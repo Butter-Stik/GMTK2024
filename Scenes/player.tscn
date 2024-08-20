@@ -367,6 +367,7 @@ process_material = SubResource("ParticleProcessMaterial_6kdsg")
 texture = SubResource("GradientTexture2D_rfxlt")
 lifetime = 0.5
 one_shot = true
+explosiveness = 0.9
 
 [connection signal="power_changed" from="Powerable" to="." method="_on_powerable_power_changed"]
 [connection signal="finished" from="Feet" to="." method="_on_feet_finished"]

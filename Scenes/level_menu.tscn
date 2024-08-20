@@ -47,90 +47,109 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 5
 
-[node name="LevelButton" parent="GridContainer" instance=ExtResource("2_njqc4")]
+[node name="LevelButton1" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
-scene = "res://Scenes/puzzle1.tscn"
 
 [node name="LevelButton2" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 2
-scene = "res://Scenes/puzzle2.tscn"
 
 [node name="LevelButton3" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 3
-scene = "res://Scenes/puzzle3.tscn"
 
 [node name="LevelButton4" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 4
-scene = "res://Scenes/puzzle4.tscn"
 
 [node name="LevelButton5" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 5
-scene = "res://Scenes/puzzle5.tscn"
 
 [node name="LevelButton6" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 6
-scene = "res://Scenes/puzzle6.tscn"
 
 [node name="LevelButton7" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 7
-scene = "res://Scenes/puzzle7.tscn"
 
 [node name="LevelButton8" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 8
-scene = "res://Scenes/puzzle8.tscn"
 
 [node name="LevelButton9" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 9
-scene = "res://Scenes/puzzle9.tscn"
 
 [node name="LevelButton10" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 10
-scene = "res://Scenes/puzzle10.tscn"
 
 [node name="LevelButton11" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 11
-scene = "res://Scenes/puzzle12.tscn"
 
 [node name="LevelButton12" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 12
-scene = "res://Scenes/puzzle13.tscn"
 
 [node name="LevelButton13" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 13
-scene = "res://Scenes/puzzle14.tscn"
 
 [node name="LevelButton14" parent="GridContainer" instance=ExtResource("2_njqc4")]
 layout_mode = 2
 level_number = 14
-scene = "res://Scenes/puzzle15.tscn"
+
+[node name="LevelButton15" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 15
+
+[node name="LevelButton16" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 16
+
+[node name="LevelButton17" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 17
+
+[node name="LevelButton18" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 18
+
+[node name="LevelButton19" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 19
+
+[node name="LevelButton20" parent="GridContainer" instance=ExtResource("2_njqc4")]
+layout_mode = 2
+level_number = 20
 
 [node name="Reset" parent="." instance=ExtResource("5_l41ro")]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
+anchor_bottom = 0.5
 offset_left = -64.0
-offset_top = 8.0
+offset_top = -12.0
 offset_right = -8.0
+offset_bottom = 12.0
 grow_horizontal = 0
+grow_vertical = 2
 
 [node name="Back" parent="." instance=ExtResource("5_l41ro")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
 offset_left = 8.0
-offset_top = 8.0
-offset_right = 64.0
+offset_top = -12.0
+offset_right = 56.0
+offset_bottom = 12.0
+grow_vertical = 2
 text = "BACK"
 
 [connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
