@@ -31,9 +31,9 @@ var mouse_target_offset := Vector2.ZERO;
 	set(new_uv):
 		if !animating: return;
 		animation_uv = new_uv;
-		var tl_corner = lerp(animation_tl, Vector2(0, 0), new_uv);
-		var tr_corner = lerp(animation_tr, Vector2(320, 0), new_uv);
-		var bl_corner = lerp(animation_bl, Vector2(0, 180), new_uv);
+		var tl_corner = lerp(animation_tl, Vector2(0, 0), new_uv).snapped(Vector2.ONE * 2);
+		var tr_corner = lerp(animation_tr, Vector2(320, 0), new_uv).snapped(Vector2.ONE * 2);
+		var bl_corner = lerp(animation_bl, Vector2(0, 180), new_uv).snapped(Vector2.ONE * 2);
 		var new_position = Vector2((tl_corner.x + tr_corner.x) / 2, (tl_corner.y + bl_corner.y) / 2);
 		var new_size = Vector2(tr_corner.x - tl_corner.x, bl_corner.y - tl_corner.y);
 		window_position = new_position;

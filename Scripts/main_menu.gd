@@ -12,7 +12,7 @@ func _process(delta):
 
 func _on_start_pressed():
 	$"/root/Death".ACTIVE_LEVEL = $"/root/Death".LEVELS_COMPLETED + 1;
-	$"/root/Death".NEXT_SCENE = "res://Scenes/room%d.tscn" % ($"/root/Death".LEVELS_COMPLETED + 1);
+	$"/root/Death".NEXT_SCENE = "res://Scenes/room%d.tscn" % min($"/root/Death".LEVELS_COMPLETED + 1, 20);
 	$"/root/Death".BUTTON_POSITION = global_position + size / 2;
 	$"/root/Death".play("enter");
 

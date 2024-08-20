@@ -19,5 +19,6 @@ func _on_resume_pressed():
 
 
 func _on_menu_pressed():
+	get_tree().paused = false;
 	$"/root/Death".NEXT_SCENE = "res://Scenes/main_menu.tscn";
 	$"/root/Death".play("menu");
