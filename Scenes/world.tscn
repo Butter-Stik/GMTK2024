@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0kiamei4nycj"]
+[gd_scene load_steps=8 format=3 uid="uid://b0kiamei4nycj"]
 
 [ext_resource type="PackedScene" uid="uid://btc6eif8uvnj7" path="res://Scenes/player.tscn" id="1_kf6cf"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_veug0"]
 [ext_resource type="TileSet" uid="uid://cb4jjt7i2pmjl" path="res://Assets/Tilesets/on_tileset.tres" id="2_jod46"]
 [ext_resource type="Script" path="res://Scripts/TilemapCollisionBaker.gd" id="5_ksj4r"]
+[ext_resource type="PackedScene" uid="uid://ueyfqc8hpxah" path="res://Scenes/pause.tscn" id="6_xkqdi"]
 [ext_resource type="PackedScene" uid="uid://cr887vgoetw51" path="res://Scenes/window.tscn" id="8_bhblx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tgud"]
@@ -11,6 +12,17 @@ size = Vector2(24, 24)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_veug0")
+
+[node name="Pause" parent="." groups=["pause"] instance=ExtResource("6_xkqdi")]
+visible = false
+z_index = 1024
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Window" parent="." instance=ExtResource("8_bhblx")]
 z_index = 100
