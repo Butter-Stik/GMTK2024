@@ -130,7 +130,7 @@ func proc_anims(old_velocity: Vector2, direction: float) -> void:
 		audio_state = AudioState.LAND;
 		particle_state = ParticleState.IDLE;
 		print(sqrt(old_velocity.y));
-		get_tree().get_first_node_in_group("world").shake(max((sqrt(old_velocity.y) - 10) / 10, 0));
+		get_tree().get_first_node_in_group("world").shake(max((sqrt(old_velocity.y) - 10) / 12, 0));
 	elif velocity.y > 0.0:
 		$Sprite.play("fall");
 		audio_state = AudioState.IDLE;

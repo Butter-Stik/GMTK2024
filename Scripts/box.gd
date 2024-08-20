@@ -10,6 +10,9 @@ class_name Pushbox
 			$Powerable.TYPE = Constants.PowerableType.NONE;
 @export var STARTS_POWERED: bool = false;
 var was_on_floor: bool = true;
+var old_old_velocity: Vector2 = Vector2.ZERO;
+var old_velocity: Vector2 = Vector2.ZERO;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if STARTS_POWERED:
@@ -32,6 +35,8 @@ func _physics_process(delta):
 		run_physics(delta);
 
 func run_physics(delta: float):
+	old_old_velocity = old_velocity;
+	old_velocity = velocity;
 	var pressing_button = false
 	for body in $Area2D.get_overlapping_bodies():
 		if body.get_parent() is SwitchButton:
@@ -51,7 +56,7 @@ func run_physics(delta: float):
 	else:
 		if !was_on_floor:
 			$Audio.play();
-			get_tree().get_first_node_in_group("world").shake(0.5);
+			get_tree().get_first_node_in_group("world").shake(max((sqrt(old_old_velocity.y) - 10) / 12 + 0.1, 0));
 	
 		var wall_colliding = $WallLeft.is_colliding() or $WallRight.is_colliding()
 		if !wall_colliding:
