@@ -5,20 +5,24 @@ shader_type canvas_item;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 uniform vec2 circle_centre;
 uniform float circle_radius;
+uniform bool invert;
+uniform bool full_black;
+
+const vec4 BLACK = vec4(7.0/255.0, 8.0/255.0, 14.0/255.0, 1.0);
 
 bool point_is_in_circle(vec2 point) {
 	vec2 normalised_point = point - circle_centre;
-	return length(normalised_point) < circle_radius;
+	return length(normalised_point) < circle_radius != invert && !full_black;
 }
 
 void fragment() {
 	vec2 pixel_uv = UV * vec2(320.0, 180.0);
-
 	if (!point_is_in_circle(floor(pixel_uv))) {
-		COLOR = vec4(7.0/255.0, 8.0/255.0, 14.0/255.0, 1.0);
+		COLOR = BLACK;
 	} else {
 		COLOR = texture(screen_texture, UV);
 	}
+
 }
 
 //void light() {

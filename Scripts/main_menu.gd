@@ -17,7 +17,8 @@ func _on_start_pressed():
 	$"/root/Death".play("enter");
 
 func _on_level_select_pressed():
-	get_tree().change_scene_to_file("res://Scenes/level_menu.tscn");
+	$"/root/Death".NEXT_SCENE = "res://Scenes/level_menu.tscn";
+	$"/root/Death".play("menu");
 
 func _on_quit_pressed():
 	get_tree().quit();
