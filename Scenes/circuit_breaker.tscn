@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://do068lxvxjar0"]
+[gd_scene load_steps=16 format=3 uid="uid://do068lxvxjar0"]
 
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_kcfpw"]
 [ext_resource type="Script" path="res://Scripts/circuit_breaker.gd" id="1_l1ee2"]
 [ext_resource type="PackedScene" uid="uid://cggqrd1ndio6l" path="res://Scenes/Traits/Powerable.tscn" id="3_3pntw"]
+[ext_resource type="AudioStream" uid="uid://sdgjqpbub4b" path="res://Assets/sfx/wav/buttonclick.wav" id="4_cxlu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2g0o8"]
 size = Vector2(14, 14)
@@ -100,6 +101,9 @@ sprite_frames = SubResource("SpriteFrames_diwwg")
 animation = &"not_pulled_off"
 
 [node name="Powerable" parent="." instance=ExtResource("3_3pntw")]
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cxlu0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="power_changed" from="Powerable" to="." method="_on_powerable_power_changed"]

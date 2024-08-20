@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://jj6upy2t8l56"]
+[gd_scene load_steps=5 format=3 uid="uid://jj6upy2t8l56"]
 
 [ext_resource type="Theme" uid="uid://qb36eq141qup" path="res://theme.tres" id="1_4mt8p"]
 [ext_resource type="Script" path="res://Scripts/ui_button.gd" id="1_pnqwa"]
 [ext_resource type="Texture2D" uid="uid://c6bu5eternnsv" path="res://Assets/UI/Button/normal.tres" id="2_hpt6g"]
+[ext_resource type="AudioStream" uid="uid://ccynwtyn8ymgv" path="res://Assets/UI/Button/sound.tres" id="4_mvo5d"]
 
 [node name="NinePatchButton" type="MarginContainer"]
 offset_right = 80.0
@@ -36,6 +37,9 @@ vertical_alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mvo5d")
 
 [connection signal="button_down" from="TextureButton" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="TextureButton" to="." method="_on_button_button_up"]

@@ -29,6 +29,8 @@ func _process(delta):
 	pass
 
 func _on_texture_button_pressed():
+	$Audio.play();
+	$Audio.get_stream_playback().switch_to_clip_by_name("click");
 	$"/root/Death".ACTIVE_LEVEL = level_number;
 	$"/root/Death".NEXT_SCENE = scene;
 	print(scene);
@@ -37,3 +39,8 @@ func _on_texture_button_pressed():
 
 func set_disabled(disabled: bool):
 	$Control/TextureButton.disabled = disabled;
+
+func _on_texture_button_mouse_entered():
+	if !$Control/TextureButton.disabled:
+		$Audio.play();
+		$Audio.get_stream_playback().switch_to_clip_by_name("hover");

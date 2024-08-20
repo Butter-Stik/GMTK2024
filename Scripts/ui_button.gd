@@ -15,6 +15,13 @@ var state: State = State.NORMAL:
 		if new_state == State.HOVER && state == State.PRESSED:
 			return;
 		state = new_state;
+		match state:
+			State.PRESSED:
+				$Audio.play();
+				$Audio.get_stream_playback().switch_to_clip_by_name("click");
+			State.HOVER:
+				$Audio.play();
+				$Audio.get_stream_playback().switch_to_clip_by_name("hover");
 		update_ninepatch();
 var hovering: bool = false;
 
