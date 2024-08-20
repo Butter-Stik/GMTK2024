@@ -43,7 +43,7 @@ size = Vector2(48, 32)
 
 [sub_resource type="Curve2D" id="Curve2D_04at5"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 64, 32, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 64, 32, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 0, 0, 0, 0, 32, 48, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 32, 48, 0, 0, 0, 0, 64, 48, 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 64, 48, 0, 0, 0, 0, 32, 48, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 32, 48, 0, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0, 0)
 }
 point_count = 13
 
@@ -124,7 +124,7 @@ DESTROY = true
 STARTS_POWERED = true
 
 [node name="Path2D" parent="." instance=ExtResource("6_itsmf")]
-position = Vector2(124, 95)
+position = Vector2(124, 82.5)
 curve = SubResource("Curve2D_04at5")
 speed = 25
 
