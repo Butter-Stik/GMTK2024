@@ -32,10 +32,10 @@ stretch_mode = 1
 
 [node name="Titlewords" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -16.0
-offset_top = 32.0
-offset_right = 304.0
-offset_bottom = 212.0
+offset_left = -12.0
+offset_top = 35.0
+offset_right = 308.0
+offset_bottom = 215.0
 texture = ExtResource("3_u2ubt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -63,6 +63,17 @@ text = "LEVELS"
 [node name="Quit" parent="VBoxContainer" instance=ExtResource("4_cbhaj")]
 layout_mode = 2
 text = "QUIT"
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 63.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 5
+text = "JEEJ
+PANTAELAMAN
+NYFF"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Level Select" to="." method="_on_level_select_pressed"]
