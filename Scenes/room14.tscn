@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=4 uid="uid://c5gs2j2n7t5tq"]
 
-[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_ldmw3"]
-[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="2_gasik"]
-[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="3_tix2w"]
-[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="4_3475q"]
-[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="5_iqk7l"]
-[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="6_espjt"]
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_3kk33"]
+[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="2_30ue2"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="3_y00ji"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="4_tavye"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="5_k5irc"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="6_177i0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(64, 64)
@@ -54,11 +54,11 @@ point_count = 3
 
 [node name="SampleLevel" type="Node2D"]
 
-[node name="World" parent="." instance=ExtResource("1_ldmw3")]
+[node name="World" parent="." instance=ExtResource("1_3kk33")]
 
 [node name="Window" parent="World" index="0"]
 SHAPE = SubResource("RectangleShape2D_q4jnx")
-POSITION = Vector2(136, 104)
+POSITION = Vector2(40, 104)
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" parent="World" index="1"]
@@ -117,31 +117,31 @@ tile_map_data = PackedByteArray("AAACAAIAAQAPAAQAAAADAAIAAQALAAMAAAAEAAIAAQAKAAM
 [node name="Player" parent="World" index="4"]
 position = Vector2(40, 104)
 
-[node name="Path2D" parent="World" instance=ExtResource("2_gasik")]
+[node name="Path2D" parent="World" instance=ExtResource("2_30ue2")]
 position = Vector2(96, 132)
 rotation = 3.14159
 curve = SubResource("Curve2D_d2jra")
 speed = 10.0
 
-[node name="Button" parent="World" instance=ExtResource("3_tix2w")]
+[node name="Button" parent="World" instance=ExtResource("3_y00ji")]
 position = Vector2(96, 152)
 COLOR = 1
 
-[node name="Path2D2" parent="World" instance=ExtResource("2_gasik")]
+[node name="Path2D2" parent="World" instance=ExtResource("2_30ue2")]
 position = Vector2(176, 122)
 curve = SubResource("Curve2D_t5xuq")
 speed = 50
 
-[node name="gate2" parent="World" instance=ExtResource("4_3475q")]
+[node name="gate2" parent="World" instance=ExtResource("4_tavye")]
 position = Vector2(198, 40)
 COLOR = 1
 
-[node name="Box" parent="World" instance=ExtResource("5_iqk7l")]
+[node name="Box" parent="World" instance=ExtResource("5_k5irc")]
 position = Vector2(72, 104)
 
-[node name="circuit breaker" parent="World" instance=ExtResource("6_espjt")]
+[node name="circuit breaker" parent="World" instance=ExtResource("6_177i0")]
 position = Vector2(280, 152)
-next_level = "res://Scenes/puzzle13.tscn"
+next_level = "res://Scenes/room15.tscn"
 
 [connection signal="state_changed" from="World/Button" to="World/gate2" method="on_trigger_state_changed"]
 

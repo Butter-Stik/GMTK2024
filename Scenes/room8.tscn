@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=4 uid="uid://cixge4xrs30na"]
 
-[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_et0n8"]
-[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_pye4g"]
-[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_xurik"]
-[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="4_t4h64"]
-[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_i2g6m"]
-[ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="6_tp0og"]
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_xj12p"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_55cdl"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_r02f5"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="4_ux3f2"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_nltu5"]
+[ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="6_vuu8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(80, 80)
@@ -48,7 +48,7 @@ size = Vector2(48, 32)
 
 [node name="SampleLevel2" type="Node2D"]
 
-[node name="World" parent="." instance=ExtResource("1_et0n8")]
+[node name="World" parent="." instance=ExtResource("1_xj12p")]
 
 [node name="Window" parent="World" index="0"]
 SHAPE = SubResource("RectangleShape2D_q4jnx")
@@ -111,28 +111,28 @@ tile_map_data = PackedByteArray("AAAHAAkAAQAPAAIAAAAIAAkAAQAKAAMAAAAJAAkAAQAKAAM
 [node name="Player" parent="World" index="4"]
 position = Vector2(64, 56)
 
-[node name="circuit breaker" parent="." instance=ExtResource("2_pye4g")]
+[node name="circuit breaker" parent="." instance=ExtResource("2_55cdl")]
 position = Vector2(256, 112)
-next_level = "res://Scenes/puzzle9.tscn"
+next_level = "res://Scenes/room9.tscn"
 
-[node name="Box" parent="." instance=ExtResource("3_xurik")]
+[node name="Box" parent="." instance=ExtResource("3_r02f5")]
 position = Vector2(104, 120)
 collision_mask = 9
 
-[node name="Button" parent="." instance=ExtResource("4_t4h64")]
+[node name="Button" parent="." instance=ExtResource("4_ux3f2")]
 position = Vector2(184, 152)
 rotation = -1.5708
 COLOR = 1
 
-[node name="gate2" parent="." instance=ExtResource("5_i2g6m")]
+[node name="gate2" parent="." instance=ExtResource("5_nltu5")]
 position = Vector2(224, 120)
 COLOR = 1
 
-[node name="Box2" parent="." instance=ExtResource("3_xurik")]
+[node name="Box2" parent="." instance=ExtResource("3_r02f5")]
 position = Vector2(112, 56)
 collision_layer = 27
 
-[node name="Laser" parent="." instance=ExtResource("6_tp0og")]
+[node name="Laser" parent="." instance=ExtResource("6_vuu8b")]
 position = Vector2(120, 152)
 
 [connection signal="state_changed" from="Button" to="gate2" method="on_trigger_state_changed"]

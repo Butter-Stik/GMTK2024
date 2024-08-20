@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=4 uid="uid://644b8r2f3387"]
 
-[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_1lx0k"]
-[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_2rao4"]
-[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_c0dtu"]
-[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="4_2elm7"]
-[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_tfkyn"]
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_46vnv"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_xbwnv"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_hsjgk"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="4_g2foi"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_ofw7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(96, 96)
@@ -35,7 +35,7 @@ size = Vector2(32, 32)
 
 [node name="SampleLevel3" type="Node2D"]
 
-[node name="World" parent="." instance=ExtResource("1_1lx0k")]
+[node name="World" parent="." instance=ExtResource("1_46vnv")]
 
 [node name="Window" parent="World" index="0"]
 SHAPE = SubResource("RectangleShape2D_q4jnx")
@@ -82,24 +82,24 @@ tile_map_data = PackedByteArray("AAADAAYAAQAPAAQAAAAEAAYAAQAPAAQAAAAFAAYAAQAPAAQ
 [node name="Player" parent="World" index="4"]
 position = Vector2(64, 104)
 
-[node name="circuit breaker" parent="." instance=ExtResource("2_2rao4")]
+[node name="circuit breaker" parent="." instance=ExtResource("2_xbwnv")]
 position = Vector2(272, 96)
-next_level = "res://Scenes/puzzle4.tscn"
+next_level = "res://Scenes/room4.tscn"
 
-[node name="Box" parent="." instance=ExtResource("3_c0dtu")]
+[node name="Box" parent="." instance=ExtResource("3_hsjgk")]
 position = Vector2(104, 104)
 
-[node name="Button" parent="." instance=ExtResource("4_2elm7")]
+[node name="Button" parent="." instance=ExtResource("4_g2foi")]
 position = Vector2(136, 152)
 COLOR = 1
 
-[node name="gate" parent="." instance=ExtResource("5_tfkyn")]
+[node name="gate" parent="." instance=ExtResource("5_ofw7g")]
 position = Vector2(216, 104)
 collision_layer = 24
 COLOR = 1
 INVERTED = true
 
-[node name="gate2" parent="." instance=ExtResource("5_tfkyn")]
+[node name="gate2" parent="." instance=ExtResource("5_ofw7g")]
 position = Vector2(248, 104)
 COLOR = 1
 

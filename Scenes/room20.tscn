@@ -1,12 +1,12 @@
 [gd_scene load_steps=21 format=4 uid="uid://b6ljl3prxi5wm"]
 
-[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_g5t7y"]
-[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_kvgjr"]
-[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="3_2owvr"]
-[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="4_rgxdf"]
-[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="5_jj8gp"]
-[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="6_3phdo"]
-[ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="7_w587q"]
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_t27vj"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="2_yoamb"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="3_biard"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="4_jam6h"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="5_3sxuf"]
+[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="6_itsmf"]
+[ext_resource type="PackedScene" uid="uid://c2daajj41fy6s" path="res://Scenes/laser.tscn" id="7_uckim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(64, 96)
@@ -52,7 +52,7 @@ point_count = 13
 
 [node name="SampleLevel2" type="Node2D"]
 
-[node name="World" parent="." instance=ExtResource("1_g5t7y")]
+[node name="World" parent="." instance=ExtResource("1_t27vj")]
 
 [node name="Window" parent="World" index="0"]
 SHAPE = SubResource("RectangleShape2D_q4jnx")
@@ -111,43 +111,43 @@ tile_map_data = PackedByteArray("AAADAAkAAQAHAAMAAAADAAgAAQAJAAMAAAADAAcAAQAPAAQ
 [node name="Player" parent="World" index="4"]
 position = Vector2(53, 72)
 
-[node name="circuit breaker" parent="." instance=ExtResource("2_kvgjr")]
+[node name="circuit breaker" parent="." instance=ExtResource("2_yoamb")]
 position = Vector2(272, 144)
 next_level = "res://Scenes/puzzle2.tscn"
 
-[node name="Button" parent="." instance=ExtResource("3_2owvr")]
+[node name="Button" parent="." instance=ExtResource("3_biard")]
 z_index = -1
 position = Vector2(56, 152)
 COLOR = 1
 
-[node name="gate" parent="." instance=ExtResource("4_rgxdf")]
+[node name="gate" parent="." instance=ExtResource("4_jam6h")]
 position = Vector2(232, 152)
 COLOR = 1
 
-[node name="Box" parent="." instance=ExtResource("5_jj8gp")]
+[node name="Box" parent="." instance=ExtResource("5_3sxuf")]
 position = Vector2(56, 120)
 DESTROY = true
 STARTS_POWERED = true
 
-[node name="Path2D" parent="." instance=ExtResource("6_3phdo")]
+[node name="Path2D" parent="." instance=ExtResource("6_itsmf")]
 position = Vector2(124, 83)
 curve = SubResource("Curve2D_04at5")
 speed = 25
 
-[node name="Laser" parent="." instance=ExtResource("7_w587q")]
+[node name="Laser" parent="." instance=ExtResource("7_uckim")]
 position = Vector2(104, 104)
 
-[node name="Laser2" parent="." instance=ExtResource("7_w587q")]
+[node name="Laser2" parent="." instance=ExtResource("7_uckim")]
 position = Vector2(104, 120)
 
-[node name="Laser3" parent="." instance=ExtResource("7_w587q")]
+[node name="Laser3" parent="." instance=ExtResource("7_uckim")]
 position = Vector2(104, 136)
 
-[node name="Button2" parent="." instance=ExtResource("3_2owvr")]
+[node name="Button2" parent="." instance=ExtResource("3_biard")]
 position = Vector2(256, 88)
 COLOR = 2
 
-[node name="gate2" parent="." instance=ExtResource("4_rgxdf")]
+[node name="gate2" parent="." instance=ExtResource("4_jam6h")]
 position = Vector2(56, 136)
 rotation = 1.5708
 COLOR = 2
