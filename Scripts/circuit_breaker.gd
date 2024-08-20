@@ -2,6 +2,7 @@ extends Area2D
 
 var pulled: bool = false;
 @export_file("*.tscn") var next_level: String;
+@export var final_breaker: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,5 +26,6 @@ func _on_body_entered(body: Node2D) -> void:
 	$Audio.play();
 	$AnimatedSprite2D.play("pulled");
 	print(next_level);
+	$"/root/Death".THE_END = final_breaker;
 	$"/root/Death".NEXT_SCENE = next_level;
 	(get_tree().get_first_node_in_group("window") as PowerWindow).animate();

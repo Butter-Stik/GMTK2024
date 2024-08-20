@@ -114,6 +114,7 @@ position = Vector2(56, 72)
 [node name="circuit breaker" parent="." instance=ExtResource("2_yoamb")]
 position = Vector2(272, 144)
 next_level = "res://Scenes/puzzle2.tscn"
+final_breaker = true
 
 [node name="Button" parent="." instance=ExtResource("3_biard")]
 z_index = -1

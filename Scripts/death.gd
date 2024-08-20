@@ -2,6 +2,7 @@ extends Node2D
 
 var NEXT_SCENE: String;
 var BUTTON_POSITION: Vector2;
+var THE_END: bool = false;
 
 var LEVELS_COMPLETED: int = 0:
 	set(new_completed):
@@ -19,12 +20,20 @@ func _ready():
 func play(name: StringName):
 	if $AnimationPlayer.current_animation == "death":
 		return
+	if THE_END:
+		set_circle_to_breaker();
+		NEXT_SCENE = "res://Scenes/end_screen.tscn";
+		$AnimationPlayer.play("the_end");
+		return;
 	match name:
 		"death": set_circle_to_player();
 		"next": set_circle_to_breaker();
 		"restart": set_circle_to_player();
 		"enter": set_circle_to_button();
 		"menu": set_circle_to_centre();
+		"to_main":
+			NEXT_SCENE = "res://Scenes/main_menu.tscn";
+			set_circle_to_centre();
 	$AnimationPlayer.play(name);
 
 func reset():
@@ -54,6 +63,9 @@ func set_circle_to_button():
 
 func set_circle_to_centre():
 	set_circle_position(Vector2(320.0, 180.0) / 2);
+
+func reset_end():
+	THE_END = false;
 
 func save_game():
 	var save_file := FileAccess.open("user://save", FileAccess.WRITE);
