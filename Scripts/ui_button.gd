@@ -7,7 +7,8 @@ signal pressed;
 @export var text: String = "":
 	set(new_text):
 		text = new_text;
-		$MarginContainer/Button.text = new_text;
+		if Engine.is_editor_hint():
+			$MarginContainer/Button.text = new_text;
 
 var state: State = State.NORMAL:
 	set(new_state):
@@ -31,6 +32,9 @@ func update_ninepatch():
 			$NinePatchRect.texture = preload("res://Assets/UI/Button/pressed.tres");
 		State.HOVER:
 			$NinePatchRect.texture = preload("res://Assets/UI/Button/hover.tres");
+
+func _ready():
+	$MarginContainer/Button.text = text;
 
 func _on_button_pressed():
 	pressed.emit();
