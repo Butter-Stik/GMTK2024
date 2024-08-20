@@ -121,6 +121,7 @@ COLOR = 1
 
 [node name="gate" parent="World" instance=ExtResource("4_cqcab")]
 position = Vector2(88, 152)
+collision_layer = 24
 COLOR = 1
 INVERTED = true
 
