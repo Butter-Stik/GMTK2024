@@ -11,4 +11,5 @@ func _on_reset_pressed():
 
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn");
+	$"/root/Death".NEXT_SCENE = "res://Scenes/main_menu.tscn";
+	$"/root/Death".play("menu");

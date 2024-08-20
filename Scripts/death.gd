@@ -24,6 +24,7 @@ func play(name: StringName):
 		"next": set_circle_to_breaker();
 		"restart": set_circle_to_player();
 		"enter": set_circle_to_button();
+		"menu": set_circle_to_centre();
 	$AnimationPlayer.play(name);
 
 func reset():
@@ -50,6 +51,9 @@ func set_circle_to_breaker():
 
 func set_circle_to_button():
 	set_circle_position(BUTTON_POSITION);
+
+func set_circle_to_centre():
+	set_circle_position(Vector2(320.0, 180.0) / 2);
 
 func save_game():
 	var save_file := FileAccess.open("user://save", FileAccess.WRITE);
