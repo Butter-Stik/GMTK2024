@@ -139,10 +139,10 @@ shape = SubResource("RectangleShape2D_p3ogb")
 
 [node name="WallRight" type="RayCast2D" parent="."]
 rotation = -1.5708
-target_position = Vector2(0, 14)
+target_position = Vector2(0, 15)
 collision_mask = 8
 
 [node name="WallLeft" type="RayCast2D" parent="."]
 rotation = 1.5708
-target_position = Vector2(0, 14)
+target_position = Vector2(0, 15)
 collision_mask = 8
