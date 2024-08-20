@@ -46,7 +46,7 @@ size = Vector2(16, 16)
 
 [sub_resource type="Curve2D" id="Curve2D_ke6xu"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 3
 
@@ -155,7 +155,8 @@ position = Vector2(184, 104)
 position = Vector2(136, 88)
 
 [node name="Path2D" parent="." instance=ExtResource("7_i05cg")]
-position = Vector2(209, 131)
+position = Vector2(207, 131)
+scale = Vector2(0.75, 1)
 curve = SubResource("Curve2D_ke6xu")
 speed = 20
 
