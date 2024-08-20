@@ -22,3 +22,9 @@ func _on_menu_pressed():
 	get_tree().paused = false;
 	$"/root/Death".NEXT_SCENE = "res://Scenes/main_menu.tscn";
 	$"/root/Death".play("menu");
+
+
+func _on_restart_pressed():
+	visible = false;
+	get_tree().paused = false;
+	get_tree().get_first_node_in_group("player").restart();
