@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvcoc8e6sof2u"]
+[gd_scene load_steps=19 format=3 uid="uid://dvcoc8e6sof2u"]
 
 [ext_resource type="Script" path="res://Scripts/box.gd" id="1_5y78m"]
 [ext_resource type="Texture2D" uid="uid://c6i7l8jg641qe" path="res://Assets/Tilesets/off.png" id="1_2635r"]
@@ -104,8 +104,11 @@ size = Vector2(12, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3ogb"]
 size = Vector2(14, 2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfko5"]
+size = Vector2(10, 5)
+
 [node name="Box" type="CharacterBody2D"]
-collision_layer = 19
+collision_layer = 16777235
 floor_max_angle = 0.0174533
 safe_margin = 0.1
 script = ExtResource("1_5y78m")
@@ -146,3 +149,19 @@ collision_mask = 8
 rotation = 1.5708
 target_position = Vector2(0, 15)
 collision_mask = 8
+
+[node name="Floor" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_lfko5")
+
+[node name="Player" type="Area2D" parent="."]
+collision_layer = 16777216
+collision_mask = 16777216
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_lfko5")

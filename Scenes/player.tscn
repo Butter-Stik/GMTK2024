@@ -330,7 +330,7 @@ width = 1
 height = 1
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
-collision_layer = 12307
+collision_layer = 16789523
 script = ExtResource("1_k76jh")
 PUSH_SPEED = 15
 

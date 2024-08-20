@@ -39,6 +39,7 @@ var state: bool = false:
 				else "closed_off");
 
 func _ready():
+	if Engine.is_editor_hint(): return;
 	update_color();
 	if INVERTED == true:
 		set_collision_layer_value(1, false);

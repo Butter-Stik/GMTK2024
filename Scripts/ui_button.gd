@@ -7,7 +7,7 @@ signal pressed;
 @export var text: String = "":
 	set(new_text):
 		text = new_text;
-		if Engine.is_editor_hint():
+		if Engine.is_editor_hint() && get_node("MarginContainer/Button") != null:
 			$MarginContainer/Button.text = new_text;
 
 var state: State = State.NORMAL:
