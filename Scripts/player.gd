@@ -47,6 +47,8 @@ var particle_state: ParticleState = ParticleState.IDLE:
 			ParticleState.FALL:
 				$FallParticles.emitting = true;
 
+var was_on_floor: bool;
+
 enum AudioState {
 	WALK,
 	JUMP,
@@ -77,10 +79,13 @@ func _physics_process(delta: float) -> void:
 func run_physics(delta: float) -> Vector3:
 	# Add the gravity.
 	var old_velocity := velocity;
-	if not is_on_floor():
+	if is_on_floor() && !was_on_floor:
+		particle_state = ParticleState.FALL;
+		$FallParticles.emitting = true;
+	if !is_on_floor():
 		velocity += get_gravity() * delta
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") && is_on_floor():
 		velocity.y = -JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -91,6 +96,7 @@ func run_physics(delta: float) -> Vector3:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
+	was_on_floor = is_on_floor();
 	move_and_slide()
 	
 	return Vector3(old_velocity.x, old_velocity.y, direction);
@@ -110,18 +116,17 @@ func proc_anims(old_velocity: Vector2, direction: float) -> void:
 		$Sprite.play("apex");
 		audio_state = AudioState.IDLE;
 		particle_state = ParticleState.IDLE;
-	elif old_velocity.y != velocity.y and old_velocity.y == 0.0:
+	elif old_velocity.y != velocity.y && old_velocity.y == 0.0 && velocity.y < 0.0:
 		$Sprite.play("launch");
 		audio_state = AudioState.JUMP;
 		particle_state = ParticleState.IDLE;
-	elif old_velocity.y != velocity.y and velocity.y == 0.0:
+	elif old_velocity.y != velocity.y && velocity.y == 0.0:
 		$Sprite.play("land");
 		audio_state = AudioState.LAND;
-		particle_state = ParticleState.FALL;
+		particle_state = ParticleState.IDLE;
 	elif velocity.y > 0.0:
 		$Sprite.play("fall");
 		audio_state = AudioState.IDLE;
-		particle_state = ParticleState.IDLE;
 	elif velocity.y < 0.0:
 		$Sprite.play("jump");
 		audio_state = AudioState.IDLE;
