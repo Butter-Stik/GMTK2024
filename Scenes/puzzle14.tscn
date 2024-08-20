@@ -90,6 +90,7 @@ position = Vector2(55, 104)
 
 [node name="circuit breaker" parent="." instance=ExtResource("2_hby11")]
 position = Vector2(272, 96)
+next_level = "res://Scenes/puzzle15.tscn"
 
 [node name="Box" parent="." instance=ExtResource("3_8ccwe")]
 position = Vector2(73, 104)
