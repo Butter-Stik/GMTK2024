@@ -45,7 +45,7 @@ func run_physics(delta: float):
 		if $WallLeft.is_colliding() and !$WallRight.is_colliding():
 			velocity.x = 20
 		if $WallRight.is_colliding() and !$WallLeft.is_colliding():
-			velocity.x = 20
+			velocity.x = -20
 	for body in $Player.get_overlapping_bodies():
 		if body == self: continue;
 		velocity = 20 * sign(global_position - body.global_position);
