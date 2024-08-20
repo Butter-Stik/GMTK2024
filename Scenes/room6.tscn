@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://cts3dym8fbn47"]
+[gd_scene load_steps=15 format=4 uid="uid://cts3dym8fbn47"]
 
-[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_yo0vy"]
-[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="2_mdwnb"]
-[ext_resource type="TileSet" uid="uid://cb4jjt7i2pmjl" path="res://Assets/Tilesets/on_tileset.tres" id="2_ttkj1"]
-[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="3_ycn3q"]
-[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="4_oanqb"]
-[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="5_a577y"]
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_e8kvx"]
+[ext_resource type="PackedScene" uid="uid://dvcoc8e6sof2u" path="res://Scenes/box.tscn" id="3_68ke2"]
+[ext_resource type="PackedScene" uid="uid://dhnn77wut86hj" path="res://Scenes/button.tscn" id="4_jkf2a"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="5_0ls5x"]
+[ext_resource type="PackedScene" uid="uid://dyjmy1x3foqml" path="res://Scenes/gate.tscn" id="6_rdhti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(64, 64)
@@ -36,7 +35,7 @@ size = Vector2(32, 32)
 
 [node name="SampleLevel2" type="Node2D"]
 
-[node name="World" parent="." instance=ExtResource("1_yo0vy")]
+[node name="World" parent="." instance=ExtResource("1_e8kvx")]
 
 [node name="Window" parent="World" index="0"]
 SHAPE = SubResource("RectangleShape2D_q4jnx")
@@ -77,39 +76,39 @@ shape = SubResource("RectangleShape2D_q6oqw")
 position = Vector2(304, 96)
 shape = SubResource("RectangleShape2D_mc1ii")
 
-[node name="EditorOnlyBG2" type="TileMapLayer" parent="World"]
-tile_map_data = PackedByteArray("AAACAAIAAQAKAAMAAAACAAMAAQAPAAQAAAACAAQAAQAPAAQAAAACAAUAAQAPAAQAAAACAAYAAQAPAAQAAAADAAIAAQAPAAAAAAADAAMAAQAHAAMAAAADAAQAAQAPAAQAAAADAAUAAQAPAAQAAAADAAYAAQAPAAQAAAAEAAIAAQAPAAQAAAAEAAMAAQAKAAMAAAAEAAQAAQAPAAQAAAAEAAUAAQAPAAQAAAAEAAYAAQAPAAQAAAAFAAIAAQALAAMAAAAFAAMAAQAPAAAAAAAFAAQAAQAPAAEAAAAFAAUAAQAPAAEAAAAFAAYAAQAHAAMAAAAGAAIAAQAPAAMAAAAGAAMAAQAPAAQAAAAGAAQAAQAPAAQAAAAGAAUAAQAPAAQAAAAGAAYAAQAPAAIAAAAHAAIAAQAPAAQAAAAHAAMAAQAIAAMAAAAHAAQAAQAHAAMAAAAHAAUAAQAPAAQAAAAHAAYAAQAPAAQAAAAIAAIAAQAPAAQAAAAIAAMAAQAJAAMAAAAIAAQAAQAMAAMAAAAIAAUAAQAPAAQAAAAIAAYAAQAPAAQAAAAJAAIAAQAPAAQAAAAJAAMAAQAPAAQAAAAJAAQAAQAJAAMAAAAJAAUAAQAPAAEAAAAJAAYAAQAHAAMAAAAKAAIAAQAHAAMAAAAKAAMAAQAPAAQAAAAKAAQAAQAPAAQAAAAKAAUAAQAPAAQAAAAKAAYAAQAPAAIAAAALAAIAAQAOAAEAAAALAAMAAQAHAAMAAAALAAQAAQAPAAQAAAALAAUAAQAPAAQAAAALAAYAAQAPAAQAAAAMAAIAAQAOAAAAAAAMAAMAAQAPAAAAAAAMAAQAAQAPAAEAAAAMAAUAAQAHAAMAAAAMAAYAAQAPAAQAAAANAAYAAQAPAAQAAAAOAAYAAQAPAAQAAAAIAAcAAQAPAAQAAAAIAAgAAQAPAAQAAAAQAAUAAQAOAAAAAAARAAYAAQAPAAMAAAAQAAYAAQAHAAMAAAARAAUAAQAJAAMAAAAPAAYAAQAPAAQAAAA=")
-tile_set = ExtResource("2_ttkj1")
+[node name="EditorOnlyBG" parent="World" index="3"]
+tile_map_data = PackedByteArray("AAACAAYAAQAPAAQAAAADAAYAAQAPAAQAAAAEAAYAAQAHAAMAAAAFAAYAAQAKAAMAAAAGAAYAAQAPAAIAAAAHAAYAAQAMAAMAAAAIAAYAAQAKAAMAAAAJAAYAAQAKAAMAAAAKAAYAAQAPAAIAAAALAAYAAQAPAAQAAAAMAAYAAQAPAAQAAAANAAYAAQAPAAQAAAAOAAYAAQAPAAQAAAAPAAYAAQAPAAQAAAAQAAYAAQAHAAMAAAARAAYAAQAPAAMAAAARAAUAAQAJAAMAAAAQAAUAAQAOAAAAAAAMAAUAAQAPAAQAAAAMAAQAAQAHAAMAAAAMAAMAAQAPAAAAAAAMAAIAAQAOAAAAAAALAAIAAQAOAAEAAAAKAAIAAQAKAAMAAAAJAAIAAQAOAAEAAAAIAAIAAQAHAAMAAAAHAAIAAQAPAAQAAAAGAAIAAQAPAAQAAAAFAAIAAQAPAAQAAAAEAAIAAQAPAAEAAAADAAIAAQAPAAQAAAACAAIAAQAJAAMAAAACAAMAAQAHAAMAAAACAAQAAQAPAAQAAAACAAUAAQAKAAMAAAADAAMAAQAOAAEAAAADAAQAAQAPAAEAAAADAAUAAQAMAAMAAAAEAAQAAQAPAAQAAAAEAAMAAQAPAAMAAAAFAAQAAQAPAAQAAAAFAAUAAQAPAAQAAAAFAAMAAQAPAAQAAAAGAAMAAQAPAAQAAAAEAAUAAQAJAAMAAAAGAAUAAQAPAAQAAAAHAAUAAQAPAAEAAAAHAAQAAQAPAAEAAAAHAAMAAQAIAAMAAAAGAAQAAQAPAAQAAAAIAAMAAQAKAAMAAAAIAAQAAQAPAAQAAAAJAAMAAQAPAAMAAAAJAAQAAQAPAAQAAAAIAAUAAQAPAAQAAAAJAAUAAQAPAAQAAAAKAAQAAQAPAAQAAAAKAAMAAQAPAAQAAAAKAAUAAQAPAAQAAAALAAQAAQAPAAQAAAALAAMAAQAHAAMAAAALAAUAAQAPAAQAAAAIAAcAAQAPAAQAAAAIAAgAAQAPAAQAAAA=")
 
-[node name="Player" parent="World" index="5"]
-position = Vector2(42, 103)
+[node name="Player" parent="World" index="4"]
+position = Vector2(40, 104)
 
-[node name="Box2" parent="World" instance=ExtResource("2_mdwnb")]
+[node name="Box2" parent="World" instance=ExtResource("3_68ke2")]
 position = Vector2(104, 104)
 
-[node name="Box" parent="World" instance=ExtResource("2_mdwnb")]
+[node name="Box" parent="World" instance=ExtResource("3_68ke2")]
 position = Vector2(168, 104)
 DESTROY = true
 STARTS_POWERED = true
 
-[node name="Button" parent="World" instance=ExtResource("3_ycn3q")]
+[node name="Button" parent="World" instance=ExtResource("4_jkf2a")]
 position = Vector2(136, 136)
 COLOR = 1
 
-[node name="circuit breaker" parent="World" instance=ExtResource("4_oanqb")]
+[node name="circuit breaker" parent="World" instance=ExtResource("5_0ls5x")]
 position = Vector2(272, 96)
-next_level = "res://Scenes/puzzle7.tscn"
+next_level = "res://Scenes/room7.tscn"
 
-[node name="gate" parent="World" instance=ExtResource("5_a577y")]
+[node name="gate" parent="World" instance=ExtResource("6_rdhti")]
 position = Vector2(216, 104)
 COLOR = 1
 
-[node name="gate2" parent="World" instance=ExtResource("5_a577y")]
+[node name="gate2" parent="World" instance=ExtResource("6_rdhti")]
 position = Vector2(232, 104)
+collision_layer = 24
 COLOR = 1
 INVERTED = true
 
-[node name="gate3" parent="World" instance=ExtResource("5_a577y")]
+[node name="gate3" parent="World" instance=ExtResource("6_rdhti")]
 position = Vector2(248, 104)
 COLOR = 1
 

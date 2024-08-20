@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=4 uid="uid://24sfglnckbjd"]
 
-[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_kinoe"]
-[ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="2_y6nyo"]
-[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="3_naeon"]
-[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="4_mfhss"]
+[ext_resource type="PackedScene" uid="uid://b0kiamei4nycj" path="res://Scenes/world.tscn" id="1_deunu"]
+[ext_resource type="PackedScene" uid="uid://d2rpmeuivlgsd" path="res://Scenes/spikes.tscn" id="2_3nkf3"]
+[ext_resource type="PackedScene" uid="uid://do068lxvxjar0" path="res://Scenes/circuit_breaker.tscn" id="3_hgb4n"]
+[ext_resource type="PackedScene" uid="uid://dhfyjeuci6nfu" path="res://Scenes/moving_path.tscn" id="4_m66ne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4jnx"]
 size = Vector2(80, 80)
@@ -40,7 +40,7 @@ point_count = 3
 
 [node name="SampleLevel2" type="Node2D"]
 
-[node name="World" parent="." instance=ExtResource("1_kinoe")]
+[node name="World" parent="." instance=ExtResource("1_deunu")]
 
 [node name="Window" parent="World" index="0"]
 SHAPE = SubResource("RectangleShape2D_q4jnx")
@@ -87,36 +87,36 @@ tile_map_data = PackedByteArray("AAAGAAgAAQAPAAQAAAAHAAgAAQAPAAQAAAAIAAgAAQAPAAQ
 [node name="Player" parent="World" index="4"]
 position = Vector2(40, 104)
 
-[node name="Spikes" parent="." instance=ExtResource("2_y6nyo")]
+[node name="Spikes" parent="." instance=ExtResource("2_3nkf3")]
 position = Vector2(104, 136)
 
-[node name="Spikes2" parent="." instance=ExtResource("2_y6nyo")]
+[node name="Spikes2" parent="." instance=ExtResource("2_3nkf3")]
 position = Vector2(120, 136)
 
-[node name="Spikes3" parent="." instance=ExtResource("2_y6nyo")]
+[node name="Spikes3" parent="." instance=ExtResource("2_3nkf3")]
 position = Vector2(136, 136)
 
-[node name="Spikes4" parent="." instance=ExtResource("2_y6nyo")]
+[node name="Spikes4" parent="." instance=ExtResource("2_3nkf3")]
 position = Vector2(152, 136)
 
-[node name="Spikes5" parent="." instance=ExtResource("2_y6nyo")]
+[node name="Spikes5" parent="." instance=ExtResource("2_3nkf3")]
 position = Vector2(168, 136)
 
-[node name="Spikes6" parent="." instance=ExtResource("2_y6nyo")]
+[node name="Spikes6" parent="." instance=ExtResource("2_3nkf3")]
 position = Vector2(184, 136)
 
-[node name="Spikes7" parent="." instance=ExtResource("2_y6nyo")]
+[node name="Spikes7" parent="." instance=ExtResource("2_3nkf3")]
 position = Vector2(200, 136)
 
-[node name="circuit breaker" parent="." instance=ExtResource("3_naeon")]
+[node name="circuit breaker" parent="." instance=ExtResource("3_hgb4n")]
 position = Vector2(288, 96)
-next_level = "res://Scenes/puzzle2.tscn"
+next_level = "res://Scenes/room12.tscn"
 
-[node name="Path2D" parent="." instance=ExtResource("4_mfhss")]
+[node name="Path2D" parent="." instance=ExtResource("4_m66ne")]
 position = Vector2(108, 120.5)
 curve = SubResource("Curve2D_teshr")
 
-[node name="Path2D2" parent="." instance=ExtResource("4_mfhss")]
+[node name="Path2D2" parent="." instance=ExtResource("4_m66ne")]
 position = Vector2(196, 120.5)
 rotation = 3.14159
 curve = SubResource("Curve2D_teshr")
