@@ -144,6 +144,12 @@ texture = ExtResource("2_b2ccv")
 14:0/0/z_index = -100
 15:0/0 = 0
 15:0/0/z_index = -100
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+5:5/0 = 0
+4:5/0 = 0
+9:5/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 17
