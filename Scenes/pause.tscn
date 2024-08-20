@@ -59,6 +59,10 @@ alignment = 1
 layout_mode = 2
 text = "RESUME"
 
+[node name="Restart" parent="VBoxContainer" instance=ExtResource("1_envdj")]
+layout_mode = 2
+text = "RESTART"
+
 [node name="Menu" parent="VBoxContainer" instance=ExtResource("1_envdj")]
 layout_mode = 2
 text = "MENU"
@@ -115,4 +119,5 @@ texture = SubResource("AtlasTexture_tmp7g")
 stretch_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]
