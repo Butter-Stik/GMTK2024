@@ -111,7 +111,7 @@ position = Vector2(136, 152)
 COLOR = 2
 
 [node name="gate2" parent="World" instance=ExtResource("3_0377b")]
-position = Vector2(224, 120)
+position = Vector2(232, 120)
 COLOR = 2
 
 [node name="Box" parent="World" instance=ExtResource("4_lx3qs")]

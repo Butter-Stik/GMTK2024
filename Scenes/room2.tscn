@@ -87,7 +87,7 @@ position = Vector2(168, 120)
 COLOR = 1
 
 [node name="gate2" parent="." instance=ExtResource("5_n1c1t")]
-position = Vector2(224, 104)
+position = Vector2(232, 104)
 COLOR = 1
 
 [connection signal="state_changed" from="Button" to="gate2" method="on_trigger_state_changed"]

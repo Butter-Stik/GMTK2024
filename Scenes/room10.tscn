@@ -103,7 +103,7 @@ slide_on_ceiling = false
 position = Vector2(152, 152)
 
 [node name="gate" parent="World" instance=ExtResource("5_1mtw6")]
-position = Vector2(84, 136)
+position = Vector2(88, 136)
 COLOR = 1
 
 [node name="Button" parent="World" instance=ExtResource("6_eq4mr")]

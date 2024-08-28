@@ -6,19 +6,19 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q8db3"]
 atlas = ExtResource("2_8fc3m")
-region = Rect2(16, 80, 16, 16)
+region = Rect2(112, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0g65m"]
 atlas = ExtResource("2_8fc3m")
-region = Rect2(32, 80, 16, 16)
+region = Rect2(128, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7oxhm"]
 atlas = ExtResource("2_8fc3m")
-region = Rect2(32, 16, 32, 16)
+region = Rect2(64, 80, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmp7g"]
 atlas = ExtResource("2_8fc3m")
-region = Rect2(0, 80, 16, 16)
+region = Rect2(96, 80, 16, 16)
 
 [node name="Pause" type="Control"]
 process_mode = 2
@@ -82,6 +82,7 @@ alignment = 1
 
 [node name="Letters" type="HBoxContainer" parent="Keyboard"]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_constants/separation = 0
 alignment = 1
 
@@ -98,6 +99,7 @@ stretch_mode = 2
 [node name="SPACE" type="TextureRect" parent="Keyboard"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_7oxhm")
+stretch_mode = 2
 
 [node name="Mouse" type="MarginContainer" parent="."]
 layout_mode = 1

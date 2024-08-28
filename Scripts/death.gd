@@ -48,7 +48,6 @@ func next():
 	LEVELS_COMPLETED = max(LEVELS_COMPLETED, ACTIVE_LEVEL - 1);
 
 func enter():
-	print(NEXT_SCENE);
 	get_tree().change_scene_to_file(NEXT_SCENE);
 	
 

@@ -14,6 +14,7 @@ func _process(delta):
 		_on_resume_pressed();
 
 func _on_resume_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	visible = false;
 	get_tree().paused = false;
 
@@ -25,6 +26,7 @@ func _on_menu_pressed():
 
 
 func _on_restart_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	visible = false;
 	get_tree().paused = false;
 	get_tree().get_first_node_in_group("player").restart();

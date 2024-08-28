@@ -29,6 +29,7 @@ func _process(delta):
 	pass
 
 func _on_texture_button_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	$Audio.play();
 	$Audio.get_stream_playback().switch_to_clip_by_name("click");
 	$"/root/Death".ACTIVE_LEVEL = level_number;

@@ -129,7 +129,6 @@ func proc_anims(old_velocity: Vector2, direction: float) -> void:
 		$Sprite.play("land");
 		audio_state = AudioState.LAND;
 		particle_state = ParticleState.IDLE;
-		print(sqrt(old_velocity.y));
 		get_tree().get_first_node_in_group("world").shake(max((sqrt(old_velocity.y) - 10) / 12, 0));
 	elif velocity.y > 0.0:
 		$Sprite.play("fall");
@@ -147,9 +146,6 @@ func proc_anims(old_velocity: Vector2, direction: float) -> void:
 		$Sprite.play("idle");
 		audio_state = AudioState.IDLE;
 		particle_state = ParticleState.IDLE;
-	# # debug messages
-	# if animstate != $Sprite.animation:
-	# 	print($Sprite.animation);
 
 func play_sfx(name: String):
 	if !$Feet.playing:

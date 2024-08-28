@@ -125,7 +125,7 @@ rotation = -1.5708
 COLOR = 1
 
 [node name="gate2" parent="." instance=ExtResource("5_nltu5")]
-position = Vector2(224, 120)
+position = Vector2(216, 120)
 COLOR = 1
 
 [node name="Box2" parent="." instance=ExtResource("3_r02f5")]

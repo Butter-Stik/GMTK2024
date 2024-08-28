@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	pass
 
 
@@ -11,6 +12,7 @@ func _process(delta):
 	pass
 
 func _on_start_pressed():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	$"/root/Death".ACTIVE_LEVEL = $"/root/Death".LEVELS_COMPLETED + 1;
 	$"/root/Death".NEXT_SCENE = "res://Scenes/room%d.tscn" % min($"/root/Death".LEVELS_COMPLETED + 1, 20);
 	$"/root/Death".BUTTON_POSITION = global_position + size / 2;

@@ -100,7 +100,7 @@ position = Vector2(88, 72)
 position = Vector2(71, 104)
 
 [node name="Button" parent="World" instance=ExtResource("4_3vyea")]
-position = Vector2(184, 120)
+position = Vector2(152, 120)
 COLOR = 2
 
 [node name="Button2" parent="World" instance=ExtResource("4_3vyea")]
